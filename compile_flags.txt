@@ -1,0 +1,1 @@
+-Wall -Wextra -Wshadow -Wconversion -pedantic -std=gnu++17

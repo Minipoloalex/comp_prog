@@ -1,0 +1,2 @@
+Example of icecream machines where M > N would lead to runtime error because of mis-sizing an array to be size n instead of m
+It is good to do equivalence partitioning tests, i.e. test one bigger than the other and vice-versa

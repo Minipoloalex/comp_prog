@@ -1,0 +1,13 @@
+11
+10th: 9th 8th
+9th: 6th 7th
+8th: 3rd 4th 5th
+3rd: 1st
+4th: 1st
+5th: 1st
+6th: 2nd
+7th: 2nd
+1st: 0th
+2nd: 0th
+0th:
+0th
