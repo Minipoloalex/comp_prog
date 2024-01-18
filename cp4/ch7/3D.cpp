@@ -20,6 +20,6 @@ Check kattis/bottles for code using it
 https://www.bragitoff.com/2017/08/simpsons-13-rule-c-program/
 
 
-error: https://www.cuemath.com/simpsons-rule-formula/
+calculate the error: https://www.cuemath.com/simpsons-rule-formula/
 M * (b - a)^5 / (180 * n^4)
 */
