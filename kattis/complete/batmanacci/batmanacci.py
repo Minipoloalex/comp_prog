@@ -1,4 +1,3 @@
-MAX_N = 1e5 + 10
 fib = [1, 1]
 
 def solve():
@@ -8,7 +7,6 @@ def solve():
     n -= 1
     while n >= 2:
         # print(f"n = {n}, k = {k}")
-        val = fib[n]
         to_test = fib[n - 2]
         if k <= to_test:
             n -= 2
