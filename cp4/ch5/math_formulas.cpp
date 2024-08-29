@@ -5,11 +5,14 @@ typedef long long ll;
 typedef unsigned long long ull;
 typedef vector<ll> vll;
 
-// logb(a) = log(a) / log(b)
+// log_b(a) = log(a) / log(b)
 
 // log(a ^ b) = b * log(a)
 // log(a * b) = log(a) + log(b)
 // log(a / b) = log(a) - log(b)
+
+inline constexpr int pct(int x) { return __builtin_popcount(x); }           // # of bits set
+inline constexpr int pct(long long x) { return __builtin_popcountll(x); }   // # of bits set
 
 int numberOfDigits(int a) {
     return (int) floor(1+log10((double)a));
@@ -17,7 +20,7 @@ int numberOfDigits(int a) {
 int numberOfDigits(int a, int base) {
     return (int) floor(1+log10((double) a) /log10((double) base));
 }
-int mod(int a, int m) { // to assure it's positive
+int mod(int a, int m) { // to ensure it's positive
     return ((a % m) + m) % m;
 }
 ll pow_fast(ll base, ll exp, ll mod) {
@@ -36,7 +39,8 @@ ll pow_fast(ll base, ll exp, ll mod) {
 }
 
 ll sieve_size;
-bitset<100000001> bs;
+const int MAX_SIZE = int(1e8) + 1;
+bitset<MAX_SIZE> bs;    // 100000001
 vll p;
 
 void sieve(ll upper) {
