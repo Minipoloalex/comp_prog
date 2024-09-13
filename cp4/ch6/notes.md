@@ -113,3 +113,124 @@ Given two strings A and B, we concatenate them as S=A#B, where # is a character 
 
 Now, you should be able to see why you only need to see consecutive values in the LCP array (the argument is based on contradiction and the fact that the suffixes in SA are in lexicographic order). Keep checking the LCP array for the maximum value such that the two suffixes being compared do not belong to the same original string. If they don't belong to the same original string (one begins in A and the other in B), then the largest such value is the length of the largest common substring.
 ```
+## Knuth-Morris-Pratt String Matching
+Preprocesses the pattern and not the text, opposite of the suffix array.
+
+### Preprocessing
+
+```cpp
+vector<int> kmp;
+
+void kmpPreprocess(const string &p) {
+    int sz = int(p.size());
+    kmp.resize(sz + 1);
+
+    int l = -1, r = 0;
+    kmp[0] = -1;
+    while (r < sz) {    // l < r
+        while (l >= 0 && p[r] != p[l]) l = kmp[l];
+        l++; r++;
+
+        // Here, we have l >= 0 and r >= 1
+        // Comparison of the i'th character corresponds to the (i + 1)'th position in the array)
+        kmp[r] = l;
+    }
+}
+```
+Notes about the code:
+- The first iteration is always going to be setting the "first" position of the array $kmp[1] = 0$ and going to $l = 0$, $r = 1$.
+- On the next iterations, if $l$ ever gets to $-1$, meaning that we have no match whatsoever, we are just going to set $kmp[r] = 0$.
+    * If there isn't a match in characters $l/r$, we want to go to the index corresponding to the value in the table of the previous character. Since we are using 1-index, we can just do $l = kmp[l]$: index $l$ references character at index $l - 1$.
+<!--
+We want to go to that index because, even though we did not match that character, the previous was previously matched -> might be useful
+-->
+
+```cpp
+void kmpSearch(const string &p, const string &t) {
+    int n = int(t.size());
+    int m = int(p.size());
+    int i = 0, j = 0;   // i loops through text, j through pattern
+    while (i < n) {
+        while (j >= 0 && (t[i] != p[j])) j = kmp[j];
+        i++; j++;
+        if (j == m) {
+            cout << "Match found starting at index " << i - j << '\n';
+            j = kmp[j];  // continue looking for more matches 
+        }
+    }
+}
+```
+This code is very similar to the previous and uses the same ideas.
+
+Additional notes on the code:
+- When finding a match, we act as if this was a mismatch on the new character (non-existing in the pattern) and continue looking for more matches. In fact, since we will be at indices incremented by 1 from the last matched character and are using 1-indexed for the $kmp$ array, we can directly reference $kmp[j]$. E.g.:
+    - $t = abrabra$ (indexed by $i$)
+    - $p = abra$ (indexed by $j$)
+    - $kmp = [-1, 0, 0, 0, 1]$
+    - $i = 4$, $j = 4$, $j = kmp[4] = 1$, now analyzing $p[1] = $ 'b' and $t[i]$
+
+- After finding a match, $i - j$ gives the index with the first character corresponding to the matching. The size of the match is simply $j$ or $m$ (the size of the pattern). E.g.:
+    - $t = abrabra$ (indexed by $i$)
+    - $p = abra$ (indexed by $j$)
+        - When we find the first match, we will have $i = 4$ and $j = 4$. The starting index is $i - j = 0$ and the size of the match is $m = j = 4$.
+        - When we find the second match, we will have $i = 7$ and $j = 4$. The starting index is $i - j = 3$.
+
+
+#### Bad implementations
+The implementation shown above is very compact and handles edge cases well.
+
+An implementation like the one below can have many bugs. In fact, this implementation has bugs, at least the preprocessing part.
+
+```cpp
+// There's a bug(s) in this function
+void kmpPreprocess(const string &p) {
+    int sz = int(p.size());
+    kmp.assign(sz, 0);
+
+    int i = 0, j = 1;
+    int value = 0;
+    while (j < sz) {
+        char a = p[i], b = p[j];
+        if (a != b && i == 0) {
+            kmp[j] = value;
+            j++;
+        }
+        else if (a != b) {
+            assert(i > 0);
+            i = kmp[i - 1];
+            value = kmp[i - 1];
+        }
+        else if (a == b) {
+            value++;
+            kmp[j] = value;
+            i++; j++;
+        }
+    }
+}
+
+// Untested function
+void kmpSearch(const string &p, const string &t) {
+    int n = int(t.size());
+    int m = int(p.size());
+    int i = 0, j = 0;   // i loops through text, j through pattern
+    while (i < n) {
+        char a = t[i], b = p[j];
+        if (a == b) {
+            i++; j++;
+        }
+        else if (a != b && j == 0) {
+            i++;
+        }
+        else if (a != b) {
+            assert(j > 0);
+            j = kmp[j - 1];
+        }
+        if (j == m) {
+            cout << "Match found starting at index " << i - j << '\n';
+            j = kmp[j - 1]; // continue looking for more matches
+        }
+    }
+}
+```
+
+
