@@ -1,0 +1,8 @@
+20000
+6
+anali 20000 1000
+bruna 5000 3
+carlo 6000 3
+david 6000 3
+elsay 7000 3
+felip 7000 3
