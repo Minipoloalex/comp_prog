@@ -60,3 +60,29 @@ long long binomial_coefficient(int n, int k) {
 ### Count number of set bits
 - **Int** $$\_\_builtin\_popcount(x)$$
 - **Long long** $$\_\_builtin\_popcountll(x)$$
+
+
+## Sequences
+
+### Logic behind simple sequences
+Examples:
+- 1, 2, 4, 7, 11, 16, 22, 29, 37, 46, 56
+$$a(1) = 1$$
+$$a(2) = a(1) + 1 = 2$$
+$$a(3) = a(2) + 2 = 4$$
+$$a(4) = a(3) + 3 = 7$$
+$$...$$
+$$a(n) = a(1) + (1 + 2 + 3 + ... + n - 1) = a(1) +\frac{n * (n-1)}{2}$$
+
+## Complexity reasoning in non-classical examples:
+## 
+- $T(N) = T(N/2) + T(N/4) + O(1)$, from [MIUP 2022](https://dei.uc.pt/miup/wp-content/uploads/2022/10/caderno-MIUP-final-2022.pdf) problem E.
+
+According to [Wolfram Alpha](https://www.wolframalpha.com/input?i=T%28N%29++%3D+T%28N%2F2%29+%2B+T%28N%2F4%29+%2B+1), approximately $T(N) \in \theta^{0.7n}$, whereas in [$T(N) = 3*T(N/4) + O(1)$](https://www.wolframalpha.com/input?i=T%28N%29+%3D+T%28N%2F4%29+%2B+T%28N%2F4%29+%2B+T%28N%2F4%29+%2B+1), approximately $T(N) \in \theta^{0.8n}$.
+
+This shows why that is the case, as seen in [Wolfram Alpha](https://www.wolframalpha.com/input?i=log2%28n%29+%3C+log2%28n+%2F+2%29+%2B+log2%28n+%2F+2%29):
+$$\log_2{(n)} < \log_2{\frac{n}{2}} + \log_2{\frac{n}{2}}, \forall n > 4$$
+$$2 * \log_2{\frac{n}{2}} = \log_2{(\frac{n}{2})^2} = \log_2{\frac{n^2}{4}}$$
+
+Note that the second version would lead to $TLE$ verdict, taking $30$ seconds to execute size $4e10$, while the first version only takes $0.3$ seconds.
+
