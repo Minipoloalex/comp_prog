@@ -1,83 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-using iii = tuple<int, int, int>;
+using iii = tuple<int64_t, int64_t, int64_t>;
 using viii = vector<iii>;
 
-using ii = pair<int, int>;
+using ii = pair<int64_t, int64_t>;
 using vii = vector<ii>;
 
-vector<vii> el;
+using vi64 = vector<int64_t>;
+using vvi = vector<vi64>;
+
 const int MAX_N = int(2e5) + 10;
+vector<vii> el;
 bitset<MAX_N> horse;
 
-void dijkstra(int st, vector<int> &normalDist, vector<int> &horseDist) {
-    normalDist[st] = 0;
-    if (horse[0]) horseDist[0] = 0;
+void dijkstra(int st, vvi &dist) {
+    dist.at(st).at(0) = 0;
+
     set<iii> pq;
-    pq.emplace(0, st, horse[0]);
-    
+    pq.emplace(0, st, 0);
 
+    // cerr << "Starting dijkstra: " << endl;
     while (!pq.empty()) {
-        auto it = pq.begin();
-        auto [d, u, hasHorse] = *it;
-        pq.erase(it);
+        auto [d, u, currHorse] = *pq.begin();   // currHorse = 1 if already had a horse
+        // cerr << u << " ";
+        pq.erase(pq.begin());
+        bool nhorse = currHorse || horse[u];    // nhorse = 1 if already had a horse or got a horse in this node
 
-        if (hasHorse && d > horseDist[u]) continue;
-        if (!hasHorse && d > normalDist[u]) continue;
+        for (auto [v, w]: el.at(u)) {
+            if (nhorse) w /= 2; // w is a copy
 
-        for (auto [v, w]: el[u]) {
-            if (hasHorse) {
-                w /= 2;
-                if (horseDist[v] != -1) {
-                    // may need to erase
-                    if (horseDist[u] + w < horseDist[v]) {
-                        auto erase_it = pq.find({horseDist[v], v, true});
-                        if (erase_it != pq.end()) pq.erase(erase_it);
-                        horseDist[v] = horseDist[u] + w;
-                        pq.emplace(horseDist[v], v, true);
-                    }
-                }
-                else {
-                    horseDist[v] = horseDist[u] + w;
-                    pq.emplace(horseDist[v], v, true);
-                }
-            }
-            else {  // No horse
-                if (normalDist[v] != -1) {
-                    if (normalDist[u] + w < normalDist[v]) {
-                        auto erase_it = pq.find({normalDist[v], v, false});
-                        if (erase_it != pq.end()) pq.erase(erase_it);
-                        normalDist[v] = normalDist[u] + w;
-                        if (horse[v]) {
-                            if (horseDist[v] == -1) {
-                                horseDist[v] = normalDist[v];
-                                pq.emplace(horseDist[v], v, 1);
-                            }
-                            else if (normalDist[u] + w < horseDist[v]) {
-                                auto erase_it = pq.find({horseDist[v], v, 1});
-                                if (erase_it != pq.end()) pq.erase(erase_it);
-                                horseDist[v] = normalDist[v];
-                                pq.emplace(normalDist[v], v, 1);
-                            }
-                        }
-                        else {
-                            pq.emplace(normalDist[v], v, 0);
-                        }
-                    }
-                }
-                else {
-                    normalDist[v] = normalDist[u] + w;
-                    if (horse[v]) {
-                        if (horseDist[v] == -1) {
-                            horseDist[v] = normalDist[v];
-                            pq.emplace(normalDist[v], v, 1);
-                        }
-                    }
-                }
+            if (dist.at(u).at(currHorse) + w < dist.at(v).at(nhorse)) {
+                pq.erase({dist[v][nhorse], v, nhorse}); // no problem if not in the set
+
+                dist[v][nhorse] = dist[u][currHorse] + w;
+                pq.emplace(dist[v][nhorse], v, nhorse);
             }
         }
     }
+    // cerr << endl;
 }
 
 int main() {
@@ -87,22 +48,35 @@ int main() {
         int n, m, h;
         cin >> n >> m >> h;
         el.assign(n, vii());
+        horse.reset();
         for (int i = 0; i < h; i++) {
             int ai;
             cin >> ai;
             horse.set(ai - 1);
         }
         for (int i = 0; i < m; i++) {
-            int ui, vi, wi;
+            int64_t ui, vi, wi;
             cin >> ui >> vi >> wi;
             ui--;vi--;
             el[ui].emplace_back(vi, wi);
             el[vi].emplace_back(ui, wi);
         }
-        vector<int> distFrom1(n, -1), withHorse1(n, -1);
-        vector<int> distFromN(n, -1), withHorseN(n, -1);
-        dijkstra(0, distFrom1, withHorse1);
-        dijkstra(n - 1, distFromN, withHorseN);
+        vvi distFrom1(n, vi64(2, INT64_MAX)), distFromN(n, vi64(2, INT64_MAX));
+
+        dijkstra(0, distFrom1);
+        dijkstra(n - 1, distFromN);
+
+        // cerr << "Distance calculation: " << endl;
+        int64_t ans = INT64_MAX;
+        for (int i = 0; i < n; i++) {
+            // cerr << i << " " << distFrom1[i][0] << " " << distFrom1[i][1] << " " << distFromN[i][0] << " " << distFromN[i][1] << endl;
+            int64_t min_dist_1 = min(distFrom1[i][0], distFrom1[i][1]);
+            int64_t min_dist_n = min(distFromN[i][0], distFromN[i][1]);
+            int64_t actual = max(min_dist_1, min_dist_n);
+            ans = min(ans, actual);
+        }
+        if (ans == INT64_MAX) ans = -1;
+        cout << ans << '\n';
     }
     return 0;
 }
