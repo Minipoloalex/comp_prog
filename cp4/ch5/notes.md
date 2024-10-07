@@ -86,3 +86,71 @@ $$2 * \log_2{\frac{n}{2}} = \log_2{(\frac{n}{2})^2} = \log_2{\frac{n^2}{4}}$$
 
 Note that the second version would lead to $TLE$ verdict, taking $30$ seconds to execute size $4e10$, while the first version only takes $0.3$ seconds.
 
+
+## Greatest common divisor
+
+### GCD calculation reasoning
+
+Observation:
+$$gcd(a, b) = gcd(a - b, b), a \ge b$$
+*Proof by contradiction*:
+
+First step:
+$$d = gcd(a, b) > gcd(a - b, b)$$
+$$ a = xd, b = yd, a - b = (x - y)*d$$
+$$ d | (a - b), d | b \implies gcd(a - b, b) \ge d$$
+
+Second step:
+
+$$gcd(a, b) < gcd(a - b, b) = d$$
+$$a - b = xd, b = yd, a = (a - b) + b = (x + y) * d$$
+$$d | a; d | b \implies gcd(a, b) \ge d$$
+Proof is complete.
+
+```cpp
+int gcd(int a, int b) {
+    while (a >= b) a -= b;  // since gcd(a, b) = gcd(a - b, b)
+    ...
+}
+```
+
+Doing so is equivalent to doing $a \ \% \ b$.
+$$gcd(a, b) = gcd(a - b, b) = gcd(a \% b, b) = gcd(b, a \% b)$$
+With $b \ge a\ \%\ b$.
+```cpp
+// first call must does not need a >= b
+// from the second recursive call, a > b will always hold
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+```
+
+#### Complexity reasoning
+Proof that with $a \ge b$,
+$$ a \ \% \ b < \frac{a}{2}$$
+When calculating the GCD, this means that $a$ will be reduced at least by half, and the complexity should be $O(\log{N})$.
+
+There are 2 cases for this proof:
+1. $b > \frac{a}{2}$
+
+$a \ge b > \frac{a}{2}$
+
+$$a \ \%\  b = a - b < a - \frac{a}{2} = \frac{a}{2}$$
+We can only take 1 $b$ from a, not any more.
+
+2. $b \le \frac{a}{2}$
+$$ a \ \% \ b \in [0, b - 1]$$
+$$ a \ \% \ b < b \le \frac{a}{2}$$
+
+Proof is complete.
+
+Conclusions:
+$$a \ \%\  b = a, a < b$$
+$$a \ \%\ b < \frac{a}{2}, a \ge b$$
+
+In each step, one of our numbers will be halved. A number $a$ can only be halved $\log{a}$ times before turning to $0$. So, the complexity of the algorithm is $O(\log{a} + \log{b})$.
+
+Or, we can also say that the complexity is $O(\log{(min(a, b))})$. This can be important if $a$ and $b$ have different bounds. This is the case because the numbers alternate, so the first to get to $0$ will make the algorithm stop.
+
+Even if $a, b \le 10^{18}$, we can still calculate their GCDs.
