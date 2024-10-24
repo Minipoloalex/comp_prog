@@ -16,6 +16,21 @@ int solve_lis(vector<int> &r) {
     return (int) ans.size();
 }
 
+int solve_lcs(vector<int> &a, vector<int> &b) {
+    // Reducing LCS problem with permutations to LIS
+    int n = int(a.size());  // n = a.sz = b.sz
+    vector<int> b_positions(n);
+    for (int i = 0; i < n; i++) {
+        b_positions[b[i] - 1] = i;
+    }
+
+    vector<int> r(n);
+    for (int i = 0; i < n; i++) {
+        r[i] = b_positions[a[i] - 1];
+    }
+    return solve_lis(r);
+}
+
 int main() {
     int t;
     cin >> t;
@@ -26,18 +41,7 @@ int main() {
         for (int i = 0; i < n; i++) cin >> a[i];
         for (int i = 0; i < n; i++) cin >> b[i];
 
-        // Reducing LCS problem with permutations to LIS
-        vector<int> b_positions(n);
-        for (int i = 0; i < n; i++) {
-            b_positions[b[i] - 1] = i;
-        }
-
-        vector<int> r(n);
-        for (int i = 0; i < n; i++) {
-            r[i] = b_positions[a[i] - 1];
-        }
-
-        int lcs_ans = solve_lis(r);
+        int lcs_ans = solve_lcs(a, b);
         // cout << lcs_ans << " ";
         cout << (n - lcs_ans) * 2 << '\n';
     }
