@@ -78,6 +78,13 @@ private:
     FenwickTree ft; // internally use PURQ FT
 public:
     RUPQ(int m) : ft(FenwickTree(m)) {}
+    /**
+     * @brief Inclusive update: [ui, uj]
+     * 
+     * @param ui 
+     * @param uj 
+     * @param v 
+     */
     void range_update(int ui, int uj, ll v)
     {
         ft.update(ui, v);                       // [ui, ui+1, .., m] +v

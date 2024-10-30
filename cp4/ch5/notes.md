@@ -87,6 +87,18 @@ $$2 * \log_2{\frac{n}{2}} = \log_2{(\frac{n}{2})^2} = \log_2{\frac{n^2}{4}}$$
 Note that the second version would lead to $TLE$ verdict, taking $30$ seconds to execute size $4e10$, while the first version only takes $0.3$ seconds.
 
 
+## Built-in GCC functinos
+
+- Built-in Function: `int __builtin_clz` (unsigned int x)
+    - Returns the number of leading 0-bits in X, starting at the most significant bit position. If X is 0, the result is undefined.
+
+- Built-in Function: `int __builtin_clzl` (unsigned long)
+    - Similar to `__builtin_clz`, except the argument type is `unsigned long`.
+
+- Built-in Function: `int __builtin_clzll` (unsigned long long)
+    - Similar to `__builtin_clz`, except the argument type is `unsigned long long`.
+
+
 ## Greatest common divisor
 
 ### GCD calculation reasoning
