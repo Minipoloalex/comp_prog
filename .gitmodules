@@ -1,0 +1,3 @@
+[submodule "AdventOfCode2021"]
+	path = AdventOfCode2021
+	url = git@github.com:Minipoloalex/AdventOfCode2021.git
