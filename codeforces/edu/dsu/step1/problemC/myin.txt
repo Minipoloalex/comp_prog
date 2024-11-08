@@ -1,0 +1,11 @@
+3 10
+add 1 5
+add 2 10
+join 2 1
+add 2 7
+add 3 13
+join 3 2
+add 3 5
+get 1
+get 2
+get 3
