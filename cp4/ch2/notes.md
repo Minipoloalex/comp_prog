@@ -81,3 +81,71 @@ Include both borders, $[l, r]$:
 
 #### Sources
 https://codeforces.com/edu/course/2
+
+
+## Disjoin Set Union (DSU)
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> parent, rnk;
+
+void make_set(int v) {
+    parent[v] = v;
+    rnk[v] = 0;
+}
+
+int find_set(int v) {
+    if (v == parent[v])
+        return v;
+    return parent[v] = find_set(parent[v]);
+}
+
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
+    if (a != b) {
+        if (rnk[a] < rnk[b])
+            swap(a, b);
+        parent[b] = a;
+        if (rnk[a] == rnk[b])
+            rnk[a]++;
+    }
+}
+```
+
+### Path Compression
+```cpp
+int find_set(int v) {
+    if (v == parent[v]) return v;
+    return parent[v] = find_set(parent[v]);
+}
+```
+
+### Union by Rank
+```cpp
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
+    if (a != b) {
+        if (rnk[a] < rnk[b])
+            swap(a, b);
+        parent[b] = a;
+        if (rnk[a] == rnk[b])
+            rnk[a]++;
+    }
+}
+```
+
+### Complexity Reasoning
+#### Using just one optimization
+Using only one of the 2 presented optimizations will yield an amortized complexity for each of the operations of $\mathcal{O}(\log{n})$.
+
+
+#### Using both optimizations
+Using both will yield an amortized complexity of $\mathcal{O}(\alpha(m, n))$, where $\alpha(m, n)$ is the inverse Ackermann function. $m$ is the number of performed $get$ operations and $n$ is the number of elements.
+
+This function grows very slowly, and for all practical purposes, it can be considered a constant. It even grows slower than $\log^*(n)$, which represents how many times we should take $\log{n}$ to get a value smaller than one. E.g.:
+$$2^{65536} = 65536 = 2^{16} = 2^4 = 2^2 = 2 = 1 = 0$$
+$$\log^*(2^{65536}) = 6 $$
+
