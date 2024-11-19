@@ -84,6 +84,14 @@ https://codeforces.com/edu/course/2
 
 
 ## Disjoin Set Union (DSU)
+### Possible operations
+We can support associative and commutative functions.
+$$(a⊗b)⊗c=a⊗(b⊗c)$$
+$$a⊗b=b⊗a$$
+
+For example, we can maintain sum, min, max...
+
+### Code
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
