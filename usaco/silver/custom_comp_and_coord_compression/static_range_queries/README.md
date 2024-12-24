@@ -1,0 +1,2 @@
+- `my_static_range_queries.cpp`: Has my initial solution which has a bit of a hack to deal with the `[l,r)` problem
+- `adapted_static_range_queries.cpp`: Solution adapted to the given solution, which handles that problem in a much better way
