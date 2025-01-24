@@ -52,7 +52,8 @@ bool intersect(array<P, 4> &p) {
     }
 
     auto equal_signs = [&](P &p1, P &p2, P &o1, P &o2) -> bool {
-        // tells us the side which segment (o1, o2) is on from segment (p1, p2)
+        // tells us if segment (o1, o2) is completely on one side of segment (p1, p2)
+        // may need to be careful if sign = 0
         return sign(p1.triangle(p2, o1)) == sign(p1.triangle(p2, o2));
     };
 
