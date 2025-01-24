@@ -1,8 +1,12 @@
-Visualise geometry stuff:
+Visualize geometry stuff:
 https://geogebra.org/calculator
 
 ## Comparing doubles
 $$ |a − b| < \epsilon$$
+
+
+## Overflowing
+To avoid overflow, using templates helps and testing with simple big polygons may also help.
 
 ## Point distance from a line
 Taken from https://usaco.guide/CPH.pdf#page=275
@@ -10,20 +14,41 @@ Taken from https://usaco.guide/CPH.pdf#page=275
 ![alt text](image.png)
 
 ## Area - Shoelace formula
-Root at point (0, 0) and calculate cross product of every pair of verticies: $\sum_{i=0}^{N-1} (p_{i}\times p_{(i + 1) \% N})$.
+Root at point $(0, 0)$ and calculate cross product of every pair of verticies: $2 * A = \sum_{i=0}^{N-1} (p_{i}\times p_{(i + 1) \% N})$.
+
+### Result Sign
+- If the signed area is positive, the vertices are ordered in a counterclockwise direction.
+- If the signed area is negative, the vertices are ordered in a clockwise direction.
+
+This is easy to understand if we think about two triangles from the algorithm: a "big" area and a "small" area. Then, we just simulate going through the triangles.
+
+For example, if we go counterclockwise (CCW) overall, then CCW on big and CW on small. So, big counts POS and small counts NEG. This means resulting area will be positive.
 
 
-## Pick's Theorem
+- Polygon being analyzed: ABCD
+- Big triangle/area: EBC
+- Small triangle/area: EDA
+
+![alt text](image-6.png)
+
+## Pick's Theorem and Polygon Lattice Points
 $$ A = a + \frac{b}{2} - 1$$
+$$ a = A - \frac{b}{2} + 1 = \frac{2*A - b}{2} + 1$$
 where:
 - $a$ is the number of integer points inside the polygon
 - $b$ is the number of integer points on the boundary of the polygon
+
+
+### How to calculate polygon lattice points?
+Calculate the number of lattice points inside the polygon and on its boundary. A lattice point is a point whose coordinates are integers.
 
 $b$ can be calculated using GCD of each segments X and Y length. For example:
 
 ![alt text](image-1.png)
 
 Segment length (6, 2): GCD = 2, so there are 2 smaller segments with points on integer coordinates.
+
+
 
 ## Distances
 ![alt text](image-2.png)
