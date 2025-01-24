@@ -130,7 +130,7 @@ Doing so is equivalent to doing $a \ \% \ b$.
 $$gcd(a, b) = gcd(a - b, b) = gcd(a \% b, b) = gcd(b, a \% b)$$
 With $b \ge a\ \%\ b$.
 ```cpp
-// first call must does not need a >= b
+// first call does not need a >= b
 // from the second recursive call, a > b will always hold
 int gcd(int a, int b) {
     if (b == 0) return a;
@@ -139,7 +139,7 @@ int gcd(int a, int b) {
 ```
 
 #### Complexity reasoning
-Proof that with $a \ge b$,
+Proof that with $a \ge b$:
 $$ a \ \% \ b < \frac{a}{2}$$
 When calculating the GCD, this means that $a$ will be reduced at least by half, and the complexity should be $O(\log{N})$.
 
