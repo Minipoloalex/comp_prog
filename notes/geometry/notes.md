@@ -78,3 +78,12 @@ On this image, point G is on the same X as P, but is considered to be at the lef
 In this polygon, G is handled separately, E has one intersection (odd so inside) and F has two intersections (even so outside). In the point F case, the intersections are segment AB and segment CB. C is considered to be on the left and not on the right of the slightly tilted ray from point F.
 
 ![alt text](image-5.png)
+
+
+## Cool problems
+### Sliding Window with wrap-around
+https://leetcode.com/problems/maximum-number-of-visible-points/description/
+
+### Angular Sweep (Disk Partial Covering Problem)
+https://leetcode.com/problems/maximum-number-of-darts-inside-of-a-circular-dartboard/description/
+
