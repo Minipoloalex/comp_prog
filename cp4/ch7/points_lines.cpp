@@ -47,6 +47,10 @@ point rotate(point p, double theta) {
                p.x*sin(rad) + p.y*cos(rad));
 }
 
+// ax + by + c = 0
+// b has only two possible values
+// b = 0 -> vertical line (a = 1, x = -c)
+// b = 1 -> normal line (y = -ax + -c)
 struct line { double a, b, c; };                 // most versatile
 
 // the answer is stored in the third parameter (pass by reference)
@@ -87,9 +91,11 @@ bool areSame(line l1, line l2) {                 // also check  c
 bool areIntersect(line l1, line l2, point &p) {
   if (areParallel(l1, l2)) return false;         // no intersection
   // solve system of 2 linear algebraic equations with 2 unknowns
+  // using matrix representation (and Cramer's Rule)
   p.x = (l2.b*l1.c - l1.b*l2.c) / (l2.a*l1.b - l1.a*l2.b);
+
   // special case: test for vertical line to avoid division by zero
-  if (fabs(l1.b) > EPS) p.y = -(l1.a*p.x + l1.c);
+  if (fabs(l1.b) > EPS) p.y = -(l1.a*p.x + l1.c); // from y = -ax - c
   else                  p.y = -(l2.a*p.x + l2.c);
   return true;
 }
@@ -164,15 +170,18 @@ double distToLine(point p, point a, point b, point &c) {
 }
 
 // returns the distance from p to the line segment ab defined by
-// two points a and b (technically, a has to be different than b)
+// two points a and b (a has to be different than b)
 // the closest point is stored in the 4th parameter (byref)
 double distToLineSegment(point p, point a, point b, point &c) {
+  // assert(a != b);
   vec ap = toVec(a, p), ab = toVec(a, b);
   double u = dot(ap, ab) / norm_sq(ab);
   if (u < 0.0) {                                 // closer to a
     c = point(a.x, a.y);
     return dist(p, a);                           // dist p to a
   }
+
+  // think of projection of P to AB line
   if (u > 1.0) {                                 // closer to b
     c = point(b.x, b.y);
     return dist(p, b);                           // dist p to b
@@ -182,6 +191,12 @@ double distToLineSegment(point p, point a, point b, point &c) {
 
 // returns the cross product of two vectors a and b
 double cross(vec a, vec b) { return a.x*b.y - a.y*b.x; }
+
+// Implemented by _FM
+// Assumes v1 != (0, 0), v2 != (0, 0)
+bool parallel(vec &v1, vec &v2) {
+  return fabs(cross(v1, v2)) < EPS;
+}
 
 //// another variant
 // returns 'twice' the area of this triangle A-B-c
@@ -200,6 +215,101 @@ bool ccw(point p, point q, point r) {
 // returns true if point r is on the same line as the line pq
 bool collinear(point p, point q, point r) {
   return fabs(cross(toVec(p, q), toVec(p, r))) < EPS;
+}
+
+// Matrix determinant
+// [[a b]
+//  [c d]]
+double det(double a, double b, double c, double d) { return a * d - b * c; }
+
+inline bool intersect_1d(double a, double b, double c, double d) {
+	if (a > b) { swap(a, b); }
+	if (c > d) { swap(c, d); }
+
+  // a, c are the mins
+  // b, d are the maxs
+  // [max(a, c), min(b, d)] -> represents the intersected space
+	return max(a, c) <= min(b, d) + EPS;
+}
+
+// Implemented by _FM
+// Checks if the rectangles formed by the points [p1, p2] and [p3, p4] intersect.
+// Returns true if they collide, false otherwise.
+bool bbox_collision(const point &p1, const point &p2, const point &p3, const point &p4) {
+  return intersect_1d(p1.x, p2.x, p3.x, p4.x) && intersect_1d(p1.y, p2.y, p3.y, p4.y);
+}
+
+// tests for min(l,r) <= x <= max(l,r), with precision concerns
+inline bool betw(double l, double r, double x) {
+	return min(l, r) <= x + EPS && x <= max(l, r) + EPS;
+}
+
+// Implemented by _FM
+// Segments are given by [p[0], p[1]] and [p[2], p[3]]
+// Precision: tested with integer points with <= 1e4 absolute value.
+// Easily modifiable to work with exact integer values.
+// Does not allow segments with coincident points.
+// Returns true or false (does not return intersection point)
+bool segment_intersection(const array<point, 4> &p) {
+    vec v1 = toVec(p[0], p[1]);
+    vec v2 = toVec(p[2], p[3]);
+    if (parallel(v1, v2)) {
+        if (collinear(p[0], p[1], p[2]) && collinear(p[0], p[1], p[3]) && bbox_collision(p[0], p[1], p[2], p[3])) {
+            return true;
+        }
+        return false;
+    }
+    auto equal_signs = [&](const point &p1, const point &p2, const point &o1, const point &o2) -> bool {
+        // tells us if segment (o1, o2) is completely on one side of segment (p1, p2)
+        // may need to be careful if cross product is zero
+        double c1 = cross(toVec(p1, p2), toVec(p1, o1));
+        double c2 = cross(toVec(p1, p2), toVec(p1, o2));
+        return (c1 > EPS && c2 > EPS) || (c1 < -EPS && c2 < -EPS);  // careful when cross prod is 0
+    };
+    if (equal_signs(p[0], p[1], p[2], p[3]) || equal_signs(p[2], p[3], p[0], p[1])) {
+        return false;
+    }
+    return true;
+}
+
+// Implemented by _FM
+// Another version of segment intersection
+// Precision: Tested with integer points with <= 1e4 absolute value
+// Can return an intersected segment (if segments partially coincide)
+// Returns intersection points left and right by reference
+bool segment_intersection(const array<point, 4> &pts, point &left, point &right) {
+  auto [a, b, c, d] = pts;
+  if (!bbox_collision(a, b, c, d)) {
+    return false;
+  }
+  line l1, l2;
+  pointsToLine(a, b, l1);
+  pointsToLine(c, d, l2);
+
+  if (areParallel(l1, l2)) {
+    if (!areSame(l1, l2)) return false;
+
+    // same line, intersection can be calculated with bounding boxes
+    // p < q, if x smaller (then y smaller)
+    if (b < a) { swap(a, b); }  // a = min(a, b), b = max(a, b)
+		if (d < c) { swap(c, d); }  // c = min(c, d), d = max(c, d)
+		left = max(a, c);
+		right = min(b, d);
+    return true;
+  }
+  else {
+    point p;
+    // lines must intersect (not parallel)
+    areIntersect(l1, l2, p);
+    if (fabs(p.x) < EPS) p.x = 0; // make -0's be 0
+    if (fabs(p.y) < EPS) p.y = 0;
+
+    left = p;
+    right = p;
+    // account for segment size
+    return betw(a.x, b.x, p.x) && betw(a.y, b.y, p.y) &&
+           betw(c.x, d.x, p.x) && betw(c.y, d.y, p.y);
+  }
 }
 
 int main() {
