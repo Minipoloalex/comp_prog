@@ -88,7 +88,7 @@ public:
     }
 
     /**
-     * @brief Implemented by Felix Martins
+     * @brief Implemented by _FM
      * 
      * @return int Number of unique substrings of the string given in the Suffix Array.
      * Assumes the existence of a terminal character (smaller in ascii valuethan all of the others)
