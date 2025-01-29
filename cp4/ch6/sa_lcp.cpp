@@ -144,7 +144,7 @@ public:
         return {maxLCP, idx};
     }
     /**
-     * @brief Implemented by Felix Martins (Needs further tests)
+     * @brief Implemented by _FM (Needs further tests)
      * 
      * @return int Number of unique repeated substrings of the string given in the Suffix Array.
      */
@@ -157,7 +157,7 @@ public:
         return ans;
     }
     /**
-     * @brief Implemented by Felix Martins (needs further tests)
+     * @brief Implemented by _FM (needs further tests)
      * 
      * @return int Number of unique substrings of the string given in the Suffix Array.
      */

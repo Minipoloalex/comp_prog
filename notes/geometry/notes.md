@@ -6,7 +6,7 @@ $$ |a − b| < \epsilon$$
 
 
 ## Overflowing
-To avoid overflow, using templates helps and testing with simple big polygons may also help.
+To avoid overflow, using templates helps and testing with simple big polygons may also help (e.g., big squares).
 
 ## Point distance from a line
 Taken from https://usaco.guide/CPH.pdf#page=275
