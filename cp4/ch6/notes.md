@@ -180,6 +180,7 @@ Additional notes on the code:
 The implementation shown above is very compact and handles edge cases well.
 
 An implementation like the one below can have many bugs. In fact, this implementation has bugs, at least the preprocessing part.
+Don't try to understand this, just check how many ifs something badly implemented can have.
 
 ```cpp
 // There's a bug(s) in this function
