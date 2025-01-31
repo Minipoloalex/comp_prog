@@ -1,3 +1,6 @@
+## Code
+
+```cpp
 a = succ(x);
 b = succ(succ(x));
 while (a != b) {
@@ -19,3 +22,4 @@ while (a != b) {
     b = succ(b);
     length++;
 }
+```

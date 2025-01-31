@@ -1,12 +1,12 @@
-## CPH
-https://usaco.guide/CPH.pdf#page=255
+## String Hashing
+Based mostly on: https://usaco.guide/CPH.pdf#page=255
 
 ### Setup
 
 - Hash array: $h[k]$ contains hash value of prefix $s[0..k]$
 - Power array: $p[k]$ contains the power to $A^k mod B$
 
-To compute the hash of an arbitrary substring $[a, b]$ (if $a \neq 0$):
+To compute the hash of an arbitrary substring $[l, r]$ (if $l \neq 0$):
 
 $$(h[b] - h[a - 1]*p[b - a + 1]) mod B$$
 where $b - a + 1$ just represents the size of the substring.
@@ -89,3 +89,16 @@ It was based on: https://usaco.guide/gold/hashing?lang=cpp and https://codeforce
 
 Also, I tested it in https://dmoj.ca/problem/ccc20s3 -> https://dmoj.ca/submission/6930048.
 
+For that problem, instead of comparing the character frequency arrays, we could use another hashing function (just an harder solution, but possible).
+In particular, we can compute the product $(B + s_1)(B + s_2) \dots (B + s_k) \bmod M$ as the hash. This hash is nice because the relative order of the letters doesn't matter, as multiplication is commutative. Basically, it encodes the frequency of the chaacters to get O(1) comparisons (nonetheless, it was already O(1) because 26 characters).
+
+## XOR Hashing
+```cpp
+/** @return a random integer between 0 and INT64_MAX: [0, INT64_MAX] */
+long long rng() {
+	static std::mt19937 gen(
+
+	    std::chrono::steady_clock::now().time_since_epoch().count());
+	return std::uniform_int_distribution<long long>(0, INT64_MAX)(gen);
+}
+```
