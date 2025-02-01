@@ -6,6 +6,7 @@ Complexity of $\mathcal{O}(N)$ ($M < N$, $N$ size of text, $M$ size of pattern).
 ```cpp
 // A border of a string is a prefix that is also a suffix of the string but not the whole string.
 // KMP[i + 1]: contains the length of the longest border of the prefix of P that ends at i
+// Example: "abacababc": kmp = [-1, 0, 0, 1, 0, 1, 2, 3, 2, 0]
 
 // Don't confuse the prefix of the border definition with this prefix.
 // Here, the prefix that ends at i takes the role of the whole string in the border definition
@@ -122,5 +123,8 @@ Note how $i$ corresponds to the index after the final character matched (it is e
 
 ## Problems
 Simplest:
-- https://cses.fi/problemset/submit/1753/
+1. https://cses.fi/problemset/submit/1753/
+2. https://cses.fi/problemset/task/1732
 
+Harder:
+3. https://codeforces.com/contest/432/problem/D: Builds on 2, idea of representing KMP as a tree.

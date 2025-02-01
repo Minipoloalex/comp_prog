@@ -41,6 +41,8 @@ where:
 ## Code
 
 ```cpp
+// z[i] is the LCP (longest common prefix) of s and s.substr(i) (suffix of S starting at i: s[i:]).
+// For "aabxaayaab", Z = [10, 1, 0, 0, 2, 1, 0, 3, 1, 0]
 vector<int> z_function(const string &s) {
 	vector<int> z(s.size());
 	z[0] = (int) s.size();
