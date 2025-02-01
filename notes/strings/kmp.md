@@ -1,6 +1,8 @@
 # KMP string matching/searching
 Preprocesses the pattern and not the text, opposite of the suffix array.
 
+Array/function $KMP[i]$ may also be called $\pi$ (pi) or prefix function.
+
 ## Code
 Complexity of $\mathcal{O}(N)$ ($M < N$, $N$ size of text, $M$ size of pattern).
 ```cpp
