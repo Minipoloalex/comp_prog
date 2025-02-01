@@ -47,6 +47,24 @@ void kmpSearch(const string &p, const string &t) {
 }
 ```
 
+### Pattern matching additional option
+```cpp
+string together = p + '#' + t;
+kmpPreprocess(together);
+for (int i = 0; i < int(kmp.size()); i++) {
+    if (kmp[i] == int(p.size())) {
+        cout << "Match found at index " << i - int(p.size()) << " of together\n";
+        cout << "Match found at index " << i - 2 * int(p.size()) - 1 << " of text\n";
+        // -1 accounts for the delimiter
+        // kmp[i + 1] -> corresponds to index i of the string
+        // i - p.size() -> gives starting index of match (i corresponds to S[i - 1])
+    }
+}
+```
+
+To better understand it, you can write the together string for the example at https://cses.fi/problemset/task/1753/.
+
+
 ### Meaning of KMP array
 For the prefix string that ends at position $i$, named $S[0:i]$: the KMP value is the longest suffix of that string coincides with a prefix of the string. And we don't want the full string (obviously).
 
