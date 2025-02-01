@@ -174,6 +174,7 @@ https://codeforces.com/gym/104048/problem/K
 
 
 ## XOR Hashing
+### Code
 ```cpp
 /** @return a random integer between 0 and INT64_MAX: [0, INT64_MAX] */
 long long rng() {

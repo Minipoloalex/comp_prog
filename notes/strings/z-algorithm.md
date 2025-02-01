@@ -5,7 +5,9 @@ Similar, but uses a different function in comparison to KMP.
 
 It uses the **Z-function**:
 
-**Given a position, this function gives the length of the longest string that's both the prefix of  $S$ and of the suffix of  $S$ starting at the given position**.
+**Given a position, this function gives the length of the longest string that's both the prefix of $S$ and of the suffix of  $S$ starting at the given position**.
+
+Check another way to interpret the array: [Library Checker Problem](#library-checker-problem)
 
 Basically, at position $i$, it gives the length of the prefix of the string that's the same as the prefix of the suffix that starts at $i$. For instance, the first value is always the size of the string.
 
@@ -26,6 +28,16 @@ For $S = \texttt{"aabxaabxcaabxaabxay"}$:
 $$Z = [19, 1, 0, 0, 4, 1, 0, 0, 0, 8, 1, 0, 0, 5, 1, 0, 0, 1, 0]$$
 
 
+## Library Checker Problem
+https://judge.yosupo.jp/problem/zalgorithm
+
+Given string $S$ of length $N$: calculate array $a_0,a_1,...,a_{N−1}$ as follows:
+
+$a_i​$ is the **LCP (longest common prefix)** of $S$ and $S.substr(i)$.
+
+where:
+- $S.substr(i)$ represents the suffix of string $S$ that starts at position $i$: $S[i:]$
+
 ## Code
 
 ```cpp
@@ -42,7 +54,6 @@ vector<int> z_function(const string &s) {
 			z[i]++;
 		}
 	}
-
 	return z;
 }
 ```
