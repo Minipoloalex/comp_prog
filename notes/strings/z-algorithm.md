@@ -11,13 +11,13 @@ Check another way to interpret the array: [Library Checker Problem](#library-che
 
 Basically, at position $i$, it gives the length of the prefix of the string that's the same as the prefix of the suffix that starts at $i$. For instance, the first value is always the size of the string.
 
-$$ Z[i] = max_r(S[0:r] = S[i:i+r])$$
+$$ Z[i] = max_k(S[0:k] = S[i:i+k])$$
 where:
-- $r$ is the length of that prefix
-- $S[0:r]$ represents the prefix of length $r$ of the string $S$
-- $S[i: i + r]$ represents the prefix of length $r$ of the suffix that starts at $i$ of the string $S$
+- $k$ is the length of that prefix
+- $S[0:k]$ represents the prefix of length $k$ of the string $S$
+- $S[i: i + k]$ represents the prefix of length $k$ of the suffix that starts at $i$ of the string $S$
 
-Note this $r$ is not related to the $r$ in the code below.
+Basically what's here: https://usaco.guide/problems/cses-1753-string-matching/solution#solution---z-algorithm
 
 ## Examples
 
@@ -43,12 +43,12 @@ where:
 ```cpp
 vector<int> z_function(const string &s) {
 	vector<int> z(s.size());
-	z[0] = s.size();
+	z[0] = (int) s.size();
 
 	int l = 0, r = 0;
-	for (int i = 1; i < s.size(); i++) {
+	for (int i = 1; i < (int) s.size(); i++) {
 		z[i] = max(0, min(z[i - l], r - i + 1));
-		while (i + z[i] < s.size() && s[z[i]] == s[i + z[i]]) {
+		while (i + z[i] < (int) s.size() && s[z[i]] == s[i + z[i]]) {
 			l = i;
 			r = i + z[i];
 			z[i]++;
@@ -57,3 +57,19 @@ vector<int> z_function(const string &s) {
 	return z;
 }
 ```
+
+## Pattern matching code
+The delimiter must not appear in the strings. Here, we used `#`.
+```cpp
+string together = p + '#' + t;	// pattern p, text t, delimiter '#'
+vector<int> z = z_function(together);
+for (int i = 0; i < int(z.size()); i++) {
+	if (z[i] == int(p.size())) {
+		cout << "Match found at index " << i << " of together\n";
+		cout << "Match found at index " << i - int(p.size()) - 1 << " of text\n";
+		// -1 accounts for the delimiter
+	}
+}
+```
+
+To better understand it, you can write the together string for the example at https://cses.fi/problemset/task/1753/.
