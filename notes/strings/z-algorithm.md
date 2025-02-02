@@ -75,3 +75,7 @@ for (int i = 0; i < int(z.size()); i++) {
 ```
 
 To better understand it, you can write the together string for the example at https://cses.fi/problemset/task/1753/.
+
+
+## Problems
+https://cses.fi/problemset/task/1733
