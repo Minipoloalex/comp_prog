@@ -102,6 +102,19 @@ string manacher(const string &s) {
 }
 ```
 
+### Very basic palindrome check
+```cpp
+int l = 0, r = n - 1;
+while (l < r && s[l] == s[r]) {
+	l++; r--;
+}
+// Prefix s[0:l-1] is palindrome with s[r+1:n-1]
+// Cannot assume s[l] == s[r] (unless l == r)
+// The whole string is palindrome if l >= r:
+// if l == r, mid character is the same (odd size)
+// if l > r, we have checked every character (even size)
+```
+
 ## Problems
 Simplest:
 - https://cses.fi/problemset/result/11950876/
