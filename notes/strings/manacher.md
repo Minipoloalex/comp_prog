@@ -28,7 +28,7 @@ using namespace std;
 // dp       :  1,3,1,3,1,3,1,7,1,3,1,3,1,3,1
 // "aybaabtu":"# a # y # b # a # a # b # t # u #"
 // dp        : 1,3,1,3,1,3,1,3,9,3,1,3,1,3,1,3,1
-string menacher(const string &s) {
+string manacher(const string &s) {
 	// Preprocess the input so it can handle even length palindromes
 	string arr;
 	for (int i = 0; i < (int) s.size(); i++) {
@@ -38,7 +38,7 @@ string menacher(const string &s) {
 	arr.push_back('#');
 
 	// dp[i] = palindrome's maximum diameter centered at i
-	vector<int> dp((int) arr.size());
+	vector<int> dp(arr.size());
 	int left = 0, right = 0;
 	int lg_max = 0, lg_max_idx = 0;
 	for (int i = 0; i < (int) arr.size(); ) {

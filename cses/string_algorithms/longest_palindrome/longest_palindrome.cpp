@@ -6,7 +6,7 @@ using namespace std;
 // For example:
 // "aybabtu": "# a # y # b # a # b # t # u #"
 // dp       :  1,3,1,3,1,3,1,7,1,3,1,3,1,3,1
-string menacher(const string &s) {
+string manacher(const string &s) {
 	// Preprocess the input so it can handle even length palindromes
 	string arr;
 	for (int i = 0; i < (int) s.size(); i++) {
@@ -88,7 +88,7 @@ string menacher(const string &s) {
 void solve() {
 	string s;
 	cin >> s;
-	cout << menacher(s) << '\n';
+	cout << manacher(s) << '\n';
 }
 
 int main() {
