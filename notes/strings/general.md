@@ -8,6 +8,15 @@ This can be done in several ways:
 - Using **Z-algorithm**: concatenating text and pattern with delimiter: see [z-algorithm.md](z-algorithm.md)
 - Using **Suffix Array**
 
+| Approach         | Best For                                      | Complexity | Notes |
+|-----------------|---------------------------------|------------|-------------|
+| **Suffix Array**  | Many substring queries, LCP, lexicographic order | $\mathcal{O}(n \log n)$ for construction, $\mathcal{O}(m + \log n)$ for search | Best for multiple queries |
+| **KMP**          | Single pattern search in a long text  | $\mathcal{O}(n + m)$ | Preprocesses pattern, fast search |
+| **Rabin-Karp**   | Multiple pattern search, rolling hash checks | $\mathcal{O}(n + m)$ (avg) | Hashing makes it fast, beware of collisions |
+| **Standard Libs** | Small constraints, quick implementation | $\mathcal{O}(nm)$ worst | Easy, but not always optimal |
+
+If a problem involves many substring queries, go for Suffix Arrays. If you only need one occurrence search, go for KMP. If hashing helps (e.g., checking equality of substrings quickly), Rabin-Karp is useful. And if constraints are small, just use built-in functions.
+
 ## Useful constructions
 Generally, the delimiters used cannot be part of the strings.
 
@@ -54,4 +63,11 @@ for (int i = 0; i < int(z.size()); i++) {
 		// -1 accounts for the delimiter
 	}
 }
+```
+
+### Suffix Array
+Always assumes the delimiter characters don't appear in the strings, and that they are smaller than any character that appears in the strings. You can use `'\1'`, `'\2'`, ...
+#### Longest Common Substring
+```cpp
+string s = a + '#' + b + '$';
 ```
