@@ -66,21 +66,12 @@ Check https://codeforces.com/gym/104349/problem/D and [codeforces/gym/104349/pro
 ### Unique substrings calculation
 
 #### Number of (non-unique) substrings
-A string of size $n$ has $n * (n + 1) / 2$ total substrings.
-
-Substrings that start with index $i$ have size:
-- $i = 0: n$
-- $i = 1: n - 1$
-- $...$
-- $i = n - 1: 1$
-
-Arithmetic progression of $n$ elements, first is $n$, last is $1$.
-$$ (n + 1) * n / 2 $$
+A string of size $n$ has $ n + n - 1 + ... + 1$ = $n * (n + 1) / 2$ total substrings.
 
 #### LCP array observation
 If the LCP value at a certain index is $X$, then there are $X$ characters in common between the two suffixes. In other words, there are $X$ repeated substrings between those two suffixes, since they come from the same larger string.
 
-Example string: $'AZAZA'$
+Example string: $\texttt{"AZAZA"}$
 
 | LCP | Sorted suffixes | What to do | What substrings we are considering|
 |:-:|:-     |:-| :-:|
@@ -113,6 +104,7 @@ Given two strings A and B, we concatenate them as S=A#B, where # is a character 
 
 Now, you should be able to see why you only need to see consecutive values in the LCP array (the argument is based on contradiction and the fact that the suffixes in SA are in lexicographic order). Keep checking the LCP array for the maximum value such that the two suffixes being compared do not belong to the same original string. If they don't belong to the same original string (one begins in A and the other in B), then the largest such value is the length of the largest common substring.
 ```
+
 ## Knuth-Morris-Pratt String Matching
 Preprocesses the pattern and not the text, opposite of the suffix array.
 
