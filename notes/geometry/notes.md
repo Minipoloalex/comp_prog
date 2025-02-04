@@ -11,7 +11,7 @@ To avoid overflow, using templates helps and testing with simple big polygons ma
 ## Point distance from a line
 Taken from https://usaco.guide/CPH.pdf#page=275
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 ## Area - Shoelace formula
 Root at point $(0, 0)$ and calculate cross product of every pair of verticies: $2 * A = \sum_{i=0}^{N-1} (p_{i}\times p_{(i + 1) \% N})$.
@@ -29,7 +29,7 @@ For example, if we go counterclockwise (CCW) overall, then CCW on big and CW on 
 - Big triangle/area: EBC
 - Small triangle/area: EDA
 
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 
 ## Pick's Theorem and Polygon Lattice Points
 $$ A = a + \frac{b}{2} - 1$$
@@ -44,14 +44,14 @@ Calculate the number of lattice points inside the polygon and on its boundary. A
 
 $b$ can be calculated using GCD of each segments X and Y length. For example:
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 Segment length (6, 2): GCD = 2, so there are 2 smaller segments with points on integer coordinates.
 
 
 
 ## Distances
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 ### Maximum manhattan distance
 $$(x', y') = (x + y, y - x)$$
@@ -69,15 +69,15 @@ Check [cses/geometry/point_in_poly](../../cses/geometry/point_in_poly/point_in_p
 
 In this image, we want to count an intersection for point D, not C (vertical line that goes from the point itself C/D to infinite positive y). This can be done simply by: $A.triangle(B, P) < 0$, with $A.x <= p.x < B.x$ (check the implementation).
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 On this image, point G is on the same X as P, but is considered to be at the left of the slightly tilted ray. Point H is considered to be on the right.
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 In this polygon, G is handled separately, E has one intersection (odd so inside) and F has two intersections (even so outside). In the point F case, the intersections are segment AB and segment CB. C is considered to be on the left and not on the right of the slightly tilted ray from point F.
 
-![alt text](image-5.png)
+![alt text](images/image-5.png)
 
 
 ## Cool problems
