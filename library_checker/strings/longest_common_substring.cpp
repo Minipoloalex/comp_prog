@@ -175,70 +175,36 @@ public:
     }
 };
 
-const int MAX_N = 450010; // can go up to 450K chars
+void solve() {
+    string s, t;
+    cin >> s >> t;
+    string both = s + '\1' + t + '\2';
+    SuffixArray sa(both.c_str(), (int) both.size());
+    int split_idx = int(s.size());
+    auto [lcs_len, lcs_idx] = sa.LCS(split_idx);
+    if (lcs_len == 0) {
+        cout << "0 0 0 0\n";
+    }
+    else {
+        int sfx1 = sa.SA[lcs_idx];  // we compared it with the previous idx
+        int sfx2 = sa.SA[lcs_idx - 1];
+        if (sfx2 < sfx1) {
+            // sfx1: first string
+            // sfx2: second string
+            swap(sfx1, sfx2);
+        }
+        int a = sfx1, b = a + lcs_len; // [a, b)
+        int c = sfx2, d = c + lcs_len; // [c, d)
 
-char T[MAX_N];
-char P[MAX_N];
-char LRS_ans[MAX_N];
-char LCS_ans[MAX_N];
-
-void test_unique_substrings() {
-    string s = "azaza\1";
-    SuffixArray sa(s.c_str(), (int) s.size());
-    cout << sa.count_unique_substrings() << '\n';
+        // make the indices relative to t, not the composed string
+        c -= int(s.size() + 1);
+        d -= int(s.size() + 1);
+        cout << a << " " << b << " " << c << " " << d << '\n';      
+    }
 }
 
-int main()
-{
-    // freopen("sa_lcp_in.txt", "r", stdin);
-    // scanf("%s", &T);        // read T
-    // int n = (int)strlen(T); // count n
-    // T[n++] = '$';           // add terminating symbol
-    // SuffixArray S(T, n);    // construct SA+LCP
-
-    // printf("T = '%s'\n", T);
-    // printf(" i SA[i] LCP[i]   Suffix SA[i]\n");
-    // for (int i = 0; i < n; ++i)
-    //     printf("%2d    %2d    %2d    %s\n", i, S.SA[i], S.LCP[i], T + S.SA[i]);
-
-    // // String Matching demo, we will try to find P in T
-    // strcpy(P, "A");
-    // auto [lb, ub] = S.stringMatching(P);
-    // if ((lb != -1) && (ub != -1))
-    // {
-    //     printf("P = '%s' is found SA[%d..%d] of T = '%s'\n", P, lb, ub, T);
-    //     printf("They are:\n");
-    //     for (int i = lb; i <= ub; ++i)
-    //         printf("  %s\n", T + S.SA[i]);
-    // }
-    // else
-    //     printf("P = '%s' is not found in T = '%s'\n", P, T);
-
-    // // LRS demo, find the LRS of T
-    // auto [LRS_len, LRS_idx] = S.LRS();
-    // strncpy(LRS_ans, T + S.SA[LRS_idx], LRS_len);
-    // printf("The LRS is '%s' with length = %d\n", LRS_ans, LRS_len);
-
-    // // LCS demo, find the LCS of (T, P)
-    // strcpy(P, "CATA");
-    // int m = (int)strlen(P);
-    // strcat(T, P);       // append P to T
-    // strcat(T, "#");     // add '#' at the back
-    // n = (int)strlen(T); // update n
-
-    // // reconstruct SA of the combined strings
-    // SuffixArray S2(T, n); // reconstruct SA+LCP
-    // int split_idx = n - m - 1;
-    // printf("T+P = '%s'\n", T);
-    // printf(" i SA[i] LCP[i] From  Suffix SA[i]\n");
-    // for (int i = 0; i < n; ++i)
-    //     printf("%2d    %2d    %2d    %2d    %s\n",
-    //            i, S2.SA[i], S2.LCP[i], S2.SA[i] < split_idx ? 1 : 2, T + S2.SA[i]);
-
-    // auto [LCS_len, LCS_idx] = S2.LCS(split_idx);
-    // strncpy(LCS_ans, T + S2.SA[LCS_idx], LCS_len);
-    // printf("The LCS is '%s' with length = %d\n", LCS_ans, LCS_len);
-
-    test_unique_substrings();
+int main() {
+    cin.tie(0)->ios::sync_with_stdio(0);
+    solve();
     return 0;
 }
