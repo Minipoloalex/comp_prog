@@ -117,4 +117,4 @@ while (l < r && s[l] == s[r]) {
 
 ## Problems
 Simplest:
-- https://cses.fi/problemset/result/11950876/
+- https://cses.fi/problemset/task/1111/
