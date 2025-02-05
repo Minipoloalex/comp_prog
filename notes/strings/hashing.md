@@ -13,7 +13,8 @@ where $b - a + 1$ just represents the size of the substring.
 
 ### Uses
 - **Pattern matching problem**: Given string $s$ and pattern $p$, find positions where $p$ occurs in $s$: $\mathcal{O}(N)$.
-- **$Log(N)$ lexicographic comparison of strings**: we can binary search for the common prefix and compare the next character. (T T ... T F ... F F F: last true binary search for common $h[k]$ hashing value of prefix).
+- **$\log(N)$ lexicographic comparison of strings**: we can binary search for the common prefix and compare the next character. (F F ... F T ... T T T: first true binary search for common $h[k]$ hashing value of prefix).
+    - Check https://cses.fi/problemset/task/1110/ (Booth's Algorithm)
 
 ### Collisions
 Check the table on the CPH link.
@@ -79,6 +80,7 @@ hash_t segment_hash(int start, int end, int h) {
 }
 
 // must call prepare_hashes
+// inclusive: [start, end]
 hash_t combined_hash(int start, int end) {
     // assert(HASH_COUNT == 2);
     return segment_hash(start, end, 0) + (segment_hash(start, end, 1) << 32);
@@ -162,6 +164,7 @@ struct s_hash {
     }
 
     // must call prepare_hashes
+    // inclusive: [start, end]
     hash_t combined_hash(int start, int end) {
         // assert(HASH_COUNT == 2);
         return segment_hash(start, end, 0) + (segment_hash(start, end, 1) << 32);
