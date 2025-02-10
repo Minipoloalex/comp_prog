@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Minimalistic anti-podal points
+// Anti-podal points: can be adapted for several rotating caliper problems
 // Basic geometry based on CP4 Book
 // Anti-podal points based on https://codeforces.com/blog/entry/133763
 
@@ -11,7 +11,10 @@ typedef pair<int,int> ii;
 #define pv(i) ((i)-1+n)%n
 
 struct point {
-    ll x, y;
+  ll x, y;
+  bool operator <(const point &p) const {
+    return x < p.x || (x == p.x && y < p.y);
+  }
 };
 
 struct vec { ll x, y;
@@ -22,6 +25,28 @@ vec toVec(point a, point b) {       // convert 2 points to vector a->b
 
 ll cross(vec p1, vec p2) {
     return p1.x * p2.y - p1.y * p2.x;
+}
+
+// note: to accept collinear points, we have to change the `> 0'
+// returns true if point r is on the left side of line pq
+bool ccw(point p, point q, point r) {
+  return cross(toVec(p, q), toVec(p, r)) > 0;
+}
+
+vector<point> CH_Andrew(vector<point> &Pts) {    // overall O(n log n)
+  int n = Pts.size(), k = 0;
+  vector<point> H(2*n);
+  sort(Pts.begin(), Pts.end());                  // sort the points by x/y
+  for (int i = 0; i < n; ++i) {                  // build lower hull
+    while ((k >= 2) && !ccw(H[k-2], H[k-1], Pts[i])) --k;
+    H[k++] = Pts[i];
+  }
+  for (int i = n-2, t = k+1; i >= 0; --i) {       // build upper hull
+    while ((k >= t) && !ccw(H[k-2], H[k-1], Pts[i])) --k;
+    H[k++] = Pts[i];
+  }
+  H.resize(k);
+  return H;
 }
 
 int sign(ll num) {
