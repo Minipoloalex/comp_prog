@@ -79,6 +79,29 @@ In this polygon, G is handled separately, E has one intersection (odd so inside)
 
 ![alt text](images/image-5.png)
 
+## Line Segment Intersection between N points
+The complexity of the Bentley–Ottmann algorithm is $\mathcal{O}((N + K)\log N)$, where K is the number of intersection points. $K$ can be up to $\mathcal{O}(N^2)$, so this cannot be used for every problem.
+
+For a problem that allows $\mathcal{O}(N^2)$, just use the brute force algorithm. Otherwise, use this plane sweep algorithm to detect line segment intersections.
+
+First, sort every segment by X and Y (or Y and X, but here we will assume first by X then by Y).
+
+The **events** are the bounds of each segment, as well as the intersection points. We maintain an **active segment list**, sorted by Y.
+
+Events:
+- Begin segment: check intersection with `lower_bound` and `prev(lower_bound)`
+- End segment: check intersection between `prev(it)` and `next(it)`
+- Intersection point: swap orders of the intersecting segments. Check intersection with adjacent segments. Each swapped segment only needs to check with another segment.
+
+After checking intersections, we add them to the events (just be careful not to add intersections already there, or intersections which are before the sweep line).
+
+Degenerate cases are a big issue in this algorithm, so check [edge_cases.md](edge_cases.md).
+
+
+Problem when an adaptation of this algorithm is useful (only need to detect the first intersection): https://usaco.org/index.php?page=viewproblem2&cpid=943.
+
+## Rotating Calipers and Anti-podal points
+Notes: [rotating_calipers.md](rotating_calipers.md)
 
 ## Cool problems
 ### Sliding Window with wrap-around
