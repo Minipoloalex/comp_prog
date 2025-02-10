@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef long long ll;
+typedef pair<int,int> ii;
+#define nx(i) ((i)+1)%n
+#define pv(i) ((i)-1+n)%n
+
 const double EPS = 1e-9;
 
 double DEG_to_RAD(double d) { return d*M_PI / 180.0; }
@@ -35,9 +40,6 @@ double perimeter(const vector<point> &P) {       // by ref for efficiency
   for (int i = 0; i < (int)P.size()-1; ++i)      // note: P[n-1] = P[0]
     ans += dist(P[i], P[i+1]);                   // as we duplicate P[0]
   return ans;
-}
-double relative_triangle_area(point a, point b, point c) {
-  return abs((a.x * b.y + b.x * c.y + c.x * a.y) - (a.y * b.x + b.y * c.x + c.x * a.x));
 }
 // returns the area of polygon P
 double area(const vector<point> &P) {
@@ -150,41 +152,81 @@ vector<point> CH_Andrew(vector<point> &Pts) {    // overall O(n log n)
   return H;
 }
 
-vector<point> pts;
+int sign(ll num) {
+    if (num < 0) return -1;
+    else if (num == 0) return 0;
+    else return 1;
+}
 
-// must be given a convex polygon (the convex hull), but without the repeated front and back points
-double rotatingCaliper(const vector<point> &poly) {
-  if (poly.size() <= 1) return 0;
-  if (poly.size() == 2) return dist(poly[0], poly[1]);
+// Takes in a convex polygon where the last vertex is not repeated
+// Note that the CH returns a repeated last vertex
+// Returns all pairs of indices of antipodal pairs
+// Only valid for p.size() >= 3;
+// Does not handle points with precision problems (assumes integer coordinates)
+vector<ii> all_anti_podal(const vector<point> &p) {
+    int n = (int) p.size();
+    assert(n >= 3);
 
-  int n = (int) poly.size();
-  int k = 1;
-  while (relative_triangle_area(poly[n - 1], poly[0], poly[(k + 1) % n]) > 
-  relative_triangle_area(poly[n - 1], poly[0], poly[k])) {
-    k++;
-  }
-  double res = 0;
-  for (int i = 0, j = k; i <= k; i++) {
-    while (relative_triangle_area(poly[i], poly[(i + 1) % n], poly[(j + 1) % n]) >
-    relative_triangle_area(poly[i], poly[(i + 1) % n], poly[j])) {
-      res = max(res, dist(poly[i], poly[(j + 1) % n]));
-      j = (j + 1) % n;
+    int p1 = 0, p2 = 0; // two "pointers"
+    vector<ii> ans;
+
+    // parallel edges should't be visited twice
+    vector<bool> vis(n, false);
+
+    for (;p1<n;p1++) {
+        // the edge that we are going to consider in this iteration
+        // the datatype is Point, but it acts as a vector
+        // point base = p[nx(p1)] - p[p1];
+        vec base = toVec(p[p1], p[nx(p1)]);
+
+        // the last condition makes sure that the cross products don't have the same sign
+        while (p2 == p1 || p2 == nx(p1) || 
+          sign(cross(base, toVec(p[p2], p[nx(p2)]))) == sign(cross(base, toVec(p[pv(p2)], p[p2])))) {
+            // problematic if n == 2
+          // sign(cross(base, p[nx(p2)] - p[p2])) == sign(cross(base, p[p2] - p[pv(p2)])))
+            p2 = nx(p2);
+        }
+
+        if (vis[p1]) continue;
+        vis[p1] = true;
+
+        ans.push_back({p1, p2});
+        ans.push_back({nx(p1), p2});
+
+        // if both edges from p1 and p2 are parallel to each other
+        if (cross(base, toVec(p[p2], p[nx(p2)])) == 0) {
+          // p[nx(p2)] - p[p2]) == 0) {
+            ans.push_back({p1, nx(p2)});
+            ans.push_back({nx(p1), nx(p2)});
+            vis[p2] = true;
+        }
     }
-    res = max(res, sqrt(dist(poly[i], poly[j]))); // useful if 0 loops in the while loop
-  }
-  return res;
+    return ans;
 }
 
 int main() {
   int c;
   cin >> c;
-  pts.resize(c);
+  vector<point> pts(c);
   for (int i = 0; i < c; i++) {
-      cin >> pts[i].x >> pts[i].y;    // [-1000, 1000]
+      cin >> pts[i].x >> pts[i].y;    // [-1000, 1000]: can use double (and have good precision!)
   }
   vector<point> poly = CH_Andrew(pts);
   poly.pop_back();  // remove repeated point from polygon
-  double res = rotatingCaliper(poly);
-  cout << fixed << setprecision(10) << res << endl;
+
+  vector<ii> antipodal_points;
+  if (poly.size() >= 3) {
+    antipodal_points = all_anti_podal(poly);
+  }
+  else {
+    // number of points <= 2
+    antipodal_points = {{0, 1}};
+  }
+
+  double mx = DBL_MIN;
+  for (auto &[p1, p2]: antipodal_points) {
+    mx = max(mx, dist(poly[p1], poly[p2]));
+  }
+  cout << fixed << setprecision(10) << mx << endl;
   return 0;
 }
