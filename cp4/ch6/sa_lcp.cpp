@@ -165,6 +165,18 @@ public:
         return ans;
     }
 
+    ii most_repeated_substring()
+    {
+        int idx = -1, freq = 0;
+        for (int i = 1; i < n; i++) {
+            // TODO
+            // find biggest segments with non-zero frequency
+            // for example
+            // 0 1 3 0 -> 1 is solution
+            // Check CP4 book small exercises for formulation
+        }
+    }
+
     // Implemented by _FM
     // last char is not considered (special char)
     // @return Number of unique substrings of the string given in the Suffix Array.
