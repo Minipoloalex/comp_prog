@@ -110,3 +110,5 @@ https://leetcode.com/problems/maximum-number-of-visible-points/description/
 ### Angular Sweep (Disk Partial Covering Problem)
 https://leetcode.com/problems/maximum-number-of-darts-inside-of-a-circular-dartboard/description/
 
+### Convex Hull
+- https://codeforces.com/contest/1299/problem/C: Not obvious it can be solved with lower convex hull (check editorial).
