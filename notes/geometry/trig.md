@@ -18,3 +18,21 @@ Q in `n-th` quadrant relative to P:
 https://en.cppreference.com/w/cpp/numeric/math/acos
 
 $[0, \pi]$
+
+## Law of sines
+https://en.wikipedia.org/wiki/Law_of_sines
+
+$$ \frac{a}{\sin{\alpha}} = \frac{b}{\sin{\beta}} = \frac{c}{\sin{\gamma}} = 2 * R$$
+
+where:
+- R is the radius of the triangle's circumcircle (the circle outside the triangle that touches the points of the triangle)
+
+Or just:
+$$ \frac{\sin{\alpha}}{a} = \frac{\sin{\beta}}{b} = \frac{\sin{\gamma}}{c}$$
+
+## Law of cosines
+https://en.wikipedia.org/wiki/Law_of_cosines
+
+$$c^2 = a^2 + b^2 - 2*a*b*\cos{\gamma}$$
+
+![alt text](images/image-7.png)
