@@ -26,6 +26,12 @@ If the polygon is not convex, just calculate the convex hull first.
 - Calculate all possible anti-podal pairs
 - Return the maximum possible distance of all anti-podal pairs
 
+### Minimum width of a polygon
+- Find CH
+- Handle cases: (edge, vertex), (edge, edge) - similar
+
+Problem (K): https://codeforces.com/gym/101175/attachments
+
 The maximum number of anti-podal pairs is $2 * n$ (tighter bounds can be proven but this is enough).
 ## Code
 Assumption: no three points of the polygon are collinear, meaning that the angle at each vertex of the polygon is smaller than $180 \degree$.
