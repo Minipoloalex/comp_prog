@@ -83,6 +83,7 @@ point translate(point p, vec v) {        // translate p according to v
   return point(p.x + v.x , p.y + v.y); }
 //====================================================================
 
+// radius of inscribed circle: r = A / s (A: area, s: semiperimeter)
 double rInCircle(double ab, double bc, double ca) {
   return area(ab, bc, ca) / (0.5 * perimeter(ab, bc, ca)); }
 
@@ -110,6 +111,7 @@ int inCircle(point p1, point p2, point p3, point &ctr, double &r) {
   return 1;
 }
 
+// radius of circumscribed circle: R = a * b * c / (4 * A)
 double rCircumCircle(double ab, double bc, double ca) {
   return ab * bc * ca / (4.0 * area(ab, bc, ca)); }
 

@@ -36,3 +36,21 @@ https://en.wikipedia.org/wiki/Law_of_cosines
 $$c^2 = a^2 + b^2 - 2*a*b*\cos{\gamma}$$
 
 ![alt text](images/image-7.png)
+
+The Pythagorean Theorem is a specialization of the law of cosines for right triangles.
+
+
+## Heron's Area of Triangle Formula
+The area of a triangle can also be calculated using Heron’s formula:
+
+$$ \sqrt{s(s - a)(s - b)(s - c)} $$
+where $s$ is the semiperimeter of the triangle:
+$$s = \frac{a+b+c}{2}$$
+
+## Triangles and (In/Circum) Circles
+Based on CP4 book by Steven Halim.
+
+- The center of the incircle is the meeting point between the triangle's angle bisectors.
+- The center of the circumcircle is the meeting point between the triangle's perpendicular bisectors.
+
+![alt text](images/image-8.png)

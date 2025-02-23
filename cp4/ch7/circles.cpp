@@ -17,19 +17,26 @@ struct point {
   point(double _x, double _y) : x(_x), y(_y) {}  // constructor
 };
 
+// Checks if point p is inside the circle defined by point c and radius r
+// 1: inside, 0: border, -1: outside
 int insideCircle(point_i p, point_i c, int r) {  // all integer version
   int dx = p.x-c.x, dy = p.y-c.y;
   int Euc = dx*dx + dy*dy, rSq = r*r;            // all integer
   return Euc < rSq ? 1 : Euc == rSq ? 0 : -1;    // inside/border/outside
 }
 
+// For a given radius, and 2 points of a circle's border:
+// Returns a possible circle center by reference
+// Reverse p1 and p2 (outside) to get both centers
+// Returns false if no circle exists (when 2 * r < dist(p1, p2))
 bool circle2PtsRad(point p1, point p2, double r, point &c) {
   // to get the other center, reverse p1 and p2
   double d2 = (p1.x-p2.x) * (p1.x-p2.x) + 
               (p1.y-p2.y) * (p1.y-p2.y);
   double det = r*r / d2 - 0.25;
   if (det < 0.0) return false;
-  double h = sqrt(det);
+  double h = sqrt(det); // h = (|mc1| / |mp1|) / 2
+  // c = m + ccw_90_rotation(p1 -> p2) * h
   c.x = (p1.x+p2.x) * 0.5 + (p1.y-p2.y) * h;
   c.y = (p1.y+p2.y) * 0.5 + (p2.x-p1.x) * h;
   return true;
