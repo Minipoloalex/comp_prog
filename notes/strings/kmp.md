@@ -10,14 +10,13 @@ Complexity of $\mathcal{O}(N)$ ($M < N$, $N$ size of text, $M$ size of pattern).
 // KMP[i + 1]: contains the length of the longest border of the prefix of P that ends at i
 // Example: "abacababc": kmp = [-1, 0, 0, 1, 0, 1, 2, 3, 2, 0]
 
-// Don't confuse the prefix of the border definition with this prefix.
+// Don't confuse the prefix from the border definition with this other prefix.
 // Here, the prefix that ends at i takes the role of the whole string in the border definition
 
 // Pattern preprocessed (back jumps): [-1, 0, ...]
 vector<int> kmp;
 
-// pattern p
-void kmpPreprocess(const string &p) {
+void kmpPreprocess(const string &p) { // pattern p
     int sz = int(p.size());
     kmp.resize(sz + 1);
 

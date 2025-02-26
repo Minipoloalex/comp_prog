@@ -8,7 +8,7 @@ Based mostly on: https://usaco.guide/CPH.pdf#page=255
 
 To compute the hash of an arbitrary substring $[l, r]$ (if $l \neq 0$):
 
-$$(h[b] - h[a - 1]*p[b - a + 1]) mod B$$
+$$(h[b] - h[a - 1]*p[b - a + 1]) \mod B$$
 where $b - a + 1$ just represents the size of the substring.
 
 ### Uses
@@ -20,7 +20,7 @@ where $b - a + 1$ just represents the size of the substring.
 Check the table on the CPH link.
 
 
-- We can just do more hashes Two hash values with parameter $B \approx 1e9$ correspond to one hash value of $B \approx 1e18$.
+- We can just do more hashes two hash values with parameter $B \approx 1e9$ correspond to one hash value of $B \approx 1e18$.
 
 Do not use constants $2^{32}$ or $2^{64}$, since specific inputs are known to lead to collisions.
 
@@ -120,7 +120,7 @@ const hash_t HASH_MULT[HASH_COUNT] = {MULT_DIST(rng), MULT_DIST(rng)};
 // pow[i] contains B^i % M
 vector<hash_t> hash_pow[HASH_COUNT];
 
-void prepare_hash_pow(int MAX_SIZE) {
+void prepare_hash_pow(int MAX_SIZE) { // O(MAX_SIZE)
     for (int h = 0; h < HASH_COUNT; h++) {
         hash_pow[h].resize(MAX_SIZE + 1);
         hash_pow[h][0] = 1;
@@ -133,7 +133,7 @@ void prepare_hash_pow(int MAX_SIZE) {
 struct s_hash {
     // p_hash[i] is the hash of the first i characters of the given string
     // Prefix [l, r], with sz = r - l + 1
-    // sl * B^sz-1 + sl + 1 * B^sz-2 + ... + sr * B^0
+    // sl * B^sz-1 + s(l + 1) * B^sz-2 + ... + sr * B^0
     vector<hash_t> p_hash[HASH_COUNT];
     int size = 0;
 
@@ -144,7 +144,7 @@ struct s_hash {
         prepare_hashes(s);
     }
 
-    void prepare_hashes(const string &s) {
+    void prepare_hashes(const string &s) {  // O(s.size())
         for (int h = 0; h < HASH_COUNT; h++) {
             p_hash[h].resize(s.size() + 1);
             p_hash[h][0] = 0;
@@ -182,7 +182,6 @@ https://codeforces.com/gym/104048/problem/K
 /** @return a random integer between 0 and INT64_MAX: [0, INT64_MAX] */
 long long rng() {
 	static std::mt19937 gen(
-
 	    std::chrono::steady_clock::now().time_since_epoch().count());
 	return std::uniform_int_distribution<long long>(0, INT64_MAX)(gen);
 }

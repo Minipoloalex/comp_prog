@@ -4,7 +4,7 @@ using namespace std;
 typedef pair<int, int> ii;
 typedef vector<int> vi;
 
-// Suffix Array data structure, allows long strings with 350K ASCII chars = 3.5e5
+// Suffix Array data structure, allows long strings with ~ 3.5e5 ASCII chars
 // Assumes the existence of a terminal character (smaller in ascii value than all of the others)
 class SuffixArray
 {

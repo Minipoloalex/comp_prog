@@ -3,25 +3,24 @@ using namespace std;
 
 const double INF = 1e9;
 const double EPS = 1e-9;
+const double PI = acos(-1.0);
 
-double DEG_to_RAD(double d) { return d*M_PI/180.0; }
-
-double RAD_to_DEG(double r) { return r*180.0/M_PI; }
+double DEG_to_RAD(double d) { return d*PI/180.0; }
+double RAD_to_DEG(double r) { return r*180.0/PI; }
 
 // struct point_i { int x, y; };                 // minimalist mode
 
-
-struct point_i {
-  int x, y;                                      // use this if possible
-  point_i() { x = y = 0; }                       // default constructor
-  point_i(int _x, int _y) : x(_x), y(_y) {}      // constructor
-};
-ostream &operator<<(ostream &os, const point_i &p) {
-  return os << "(" << p.x << ", " << p.y << ")";
-}
+// struct point_i {
+//   int x, y;                                      // use this if possible
+//   point_i() { x = y = 0; }                       // default constructor
+//   point_i(int _x, int _y) : x(_x), y(_y) {}      // constructor
+// };
+// ostream &operator<<(ostream &os, const point_i &p) {
+//   return os << "(" << p.x << ", " << p.y << ")";
+// }
 
 struct point {
-  double x, y;                                   // if need more precision
+  double x, y;
   point() { x = y = 0.0; }                       // default constructor
   point(double _x, double _y) : x(_x), y(_y) {}  // constructor
   bool operator < (point other) const {          // override < operator
@@ -50,10 +49,10 @@ point rotate(point p, double theta) {
 // ax + by + c = 0
 // b has only two possible values
 // b = 0 -> vertical line (a = 1, x = -c)
-// b = 1 -> normal line (y = -ax + -c)
+// b = 1 -> "normal" line (y = -ax + -c)
 struct line { double a, b, c; };                 // most versatile
 
-// the answer is stored in the third parameter (pass by reference)
+// return by reference
 void pointsToLine(point p1, point p2, line &l) {
   if (fabs(p1.x-p2.x) < EPS)                     // vertical line is fine
     l = {1.0, 0.0, -p1.x};                       // default values
@@ -63,27 +62,34 @@ void pointsToLine(point p1, point p2, line &l) {
   }
 }
 
-// not needed since we will use the more robust form: ax + by + c = 0
-struct line2 { double m, c; };                   // alternative way
-
-int pointsToLine2(point p1, point p2, line2 &l) {
-  if (p1.x == p2.x) {                            // vertical line
-    l.m = INF;                                   // this is to denote a
-    l.c = p1.x;                                  // line x = x_value
-    return 0;                                    // differentiate result
-  }
-  else {
-    l.m = (double)(p1.y-p2.y) / (p1.x-p2.x);
-    l.c = p1.y - l.m*p1.x;
-    return 1;                                    // standard y = mx + c
-  }
+// convert point and gradient/slope to line
+void pointSlopeToLine(point p, double m, line &l) {
+  l.a = -m;                                      // always -m
+  l.b = 1;                                       // always 1
+  l.c = -((l.a * p.x) + (l.b * p.y));            // compute this
 }
 
-bool areParallel(line l1, line l2) {             // check a & b
+// // not needed since we will use the more robust form: ax + by + c = 0
+// struct line2 { double m, c; };                   // alternative way
+
+// int pointsToLine2(point p1, point p2, line2 &l) {
+//   if (p1.x == p2.x) {                            // vertical line
+//     l.m = INF;                                   // this is to denote a
+//     l.c = p1.x;                                  // line x = x_value
+//     return 0;                                    // differentiate result
+//   }
+//   else {
+//     l.m = (double)(p1.y-p2.y) / (p1.x-p2.x);
+//     l.c = p1.y - l.m*p1.x;
+//     return 1;                                    // standard y = mx + c
+//   }
+// }
+
+bool areParallel(line l1, line l2) { // check a & b
   return (fabs(l1.a-l2.a) < EPS) && (fabs(l1.b-l2.b) < EPS);
 }
 
-bool areSame(line l1, line l2) {                 // also check  c
+bool areSame(line l1, line l2) { // also check  c
   return areParallel(l1 ,l2) && (fabs(l1.c-l2.c) < EPS);
 }
 
@@ -100,26 +106,7 @@ bool areIntersect(line l1, line l2, point &p) {
   return true;
 }
 
-struct vec { double x, y; // name: `vec' is different from STL vector
-  vec(double _x, double _y) : x(_x), y(_y) {}
-};
-vec toVec(const point &a, const point &b) {      // convert 2 points
-  return vec(b.x-a.x, b.y-a.y);                  // to vector a->b
-}
-vec scale(const vec &v, double s) {              // s = [<1..1..>1]
-  return vec(v.x*s, v.y*s);                      // shorter/eq/longer
-}                                                // return a new vec
-point translate(const point &p, const vec &v) {  // translate p
-  return point(p.x+v.x, p.y+v.y);                // according to v
-}                                                // return a new point
-
-// convert point and gradient/slope to line
-void pointSlopeToLine(point p, double m, line &l) {
-  l.a = -m;                                      // always -m
-  l.b = 1;                                       // always 1
-  l.c = -((l.a * p.x) + (l.b * p.y));            // compute this
-}
-
+// projection of point p in line l (returned by reference)
 void closestPoint(line l, point p, point &ans) {
   // this line is perpendicular to l and pass through p
   line perpendicular;                            
@@ -137,6 +124,19 @@ void closestPoint(line l, point p, point &ans) {
   // intersect line l with this perpendicular line
   // the intersection point is the closest point
   areIntersect(l, perpendicular, ans);
+}
+
+struct vec { double x, y;
+  vec(double _x, double _y) : x(_x), y(_y) {}
+};
+vec toVec(const point &a, const point &b) {      // convert 2 points
+  return vec(b.x-a.x, b.y-a.y);                  // to vector a->b
+}
+vec scale(const vec &v, double s) {              // s = [<1..1..>1]
+  return vec(v.x*s, v.y*s);                      // shorter/eq/longer
+}
+point translate(const point &p, const vec &v) {  // translate p
+  return point(p.x+v.x, p.y+v.y);                // according to v
 }
 
 // returns the reflection of point on a line
@@ -197,14 +197,6 @@ double cross(vec a, vec b) { return a.x*b.y - a.y*b.x; }
 bool parallel(vec &v1, vec &v2) {
   return fabs(cross(v1, v2)) < EPS;
 }
-
-//// another variant
-// returns 'twice' the area of this triangle A-B-c
-// int area2(point p, point q, point r) {
-//   return p.x * q.y - p.y * q.x +
-//          q.x * r.y - q.y * r.x +
-//          r.x * p.y - r.y * p.x;
-// }
 
 // note: to accept collinear points, we have to change the `> 0'
 // returns true if point r is on the left side of line pq

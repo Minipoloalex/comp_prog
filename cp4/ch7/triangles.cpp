@@ -90,7 +90,6 @@ double rInCircle(double ab, double bc, double ca) {
 double rInCircle(point a, point b, point c) {
   return rInCircle(dist(a, b), dist(b, c), dist(c, a)); }
 
-// assumption: the required points/lines functions have been written
 // returns 1 if there is an inCircle center, returns 0 otherwise
 // if this function returns 1, ctr will be the inCircle center
 // and r is the same as rInCircle
@@ -118,7 +117,6 @@ double rCircumCircle(double ab, double bc, double ca) {
 double rCircumCircle(point a, point b, point c) {
   return rCircumCircle(dist(a, b), dist(b, c), dist(c, a)); }
 
-// assumption: the required points/lines functions have been written
 // returns 1 if there is a circumCenter center, returns 0 otherwise
 // if this function returns 1, ctr will be the circumCircle center
 // and r is the same as rCircumCircle

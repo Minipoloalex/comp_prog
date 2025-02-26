@@ -95,6 +95,7 @@ bool isConvex(const vector<point> &P) {
 
 // returns 1/0/-1 if point p is inside/on (vertex/edge)/outside of
 // either convex/concave polygon P
+// assumes P.back() == P.front()
 int insidePolygon(point pt, const vector<point> &P) {
   int n = (int)P.size();
   if (n <= 3) return -1;                         // avoid point or line

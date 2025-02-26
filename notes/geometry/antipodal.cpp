@@ -56,7 +56,8 @@ int sign(ll num) {
 }
 
 // Takes in a convex polygon where the last vertex is not repeated
-// Note that the CH returns a repeated last vertex
+// Note that our CH implementations return a repeated last vertex
+// Assumes no 3 collinear points
 // Returns all pairs of indices of antipodal pairs
 // Only valid for p.size() >= 3;
 // Does not handle points with precision problems (assumes integer coords)

@@ -25,7 +25,7 @@ https://en.wikipedia.org/wiki/Law_of_sines
 $$ \frac{a}{\sin{\alpha}} = \frac{b}{\sin{\beta}} = \frac{c}{\sin{\gamma}} = 2 * R$$
 
 where:
-- R is the radius of the triangle's circumcircle (the circle outside the triangle that touches the points of the triangle)
+- $R$ is the radius of the triangle's circumcircle (the circle outside the triangle that touches the points of the triangle)
 
 Or just:
 $$ \frac{\sin{\alpha}}{a} = \frac{\sin{\beta}}{b} = \frac{\sin{\gamma}}{c}$$
