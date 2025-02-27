@@ -36,4 +36,4 @@ The maximum number of anti-podal pairs is $2 * n$ (tighter bounds can be proven 
 ## Code
 Assumption: no three points of the polygon are collinear, meaning that the angle at each vertex of the polygon is smaller than $180 \degree$.
 
-Check [antipodal.cpp](antipodal.cpp).
+Check [src/antipodal.cpp](src/antipodal.cpp).
