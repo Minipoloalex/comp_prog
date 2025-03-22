@@ -30,3 +30,12 @@ for (int div = 1; div <= up; div++) {
 ```
 
 7. With any positive integer $x$, there is at least one square number in $[x,2x]$
+
+8. Geometric progression: $a_0 + a_0 * q + a_0 * q^2 + ... + a_0 * q^{n - 1} = a_0 * \frac{1 - q^n}{1 - q}$
+
+Proof:
+$$S_n = a_0 + a_0 * q + a_0 * q^2 + ... + a_0 * q^{n - 1}$$
+$$q * S_n = (a_0 + a_0 * q + a_0 * q^2 + ... + a_0 * q^{n - 1}) * q$$
+$$ S_n - q * S_n = a_0 - a_0 * q^n $$
+$$ S_n * (1 - q) = a_0 * (1 - q^n) $$
+$$ S_n = a_0 * \frac{1 - q^n}{1 - q} = a_0 * \frac{q^n - 1}{q - 1}, q \neq 1$$
