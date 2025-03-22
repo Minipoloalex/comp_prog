@@ -28,3 +28,5 @@ for (int div = 1; div <= up; div++) {
     }
 }
 ```
+
+7. With any positive integer $x$, there is at least one square number in $[x,2x]$
