@@ -31,7 +31,7 @@ for (int div = 1; div <= up; div++) {
 
 7. With any positive integer $x$, there is at least one square number in $[x,2x]$
 
-8. Geometric progression: $a_0 + a_0 * q + a_0 * q^2 + ... + a_0 * q^{n - 1} = a_0 * \frac{1 - q^n}{1 - q}$
+8. Geometric progression: $a_0 + a_0 * q + a_0 * q^2 + ... + a_0 * q^{n - 1} = a_0 * \frac{1 - q^n}{1 - q}$.
 
 Proof:
 $$S_n = a_0 + a_0 * q + a_0 * q^2 + ... + a_0 * q^{n - 1}$$
@@ -39,3 +39,23 @@ $$q * S_n = (a_0 + a_0 * q + a_0 * q^2 + ... + a_0 * q^{n - 1}) * q$$
 $$ S_n - q * S_n = a_0 - a_0 * q^n $$
 $$ S_n * (1 - q) = a_0 * (1 - q^n) $$
 $$ S_n = a_0 * \frac{1 - q^n}{1 - q} = a_0 * \frac{q^n - 1}{q - 1}, q \neq 1$$
+
+9. The sum of divisors can be calculated using a geometric progression for each prime factor.
+$$ n = p_1^{a_1} * p_2^{a_2} * ... * p_n^{a_n} $$
+$$ \text{Sum of divisors} = (1 + p_1 + p_1^2 + ... + p_1^{a_1}) * (1 + p_2 + p_2^2 + ... + p_2^{a_2}) * ... * (1 + p_n + p_n^2 + ... + p_n^{a_n}) $$
+
+Each factor can be expressed as:
+$$ S_i = \frac{p_i ^ {n + 1} - 1}{p_i - 1} $$
+
+
+
+10. The product of the divisors of a number can be expressed as:
+$$ n = p_1^{a_1} * p_2^{a_2} * ... * p_k^{a_k}$$
+
+$$ \text{Number of divisors} = \sigma(n) = (a_1 + 1)(a_2 + 1) \cdots (a_k + 1) $$
+
+Mathematically:
+$$ \text{Product of divisors} = P(n) = n^{\sigma(n)/2}$$
+For perfect square numbers: $\sigma(n)$ is odd, so for that case we should do: $$P(n) = \sqrt{n} * n^\frac{\sigma(n) - 1}{2}$$
+
+11. As seen in 9, the number of divisors of a perfect square is odd, while the number of divisors of other numbers is even.
