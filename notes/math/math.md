@@ -59,3 +59,5 @@ $$ \text{Product of divisors} = P(n) = n^{\sigma(n)/2}$$
 For perfect square numbers: $\sigma(n)$ is odd, so for that case we should do: $$P(n) = \sqrt{n} * n^\frac{\sigma(n) - 1}{2}$$
 
 11. As seen in 9, the number of divisors of a perfect square is odd, while the number of divisors of other numbers is even.
+
+12. $\mathcal{O}(sieve) = \mathcal{O}(N * \log{\log{N}})$. This can be shown using the Harmonic Series of primes. $\sum_{p}^{N} \frac{1}{p} = \ln{\ln{N}} + \texttt{constant}$

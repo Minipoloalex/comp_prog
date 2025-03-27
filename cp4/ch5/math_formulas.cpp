@@ -43,7 +43,7 @@ const int MAX_SIZE = int(1e8) + 1;
 bitset<MAX_SIZE> bs;    // 100000001
 vll p;
 
-void sieve(ll upper) {
+void sieve(ll upper) {  // can be shown complexity is O(N log(log N))
     sieve_size = upper + 1;
     bs.set();
     bs[0] = bs[1] = 0;
