@@ -61,3 +61,7 @@ For perfect square numbers: $\sigma(n)$ is odd, so for that case we should do: $
 11. As seen in 9, the number of divisors of a perfect square is odd, while the number of divisors of other numbers is even.
 
 12. $\mathcal{O}(sieve) = \mathcal{O}(N * \log{\log{N}})$. This can be shown using the Harmonic Series of primes. $\sum_{p}^{N} \frac{1}{p} = \ln{\ln{N}} + \texttt{constant}$
+
+
+13. The sum of the first $x$ odd numbers is a perfect square. $ 1 + 3 + \dots + 2n - 1 = n * \frac{(1 + 2n - 1)}{2} = \frac{n * 2n}{2} = n^2$, a perfect square.
+On the other hand, the sum of the first $x$ even numbers ($x > 1$) is never a perfect square: $ 2 + 4 + \dots + 2n = n*(n + 1) $. $n^2$ is a perfect square and the next perfect square is $(n + 1)^2$, which is obviously not the sum of the first $x > 1$ even numbers.
