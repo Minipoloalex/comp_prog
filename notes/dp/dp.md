@@ -1,0 +1,35 @@
+## Bitmask DP
+https://usaco.guide/gold/dp-bitmasks
+
+1. Submasks Enumeration: For each mask, enumerate all of its submasks. DP application, based on https://usaco.guide/gold/dp-bitmasks#merging-subsets.
+
+It may seem like there are $\mathcal{O}(2^N)$ submasks for each mask, in average. However, we can analyse it like this to prove the overall complexity is actually not $\mathcal{O}(2^N \cdot 2^N) = \mathcal{O}(4^N)$ and instead $\mathcal{O}(3^N)$.
+ 
+Count the number of ordered pairs $(T, S)$ where $T \subset S$. Instead of counting directly, notice that each element $x$ is either:
+
+- In $T$ and $S$
+- In neither
+- In $S$ but not in $T$.
+
+If $x$ is in $T$ but not in $S$, $T$ isn't a valid subset.
+
+Given that each element can be in three possible states, our overall complexity is actually $\mathcal{O}(3^N)$.
+
+
+Trick for implementation:
+```cpp
+for (int m = 0; m < (1 << n); ++m)
+    for (int s = m; s; s = (s-1) & m)
+        doSomething();
+```
+
+From USACO:
+When we subtract $1$ from $\texttt{submask}$, its rightmost bit flips to a $0$ and all bits to the right of it will become $1$. Applying the bitwise AND with $\texttt{mask}$ removes all extra bits not in $\texttt{mask}$. From this process, we can get all strict subsets in increasing order by calculating $\texttt{mask} \oplus \texttt{submask}$, which does set subtraction.
+```cpp
+for (int mask = 0; mask < (1 << n); mask++) {
+	for (int submask = mask; submask != 0; submask = (submask - 1) & mask) {
+		int subset = mask ^ submask;
+		// do whatever you need to do here
+	}
+}
+```
