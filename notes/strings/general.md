@@ -1,3 +1,15 @@
+## Subsequence Checking
+For string $S$, $n = |S|$, and string $T$, $m = |T|$, with preprocessing $\mathcal{O}(n)$ for $nxt[i][c]$ construction: we can achieve efficient subsequence checking in $\mathcal{O}(m)$: check if $T$ is a subsequence of $S$.
+
+For a string of size $n$, with $i \in [0, n - 1]$, the $nxt[i][c]$ array contains the index for the next occurrence of character $c$.
+
+
+Example problem: https://codeforces.com/contest/2104/problem/E
+
+An alternative solution is to save an array $p[26]$ of vectors, where each vector has the positions where the character $c \in [0, 25]$ occurs. Then, we can use `lower_bound` on the array of the current character in the $T$ string with the current index in $S$ to find the position of the next occurrence.
+
+Check: https://codeforces.com/contest/2104/submission/318715326
+
 ## String matching
 **Pattern matching problem**: Given string $s$ and pattern $p$, find positions where $p$ occurs in $s$: $\mathcal{O}(N)$.
 
