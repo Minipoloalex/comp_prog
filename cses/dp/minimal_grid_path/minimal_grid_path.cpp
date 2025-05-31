@@ -10,7 +10,7 @@ void solve() {
         return r >= 0 && r < n && c >= 0 && c < n;
     };
     string ans(1, g[0][0]);
-    g[0][0] = '_';
+    g[0][0] = '_';  // using a queue with visited makes more sense, but this works
     for (int i = 0; i < 2 * (n - 1); i++) {
         char bst = 'Z';
         int r = 0, c = i;

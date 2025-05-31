@@ -8,6 +8,10 @@
 - Playlist: **two pointers** with set
 - Subarray Distinct Values: **sliding window** on distinct values, with a map
 - Maximum subarray sum 2: **sliding window on prefix sums** to find valid minimum for max subarray sum
+- Missing coin sum: simple **greedy with sorting**
+
+## Dynamic Programming
+- Minimal grid path: instead of a shortest path in the grid, we want the lexicographically shortest string of the path. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
 
 ## Graph Algorithms
 - Counting Rooms: counting **connected components** - **DFS**
