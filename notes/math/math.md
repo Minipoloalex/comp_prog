@@ -65,3 +65,18 @@ For perfect square numbers: $\sigma(n)$ is odd, so for that case we should do: $
 
 13. The sum of the first $x$ odd numbers is a perfect square. $ 1 + 3 + \dots + 2n - 1 = n * \frac{(1 + 2n - 1)}{2} = \frac{n * 2n}{2} = n^2$, a perfect square.
 On the other hand, the sum of the first $x$ even numbers ($x > 1$) is never a perfect square: $ 2 + 4 + \dots + 2n = n*(n + 1) $. $n^2$ is a perfect square and the next perfect square is $(n + 1)^2$, which is obviously not the sum of the first $x > 1$ even numbers.
+
+## Factorials and Combinations
+1. Inverse modulo property
+$$(a*x) \mod P \equiv 1$$
+$$((a \mod{P})*x \mod{P}) \equiv 1$$
+This means that: $\texttt{modinv}(A, P) = \texttt{modinv}(A \mod{P}, P)$
+
+2. Inverse modulo of factorials
+
+$$\texttt{fact}[i] = \texttt{fact}[i - 1] * i$$
+
+For calculating modular inverse (and by precomputing), we can get the value for the last factorial we may need, then propagate it backwards. This prevents us from having to run inverse modulo for every factorial value, which would be $\mathcal{O}(N \log N)$, instead of $O(N)$.
+
+$$\frac{1}{i!} * i = \frac{i}{i!} = \frac{1}{(i-1)!}$$
+$$\texttt{invfact}[i] = \texttt{invfact}[i + 1] * (i+1)$$
