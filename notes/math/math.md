@@ -8,13 +8,13 @@ $$a \equiv b \pmod{m} \;\land\; b \equiv c \pmod{m} \;\Rightarrow\; a \equiv c \
 3. A number is of the form $x^k$ iff the exponents on its prime divisors are all divisible by $k$.
 For example:
 $$64=2^6=(2^6)^1=(2^3)^2=(2^2)^3=(2^1)^6$$
-The prime factor exponent (6) is divisible by $[1, 2, 3, 6]$, so it can be expressed as $x^k$, with $k \in [1, 2, 3, 6]$.
+The exponent $6$ from the prime factor $2$ is divisible by $[1, 2, 3, 6]$, so it can be expressed as $x^k$, with $k \in [1, 2, 3, 6]$.
 
 4. A group of numbers is congruent to the same value w.r.t. a maximum mod $m$ given by $m = \texttt{gcd}(0, \texttt{gcd}(|a1 - a2|, \texttt{gcd}(|a2 - a3|, ...)))$. Basically, $m$ is the GCD of the differences (disregarding the order, because of $(1)$).
 
 5. The approximate number of prime numbers up to $N$ is of the complexity of $\pi(N) \approx \mathcal{O}(\frac{N}{\ln N})$.
 
-6. The number of divisors of an integer number is of the complexity of $\mathcal{O}\sqrt{N}$. It is easy to understand because of the way divisors pair up: $(d, \frac{N}{d})$.
+6. The number of divisors $d(n)$ of an integer number is of the complexity of $\mathcal{O}\sqrt{N}$. It is easy to understand because of the way divisors pair up: $(d, \frac{N}{d})$.
 
 ```cpp
 // Count divisors of a number
@@ -28,6 +28,19 @@ for (int div = 1; div <= up; div++) {
     }
 }
 ```
+
+Actually, $d(n) = \mathcal{O}(n^\epsilon)$, with any $\epsilon > 0$ and $n$ tending to $\infty$. More precisely, it is:
+$$ d(n) \le 2 ^ {\frac{\ln n}{\ln \ln n} (1 + o(1))} $$
+
+Here, o(1) means a term that approaches 0 as n approaches $\infty$.
+
+It can be simplified to:
+$$ d(n) = \mathcal{O}(n ^ {\frac{\ln 2}{\ln \ln n}}) $$
+
+Since $\ln \ln n \to \infty$ as $n \to \infty$, the exponent $\frac{\ln 2}{\ln \ln n}$ goes to $0$, reinforcing that $d(n)$ grows slower than $n^\epsilon$ for any fixed $\epsilon > 0$.
+
+For a value of $10^6$, the exponent is approximately $0.26$.
+
 
 7. With any positive integer $x$, there is at least one square number in $[x,2x]$
 
