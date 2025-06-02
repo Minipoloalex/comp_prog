@@ -94,7 +94,17 @@ For calculating modular inverse (and by precomputing), we can get the value for 
 $$\frac{1}{i!} * i = \frac{i}{i!} = \frac{1}{(i-1)!}$$
 $$\texttt{invfact}[i] = \texttt{invfact}[i + 1] * (i+1)$$
 
-3. More details about Binomial coefficients
+3. If we know $\binom nk$ does not overflow, we can simplify the factorials (simplify the fraction):
+```cpp
+if (n - k < k) k = n - k;
+int64_t ans = 1;
+for (int i = 0; i < k; i++) {
+    ans = ans * (n - i) / (i + 1);
+}
+```
+It's ensured that $i + 1$ will divide $ans$, because $ans$ has "seen" $i + 1$ numbers up until the moment (which means it has seen a multiple of $i + 1$.
+
+4. More details about Binomial coefficients
 
 Sum of binomial coefficients (sum of a row in Pascal's Triangle):
 $$
@@ -106,7 +116,7 @@ $$
 (a + b)^n = \binom{n}{0} a^n b^0 + \binom{n}{1} a^{n-1} b^1 + \cdots + \binom{n}{n-1} a^1 b^{n-1} + \binom{n}{n} a^0 b^n
 $$
 
-4. Placing $X$ items in $N$ boxes (different scenarios): https://usaco.guide/CPH.pdf#page=219.
+5. Placing $X$ items in $N$ boxes (different scenarios): https://usaco.guide/CPH.pdf#page=219.
 
 - For scenario 2, can think of it in a $\textit{DP}$ way. For this scenario, we can also think of separating the balls with $n$ bars: "|", and choosing the positions of these bars.
 - Scenario 3 simplifies to scenario 2 if we think of placing the "basic setup" first.
