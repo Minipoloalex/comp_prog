@@ -120,3 +120,20 @@ $$
 
 - For scenario 2, can think of it in a $\textit{DP}$ way. For this scenario, we can also think of separating the balls with $n$ bars: "|", and choosing the positions of these bars.
 - Scenario 3 simplifies to scenario 2 if we think of placing the "basic setup" first.
+
+
+## Expected Values
+
+1. Basic definition (Expected value of a discrete random variable)
+$$\mathbb{E}[X] = \sum_x x \cdot P(X = x)$$
+
+2. Linearity of expectation (holds even if $X$ and $Y$ are not independent):  
+$$\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y]$$
+
+Example use: https://atcoder.jp/contests/agc049/tasks/agc049_a
+
+3. Product of expectations (only if $X$ and $Y$ are independent):  
+$$\mathbb{E}[X \cdot Y] = \mathbb{E}[X] \cdot \mathbb{E}[Y] \quad \text{if } X \perp Y$$
+
+For example:
+$$\mathbb{E}[X^2] \ne (\mathbb{E}[X])^2$$
