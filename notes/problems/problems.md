@@ -11,7 +11,8 @@
 - Missing coin sum: simple **greedy with sorting**
 
 ## Dynamic Programming
-- Minimal grid path: instead of a shortest path in the grid, we want the lexicographically shortest string of the path. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
+- Minimal grid path: instead of a shortest path in the grid, we want the **lexicographically shortest string of the path**. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
+- Mountain range: Next greater to build a graph (monotonic stack), then just $DP$ to find the longest path distance in the graph.
 
 ## Graph Algorithms
 - Counting Rooms: counting **connected components** - **DFS**
@@ -23,6 +24,10 @@
 ## Tree Algorithms
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
 
+
+## Mathematics
+- Creating strings 2 and Distributing apples: simple **combination** problems
+- Candy lottery: +/- simple **expected values** problem
 
 ## Additional Problems
 
