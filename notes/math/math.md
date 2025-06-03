@@ -121,6 +121,19 @@ $$
 - For scenario 2, can think of it in a $\textit{DP}$ way. For this scenario, we can also think of separating the balls with $n$ bars: "|", and choosing the positions of these bars.
 - Scenario 3 simplifies to scenario 2 if we think of placing the "basic setup" first.
 
+6. **Derangements**: The number of derangements of $n$ numbers, expressed as $!n$, is the number of permutations such that no element appears in its original position. Informally, it is the number of ways $n$ hats can be returned to $n$ people such that no person receives their own hat. Check https://usaco.guide/gold/combo#derangements for proofs:
+
+By the Principle of Inclusion-Exclusion, we can show that:
+$$!n = n! \sum_{k=0}^{n} \frac{(-1)^k}{k!}$$
+
+This leads to the following recursive definition:
+$$ !(n + 1) =\ !n \cdot (n + 1) + (n+1)! \cdot \frac{(-1)^{n+1}}{(n+1)!} =\ !n \cdot (n+1) + (-1)^{n+1}$$
+
+Where $!0 = 1$, since there is one way to organize a 0-sized permutations (that respects any conditions).)
+
+There is also a proof using $DP$ and the results are:
+$$!n = (n - 1) \cdot (\ !(n - 2)\ +\ !(n - 1)\ ), with \ !0 = 1, \ !1 = 0$$
+
 
 ## Expected Values
 

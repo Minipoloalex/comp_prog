@@ -1,7 +1,16 @@
 ## Verbal Formula
 To compute the size of a union of multiple sets, it is necessary to sum the sizes of these sets separately, and then subtract the sizes of all pairwise intersections of the sets, then add back the size of the intersections of triples of the sets, subtract the size of quadruples of the sets, and so on, up to the intersection of all sets.
 
-- Add when **ODD**
-- Subtract when **EVEN**
+$K = |S| - 1$, with $|S|$ being the size of the set.
 
-https://cses.fi/problemset/task/2185
+$sign = (-1)^k$
+
+- Add when $|S|$ is **ODD**
+- Subtract when $|S|$ is **EVEN**
+
+
+Example problems:
+- https://cses.fi/problemset/task/2185
+
+
+PIE can also be used to compute the derangements (since they imply subtracting the union): https://usaco.guide/gold/combo#method-1-principle-of-inclusion-exclusion.
