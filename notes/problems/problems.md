@@ -21,28 +21,25 @@
 - Message Route: **shortest path with unweighted edges** between two nodes and specify the path - **BFS**
 - Monsters: **shortest path with unweighted edges** from start to end in a labyrinth and specify the path. Also, avoid monsters - **BFS** from multiple sources
 
+- Road Construction: classic **DSU to get connected components** number and max size.
+
 ## Tree Algorithms
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
-
+- Company queries 1: Simplest **Binary Jumping**: who is x's parent k levels above (requires -1)
 
 ## Mathematics
 - Creating strings 2 and Distributing apples: simple **combination** problems
 - Candy lottery: +/- simple **expected values** problem
 
-## Additional Problems
+## Bitwise
+- Maximum xor subarray: greedy with **TRIE** to find best previous prefix sum to use for the current index
 
-### Sorting and Searching
-
-
-### Graph Algorithms
-- Road Construction: classic **DSU to get connected components** number and max size.
-
-### Advanced Graph Problems
+## Advanced Graph Problems
 - Graph Girth: **find shortest cycle length** in undirected unweighted graph - **BFS** for each node
 
+## Additional problems 1
 ### Stacks
 - Advertisement: **find nearest smaller element to left and to right** for each position - **Monotonic stack both ways**
-
 
 
 ## Codeforces
