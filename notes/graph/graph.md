@@ -1,6 +1,5 @@
 ## DSU
 
-
 ### Interesting patterns
 
 1. Process queries in reverse order ([H.cpp](../../codeforces/gym/105453_grcpc24/H.cpp) from GRCPC 2024)
