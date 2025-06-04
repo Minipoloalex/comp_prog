@@ -35,6 +35,9 @@
 
 
 ### Graph Algorithms
+- Road Construction: classic **DSU to get connected components** number and max size.
+
+### Advanced Graph Problems
 - Graph Girth: **find shortest cycle length** in undirected unweighted graph - **BFS** for each node
 
 ### Stacks
