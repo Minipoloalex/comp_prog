@@ -62,3 +62,8 @@ We can also include an additional column, to make sure there are no problems: in
 ### Example problems
 - Go through k nodes in a successor graph: https://cses.fi/problemset/task/1750
 - Determine minimum number of jumps to get from node $a$ to $b$ in a successor graph: https://cses.fi/problemset/task/1160 (similar to A from ONI 2025)
+
+
+### Distance between two nodes in a tree
+Easy to solve using LCA:
+$$dist(a, b) = depth[a] + depth[b] - 2 * depth[lca(a, b)]$$

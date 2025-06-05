@@ -30,7 +30,7 @@
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
 - Company queries 1: Simplest **Binary Jumping**: who is x's parent k levels above (requires -1)
 - Company queries 2: Simplest **Lowest Common Ancestor**
-
+- Distance queries: Simplest **distance between two nodes in a tree**
 
 ## Mathematics
 - Creating strings 2 and Distributing apples: simple **combination** problems
