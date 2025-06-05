@@ -22,10 +22,15 @@
 - Monsters: **shortest path with unweighted edges** from start to end in a labyrinth and specify the path. Also, avoid monsters - **BFS** from multiple sources
 
 - Road Construction: classic **DSU to get connected components** number and max size.
+- Planets queries 1: go through k nodes in a **successor graph**: simple **binary lifting**
+- Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**
+
 
 ## Tree Algorithms
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
 - Company queries 1: Simplest **Binary Jumping**: who is x's parent k levels above (requires -1)
+- Company queries 2: Simplest **Lowest Common Ancestor**
+
 
 ## Mathematics
 - Creating strings 2 and Distributing apples: simple **combination** problems

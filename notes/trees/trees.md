@@ -40,6 +40,25 @@ if ((k & (1 << pw))) {
     }
 }
 ```
+### Lowest Common Ancestor
+https://usaco.guide/CPH.pdf#page=177
+
+#### Method 1
+
+Idea:
+- Make nodes $a$ and $b$ be in the same level
+- In decreasing order of the number of jumps in $2^k$ (similar to binary search down/up instead of left/right), test if the nodes end up in the same node. We want to find the highest node that the nodes can go up to that is not common to both (then the LCA is just the parent). Note that it needs to be decreasing order and we should move the nodes $a$ and $b$ once we find a valid node (i.e., a node that is not the same for both).
+
+Check https://cses.fi/problemset/result/13181991/ (first submission)
+
+Note that if we do not go in increasing order, there are counterexamples. For instance, needing to go up 2 nodes (LCA is the 3rd node):
+We would go up once and then we would not be able to go up more (if in increasing order). The powers of 2 in decreasing order ensures we find what we want.
+
 
 ### Additional notes
 We can also include an additional column, to make sure there are no problems: instead of doing just `ceil(log2(n + 1))`, we can just add `+1` at the end.
+
+
+### Example problems
+- Go through k nodes in a successor graph: https://cses.fi/problemset/task/1750
+- Determine minimum number of jumps to get from node $a$ to $b$ in a successor graph: https://cses.fi/problemset/task/1160 (similar to A from ONI 2025)
