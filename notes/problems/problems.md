@@ -20,6 +20,7 @@
 - Building Roads: number of **connected components** and which edges to add to modify to only 1 CC - **DFS**
 - Message Route: **shortest path with unweighted edges** between two nodes and specify the path - **BFS**
 - Monsters: **shortest path with unweighted edges** from start to end in a labyrinth and specify the path. Also, avoid monsters - **BFS** from multiple sources
+- Course Schedule: simplest **topological sort**
 
 - Road Construction: classic **DSU to get connected components** number and max size.
 - Planets queries 1: go through k nodes in a **successor graph**: simple **binary lifting**
