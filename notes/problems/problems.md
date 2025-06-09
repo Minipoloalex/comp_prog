@@ -23,6 +23,7 @@
 - Monsters: **shortest path with unweighted edges** from start to end in a labyrinth and specify the path. Also, avoid monsters - **BFS** from multiple sources
 - Round trip 2: find any cycle in a directed graph
 - Course Schedule: simplest **topological sort**
+- Longest Flight Route: simple **DP in a DAG**: find longest path in a DAG
 
 - Road Construction: classic **DSU to get connected components** number and max size.
 - Planets queries 1: go through k nodes in a **successor graph**: simple **binary lifting**
