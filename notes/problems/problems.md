@@ -19,6 +19,7 @@
 - Labyrinth: find **shortest path with unweighted edges** from start to end in a labyrinth and specify the path - **BFS**
 - Building Roads: number of **connected components** and which edges to add to modify to only 1 CC - **DFS**
 - Message Route: **shortest path with unweighted edges** between two nodes and specify the path - **BFS**
+- Round trip: find any cycle in an undirected graph
 - Monsters: **shortest path with unweighted edges** from start to end in a labyrinth and specify the path. Also, avoid monsters - **BFS** from multiple sources
 - Course Schedule: simplest **topological sort**
 
