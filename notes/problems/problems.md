@@ -28,7 +28,7 @@
 - Course Schedule: simplest **topological sort**
 - Longest Flight Route: simple **DP in a DAG**: find longest path in a DAG
 - Game Routes: simple **DP in a DAG**: find number of ways to go from $a$ to $b$
-
+- Road Reparation: simplest **MST**: using Kruskal or Prim
 - Road Construction: classic **DSU to get connected components** number and max size.
 - Planets queries 1: go through k nodes in a **successor graph**: simple **binary lifting**
 - Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**
