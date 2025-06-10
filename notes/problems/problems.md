@@ -21,6 +21,8 @@
 - Message Route: **shortest path with unweighted edges** between two nodes and specify the path - **BFS**
 - Round trip: find any cycle in an undirected graph
 - Monsters: **shortest path with unweighted edges** from start to end in a labyrinth and specify the path. Also, avoid monsters - **BFS** from multiple sources
+- Shortest Routes 1: simplest **Dijkstra**
+- Shortest Routes 2: simplest **Floyd-Warshall**
 - Round trip 2: find any cycle in a directed graph
 - Course Schedule: simplest **topological sort**
 - Longest Flight Route: simple **DP in a DAG**: find longest path in a DAG
