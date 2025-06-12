@@ -5,7 +5,7 @@ Similar, but uses a different function in comparison to KMP.
 
 It uses the **Z-function**:
 
-**Given a position, this function gives the length of the longest string that's both the prefix of $S$ and the prefix of the suffix of  $S$ starting at the given position**.
+**Given a position, this function gives the length of the longest string that's both the prefix of $S$ and the prefix of the suffix of $S$ starting at the given position**.
 
 Check another way to interpret the array: [Library Checker Problem](#library-checker-problem)
 

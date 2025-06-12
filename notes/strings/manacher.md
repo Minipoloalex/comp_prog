@@ -13,7 +13,7 @@ $$ dp = [1, 3, 1, 7, 1, 3, 1]$$
 We can see that the right side of the index with the longest palindrome is completely mirrored (and that also happens for the first "aaa").
 
 ### Warning
-Just beware that the code adds `#` before and after each character (adds $|S| + 1$ `#`'s), so the $dp$ array does not values for the original string. To obtain that "perfect" $dp$ array, some additional processing is required. Check the example in the code for concrete implementation-specific values. Also, don't forget to consider **even** vs **odd** sized strings: the `#` helps handle these cases uniformly.
+Just beware that the code adds `#` before and after each character (adds $|S| + 1$ `#`'s), so the $dp$ array does not have values for the original string. To obtain that "perfect" $dp$ array, some additional processing is required. Check the example in the code for concrete implementation-specific values. Also, don't forget to consider **even** vs **odd** sized strings: the `#` helps handle these cases uniformly.
 
 ## Code
 
