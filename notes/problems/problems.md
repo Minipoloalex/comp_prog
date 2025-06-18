@@ -50,6 +50,9 @@
 ## Advanced Graph Problems
 - Graph Girth: **find shortest cycle length** in undirected unweighted graph - **BFS** for each node
 
+## Counting Problems
+- Empty String: **Range DP**, with $\mathcal{O}(N^2)$ state and $\mathcal{O}(N)$ transition. In each state, compare the first character with all of the characters in the interval. Also requires some combinations work for the transition.
+
 ## Additional problems 1
 ### Stacks
 - Advertisement: **find nearest smaller element to left and to right** for each position - **Monotonic stack both ways**
