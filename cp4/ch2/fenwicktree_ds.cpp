@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Usage:
+// FenwickTree ft(n);
+// 1-indexed on n:
+//      ft.rsq(1, n);
+//      ft.update(n, v);
+
 #define LSOne(S) ((S) & -(S)) // the key operation
 
 typedef long long ll; // for extra flexibility
