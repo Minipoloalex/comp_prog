@@ -33,6 +33,8 @@
 - Planets queries 1: go through k nodes in a **successor graph**: simple **binary lifting**
 - Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**
 
+## Range Queries
+- List Removals: **find the k-th element** in an ordered set at each step
 
 ## Tree Algorithms
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
