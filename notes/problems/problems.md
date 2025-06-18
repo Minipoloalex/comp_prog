@@ -37,6 +37,7 @@
 ## Range Queries
 - List Removals: **find the k-th element** in an ordered set at each step
 - Salary Queries: **dynamic range sum queries**, with **coordinate compression** (offline queries): requires using vectors for BIT. Otherwise, can use ordered_set (online queries).
+- Distinct Values Queries: Find the number of unique values in subarrays given by queries. Needs offline processing. **Offline queries + Fenwick Tree**: enable and disable each value, to reduce the problem to finding the range sum over activated values in a subarray.
 
 ## Tree Algorithms
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
