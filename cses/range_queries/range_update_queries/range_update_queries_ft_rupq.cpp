@@ -7,7 +7,6 @@ typedef long long ll; // for extra flexibility
 typedef vector<ll> vll;
 typedef vector<int> vi;
 
-// 1-indexed
 class FenwickTree
 { // index 0 is not used
 private:
@@ -73,7 +72,6 @@ public:
     }
 };
 
-// 1-indexed
 class RUPQ
 { // RUPQ variant
 private:
@@ -95,51 +93,39 @@ public:
     ll point_query(int i) { return ft.rsq(i); } // rsq(i) is sufficient
 };
 
-// 1-indexed
-class RURQ
-{                     // RURQ variant
-private:              // needs two helper FTs
-    RUPQ rupq;        // one RUPQ and
-    FenwickTree purq; // one PURQ
-public:
-    RURQ(int m) : rupq(RUPQ(m)), purq(FenwickTree(m)) {} // initialization
-    void range_update(int ui, int uj, ll v)
-    {
-        rupq.range_update(ui, uj, v);  // [ui, ui+1, .., uj] +v
-        purq.update(ui, v * (ui - 1)); // -(ui-1)*v before ui (correction: I think it's after)
-        purq.update(uj + 1, -v * uj);  // +(uj-ui+1)*v after uj (v * number of values inside the interval)
-    }
-    ll rsq(int j)
-    {
-        printf("rupq.point_query(%d) = %lld\n", j, rupq.point_query(j));
-        printf("purq.rsq(%d) = %lld\n", j, purq.rsq(j));
-        printf("rupq.point_query(j) * j - purq.rsq(j) = %lld (j = %d)\n", rupq.point_query(j) * j - purq.rsq(j), j);
-        return rupq.point_query(j) * j - // optimistic calculation
-               purq.rsq(j);              // cancelation factor
-    }
-    ll rsq(int i, int j) { return rsq(j) - rsq(i - 1); } // standard
-};
+void solve() {
+    int n, q;
+    cin >> n >> q;
+    vector<int> x(n);
+    for (auto &xi: x) cin >> xi;
 
-int main()
-{
-    vll f = {0, 0, 1, 0, 1, 2, 3, 2, 1, 1, 0}; // index 0 is always 0
-    FenwickTree ft(f);
-    printf("%lld\n", ft.rsq(1, 6));  // 7 => ft[6]+ft[4] = 5+2 = 7
-    printf("%d\n", ft.select(7));    // index 6, rsq(1, 6) == 7, which is >= 7
-    ft.update(5, 1);                 // update demo
-    printf("%lld\n", ft.rsq(1, 10)); // now 12
-    printf("=====\n");
-    RUPQ rupq(10);
-    RURQ rurq(10);
-    rupq.range_update(2, 9, 7); // indices in [2, 3, .., 9] updated by +7
-    rurq.range_update(2, 9, 7); // same as rupq above
-    rupq.range_update(6, 7, 3); // indices 6&7 are further updated by +3 (10)
-    rurq.range_update(6, 7, 3); // same as rupq above
-    // idx = 0 (unused) | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |10
-    // val = -          | 0 | 7 | 7 | 7 | 7 |10 |10 | 7 | 7 | 0
-    for (int i = 1; i <= 10; i++)
-        printf("%d -> %lld\n", i, rupq.point_query(i));
-    printf("RSQ(1, 10) = %lld\n", rurq.rsq(1, 10)); // 62
-    printf("RSQ(6, 7) = %lld\n", rurq.rsq(6, 7));   // 20
+    RUPQ ft(n);
+    for (int i = 1; i <= n; i++) {
+        ft.range_update(i, i, x[i-1]);    // 1-indexed
+    }
+    while (q--) {
+        int t;
+        cin >> t;
+        if (t == 1) {
+            int a, b, u;
+            cin >> a >> b >> u;
+            ft.range_update(a, b, u);   // 1-indexed
+        }
+        else {
+            assert(t == 2);
+            int k;
+            cin >> k;
+            cout << ft.point_query(k) << '\n';
+        }
+    }
+}
+
+int main() {
+    cin.tie(0)->ios::sync_with_stdio(0);
+    int t = 1;
+    // cin >> t;
+    while (t--) {
+        solve();
+    }
     return 0;
 }
