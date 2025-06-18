@@ -35,6 +35,7 @@
 
 ## Range Queries
 - List Removals: **find the k-th element** in an ordered set at each step
+- Salary Queries: **dynamic range sum queries**, with **coordinate compression** (offline queries): requires using vectors for BIT. Otherwise, can use ordered_set (online queries).
 
 ## Tree Algorithms
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
