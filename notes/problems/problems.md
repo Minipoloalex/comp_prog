@@ -13,6 +13,7 @@
 ## Dynamic Programming
 - Minimal grid path: instead of a shortest path in the grid, we want the **lexicographically shortest string of the path**. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
 - Mountain range: Next greater to build a graph (monotonic stack), then just $DP$ to find the longest path distance in the graph.
+- Increasing subsequences 2: DP thought process for subsequences, based on **bucketing previous results**. Requires range queries and coordinate compression.
 
 ## Graph Algorithms
 - Counting Rooms: counting **connected components** - **DFS**
