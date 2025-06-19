@@ -44,6 +44,7 @@
 - Company queries 1: Simplest **Binary Jumping**: who is x's parent k levels above (requires -1)
 - Company queries 2: Simplest **Lowest Common Ancestor**
 - Distance queries: Simplest **distance between two nodes in a tree**
+- Path Queries: **Euler Tour + sum of values on path from root**: use RUPQ on resulting Euler Tour
 - Distinct colors: **Euler Tour + Range Sum Queries for distinct values in a subtree**: similar to Range-Queries/Distinct-Values-Queries
 
 ## Mathematics
