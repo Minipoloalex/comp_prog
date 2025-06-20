@@ -40,6 +40,7 @@
 - Distinct Values Queries: Find the number of unique values in subarrays given by queries. Needs offline processing. **Offline queries + Fenwick Tree**: enable and disable each value, to reduce the problem to finding the range sum over activated values in a subarray.
 
 ## Tree Algorithms
+- Tree matching: **simple greedy algorithm** or **dp on trees**. DP version has some additional considerations: can only choose one out of the children to connect to.
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
 - Company queries 1: Simplest **Binary Jumping**: who is x's parent k levels above (requires -1)
 - Company queries 2: Simplest **Lowest Common Ancestor**
