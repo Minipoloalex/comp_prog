@@ -96,7 +96,7 @@ Note that inclusion exclusion with permutations and combinations would be much m
 Formula:
 derangements(n) = D(n) = (n - 1) * (D(n - 1) + D(n - 2))
 
-!n = (n - 1) * (!(n - 1) +  !(n - 2)), n >= 2
+!n = (n - 1) * (!(n - 1) + !(n - 2)), n >= 2
 !0 = 1, !1 = 0
 
 def d(n):

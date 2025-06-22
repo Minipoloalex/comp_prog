@@ -1,6 +1,10 @@
 ## Diameter
 To find the diameter of a tree, we can just do 2 DFS's. In one, we will get the farthest node from the current node (0). Then, we can just find the farthest node from that node and their distance is the diameter.
 
+The most distant node of every node in a tree is one of the endpoints of the diameter.
+Proof by contradiction: since it's a tree, we know that the nodes connect to the diameter path. If it does and we know our node isn't one endpoint of the diameter, then we also know that it can't be larger than the diameter, so its largest distance is to one of its endpoints.
+
+
 ## Binary Jumping
 
 Check the link: https://usaco.guide/plat/binary-jump?lang=cpp
