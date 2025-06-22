@@ -41,6 +41,7 @@
 
 ## Tree Algorithms
 - Tree matching: **simple greedy algorithm** or **dp on trees**. DP version has some additional considerations: can only choose one out of the children to connect to.
+- Tree Distances 1: Max distance for every node. Either **DP solving for all roots** or a **greedy algorithm**: the most distant node of every node is one of the nodes of the diameter.
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
 - Company queries 1: Simplest **Binary Jumping**: who is x's parent k levels above (requires -1)
 - Company queries 2: Simplest **Lowest Common Ancestor**
@@ -51,6 +52,9 @@
 ## Mathematics
 - Creating strings 2 and Distributing apples: simple **combination** problems
 - Candy lottery: +/- simple **expected values** problem
+
+## String Algorithms
+- Finding Periods: **Z-function** is easier to implement, or **Hashing** in $\mathcal{O}(N \log N)$.
 
 ## Bitwise
 - Maximum xor subarray: greedy with **TRIE** to find best previous prefix sum to use for the current index
