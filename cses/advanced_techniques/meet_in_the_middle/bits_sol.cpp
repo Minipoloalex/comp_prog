@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// meet in the middle
+
 const int MAX_N = 40;
 int n, x;
 int half;

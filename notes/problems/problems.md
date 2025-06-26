@@ -56,6 +56,11 @@
 ## String Algorithms
 - Finding Periods: **Z-function** is easier to implement, or **Hashing** in $\mathcal{O}(N \log N)$.
 
+## Geometry
+
+## Advanced Techniques
+- Meet in the middle: subset sum problem (how many ways to choose a subset of numbers with sum x) with up to $1e9$.
+
 ## Bitwise
 - Maximum xor subarray: greedy with **TRIE** to find best previous prefix sum to use for the current index
 

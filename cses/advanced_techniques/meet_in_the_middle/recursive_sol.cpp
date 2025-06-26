@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// meet in the middle
+
 const int MAX_N = 40;
 int n, x;
 int half;
@@ -23,7 +25,7 @@ void get_subset_sums(int l, int r, int curr, vector<int> &occ) {
 int main() {
     cin.tie(0)->ios::sync_with_stdio(0);
     cin >> n >> x;
-    for (auto &ai: a) cin >> ai;
+    for (int i = 0; i < n; i++) cin >> a[i];
 
     half = n / 2;
 
