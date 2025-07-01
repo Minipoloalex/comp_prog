@@ -79,6 +79,11 @@ For perfect square numbers: $\sigma(n)$ is odd, so for that case we should do: $
 13. The sum of the first $x$ odd numbers is a perfect square. $ 1 + 3 + \dots + 2n - 1 = n * \frac{(1 + 2n - 1)}{2} = \frac{n * 2n}{2} = n^2$, a perfect square.
 On the other hand, the sum of the first $x$ even numbers ($x > 1$) is never a perfect square: $ 2 + 4 + \dots + 2n = n*(n + 1) $. $n^2$ is a perfect square and the next perfect square is $(n + 1)^2$, which is obviously not the sum of the first $x > 1$ even numbers.
 
+14. **The digit sum (in base 10) preserves the remainder modulo 9**. This is easy to prove: all powers of 10 give the remainder 1 when divided by 9, therefore $\sum a_i * 10^i$, the value of the number, gives the same remained as $\sum a_i$, the digit sum of the number. Basically, this means that if we add 9 to a number $n$, its digit sum modulo 9 will remain unchanged.
+
+    14.1. If 2 numbers have the same digit sum, that implies that they are $9k$ apart, but not the other way around. E.g. $91$ and $100$.
+
+
 ## Factorials and Combinations
 1. Inverse modulo property
 $$(a*x) \mod P \equiv 1$$
