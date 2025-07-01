@@ -23,11 +23,18 @@ void solve() {
         if (i > 0) smb[i] += smb[i - 1];
     }
 
+    // kmax <= n, kmax <= m, kmax <= (n + m) / 3
     int kmax = min(n, min(m, (n + m) / 3));
     cout << kmax << '\n';
     auto value = [&](int k, int select_n) -> int64_t {
         int select_m = k - select_n;
         int64_t ans = 0;
+        // the sum of two convex functions is a convex function, so we can ternary search over this
+        // or we instead can think intuitively:
+        // if f(1) == f(2), then it means the interval we removed from the bottom (M)
+        // is the same as we added from the top (N)
+        // so f(3) is definitely worse than f(1) (or f(2)) and f(0) is also obviously worse
+        // this just means that two values are only the same if they're optimal
         if (select_n - 1 >= 0) ans += sma[select_n - 1];
         if (select_m - 1 >= 0) ans += smb[select_m - 1];
         return ans;
@@ -36,7 +43,9 @@ void solve() {
         int lo = max(0, 2 * k - m), hi = min(k, n - k);
         while (lo < hi) {
             int med = lo + (hi - lo) / 2;
-            if (value(k, med) > value(k, med + 1)) { // equal only happens if it doesn't matter if it's the solution
+            // equal only happens if it's the solution
+            // because it's a convex function
+            if (value(k, med) > value(k, med + 1)) {
                 hi = med;
             }
             else {
