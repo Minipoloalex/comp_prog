@@ -23,7 +23,8 @@ We can also define a strictly convex function, although it's not as useful: a fu
     * https://codeforces.com/problemset/problem/2063/D
 - A function $C(y)$ is convex if its first derivative, $C'(y)$, is non-decreasing.
 - A function $C(y)$ is concave if its first derivative, $C'(y)$, is non-increasing.
-- Check: [codeforces/problems/427/E/notes.md](../../codeforces/problems/427/E/notes.md) on how to prove that a function is convex.
+- Check: [codeforces/problems/427/E/notes.md](../../codeforces/problems/427/E/notes.md) on an example of how to prove that a function is convex. We can show that the **first derivative is non-decreasing**, or that the second derivative is non-negative.
+- The maximum of two convex functions (have a minimum) is also convex. The minimum of two concave functions (have a maximum) is also concave.
 - The sum of two strictly convex functions is always strictly convex.
 - We can't tell anything from the sum of a convex and a concave function.
 
