@@ -21,6 +21,9 @@ We can also define a strictly convex function, although it's not as useful: a fu
 - The sum of convex functions is also convex. Examples of usage:
     * https://usaco.org/index.php?page=viewproblem2&cpid=1355, https://usaco.guide/gold/ternary-search#example---haybale-distribution
     * https://codeforces.com/problemset/problem/2063/D
+- A function $C(y)$ is convex if its first derivative, $C'(y)$, is non-decreasing.
+- A function $C(y)$ is concave if its first derivative, $C'(y)$, is non-increasing.
+- Check: [codeforces/problems/427/E/notes.md](../../codeforces/problems/427/E/notes.md) on how to prove that a function is convex.
 - The sum of two strictly convex functions is always strictly convex.
 - We can't tell anything from the sum of a convex and a concave function.
 
@@ -68,3 +71,6 @@ while (lo < hi) {
 > A function is unimodal if it strictly decreases first, then reaches a minimum, then strictly increases (for the minimum case).
 
 We are very specific about the function having to strictly increase and decrease. This is because we can only allow our function to be flat at the minimum! If we have a flat section anywhere else, it's possible that our ternary search ends up eliminating the wrong section.
+
+## Example problems
+Check [USACO ternary search](https://usaco.guide/gold/ternary-search).
