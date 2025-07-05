@@ -32,7 +32,7 @@
 - Road Reparation: simplest **MST**: using Kruskal or Prim
 - Road Construction: classic **DSU to get connected components** number and max size.
 - Planets queries 1: go through k nodes in a **successor graph**: simple **binary lifting**
-- Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**
+- Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**. Requires handling lots of cases: all cases in a successor graph: trees, loops, different connected components, ...
 
 ## Range Queries
 - List Removals: **find the k-th element** in an ordered set at each step
