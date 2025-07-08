@@ -121,6 +121,7 @@ void solve() {
     // for instance if the array can be just one subarray, all indices would point to 2 * n (so 2*n needs to be included in the graph)
     vector<int> suc(2*n+1, -1);
     for (int i = 0; i < n; i++) {
+        // could have used two pointers instead
         int j = int(upper_bound(pref.begin() + i, pref.end(), k + pref[i]) - pref.begin() - 1);
         j--;    // because pref has size + 1
         suc[i] = j + 1;    // but we want to connect i to j + 1: with [i,j] valid subarray
