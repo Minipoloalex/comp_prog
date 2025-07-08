@@ -73,7 +73,8 @@
 ## Additional problems 1
 ### Stacks
 - Advertisement: **find nearest smaller element to left and to right** for each position - **Monotonic stack both ways**
-
+### Binary Lifting:
+- Cyclic Array: build an **explicit graph** (successor graph) from each array position, then use **binary lifting similarly to LCA (go until $at < dst$)**
 
 ## Codeforces
 
