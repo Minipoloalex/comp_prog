@@ -89,7 +89,7 @@ int modInverse(int b, int m) {
 }
 
 /* Derangements
-A  derangement is a permutation of the elements of a set in which
+A derangement is a permutation of the elements of a set in which
 no element appears in its original position.
 Note that inclusion exclusion with permutations and combinations would be much more complex
 

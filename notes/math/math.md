@@ -107,7 +107,7 @@ for (int i = 0; i < k; i++) {
     ans = ans * (n - i) / (i + 1);
 }
 ```
-It's ensured that $i + 1$ will divide $ans$, because $ans$ has "seen" $i + 1$ numbers up until the moment (which means it has seen a multiple of $i + 1$.
+It's ensured that $i + 1$ will divide $ans$, because $ans$ has "seen" $i + 1$ numbers up until the moment (which means it has seen a multiple of $i + 1$).
 
 4. More details about Binomial coefficients
 
