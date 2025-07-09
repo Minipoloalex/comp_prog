@@ -60,6 +60,7 @@
 
 ## Advanced Techniques
 - Meet in the middle: subset sum problem (how many ways to choose a subset of numbers with sum x) with up to $1e9$.
+- New Roads Queries: **find maximum along paths from any two pair of nodes** (queries): use **MST** to filter the edges to make a tree since we want to minimize the maximum along any path and use **binary lifting** to get the maximum along the paths.
 
 ## Bitwise
 - Maximum xor subarray: greedy with **TRIE** to find best previous prefix sum to use for the current index
