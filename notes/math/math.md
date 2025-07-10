@@ -55,7 +55,8 @@ $$ S_n = a_0 * \frac{1 - q^n}{1 - q} = a_0 * \frac{q^n - 1}{q - 1}, q \neq 1$$
 
 9. The sum of divisors can be calculated using a geometric progression for each prime factor.
 $$ n = p_1^{a_1} * p_2^{a_2} * ... * p_k^{a_k} $$
-$$ \text{Sum of divisors} = (1 + p_1 + p_1^2 + ... + p_1^{a_1}) * (1 + p_2 + p_2^2 + ... + p_2^{a_2}) * ... * (1 + p_k + p_k^2 + ... + p_k^{a_k}) $$
+$$ \text{Sum of divisors} = \sigma{(n)}$$
+$$ \sigma{(n)}=  (1 + p_1 + p_1^2 + ... + p_1^{a_1}) * (1 + p_2 + p_2^2 + ... + p_2^{a_2}) * ... * (1 + p_k + p_k^2 + ... + p_k^{a_k}) $$
 
 Each factor can be expressed as:
 $$ S_i = \frac{p_i ^ {a_i + 1} - 1}{p_i - 1} $$
@@ -64,13 +65,18 @@ $$ S_i = \frac{p_i ^ {a_i + 1} - 1}{p_i - 1} $$
 10. The product of the divisors of a number can be expressed as a simple formula (see $\text{Product of divisors} = \dots$ ):
 $$ n = p_1^{a_1} * p_2^{a_2} * ... * p_k^{a_k}$$
 
-$$ \text{Number of divisors} = \sigma(n) = (a_1 + 1)(a_2 + 1) \cdots (a_k + 1) $$
+$$ \text{Number of divisors} = d(n) = \tau(n) = (a_1 + 1)(a_2 + 1) \cdots (a_k + 1) $$
 
 Mathematically:
-$$ \text{Product of divisors} = P(n) = n^{\sigma(n)/2}$$
-For perfect square numbers: $\sigma(n)$ is odd, so for that case we should do: $$P(n) = \sqrt{n} * n^\frac{\sigma(n) - 1}{2}$$
+$$ \text{Product of divisors} = P(n) = n^{d(n)/2}$$
+For perfect square numbers: $d(n)$ is odd, so for that case we should do: $$P(n) = \sqrt{n} * n^\frac{d(n) - 1}{2}$$
+Or instead just use: $$P(n) = (\sqrt{n})^{d(n)}$$
 
-11. As seen in 9, the number of divisors of a perfect square is odd, while the number of divisors of other numbers is even.
+Note that $\sqrt{n} \mod M \neq \sqrt{n \mod M} \mod M$. If we want the product of divisors $P(n) \mod M$ and $n$ doesn't fit in 64 bits, we should divide each of the prime exponents by 2 (https://cses.fi/problemset/task/1082). Obviously they can be divided, because we're handling the **perfect square** case.
+
+$$\sqrt{n} = \sqrt{p_1^{a_1}} \cdot \sqrt{p_2^{a_2}} \cdot \dots \cdot \sqrt{p_k^{a_k}} $$
+
+11. As seen in 9, the **number of divisors of a perfect square is odd**, while the **number of divisors of other numbers is even**.
 
 12. $\mathcal{O}(sieve) = \mathcal{O}(N * \log{\log{N}})$. This can be shown using the Harmonic Series of primes. $\sum_{p}^{N} \frac{1}{p} = \ln{\ln{N}} + \texttt{constant}$
 
@@ -82,6 +88,15 @@ On the other hand, the sum of the first $x$ even numbers ($x > 1$) is never a pe
 
     14.1. If 2 numbers have the same digit sum, that implies that they are $9k$ apart, but not the other way around. E.g. $91$ and $100$.
 
+15. From **Fermat's Little Theorem**:
+
+If $p$ is a prime number, then for any integer $a$ not divisible by $p$, the congruence relation below holds.
+
+$$a^{p-1} \equiv 1 \pmod{p}$$
+
+**Conditions:**
+- $p$ is a prime
+- $gcd(a, p) = 1$
 
 ## Factorials and Combinations
 1. Inverse modulo property
