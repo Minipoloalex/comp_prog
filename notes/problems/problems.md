@@ -53,6 +53,7 @@
 ## Mathematics
 - Creating strings 2 and Distributing apples: simple **combination** problems
 - Candy lottery: +/- simple **expected values** problem
+- Divisor analysis: **number theory** to compute the **number of divisors, sum of divisors and product of divisors** modulo M based on the prime factors of a very large number. Basically, go through the formulas and figure out ways to apply MOD. Requires applying **MOD - 1** to the exponent of the product of divisors, and a trick to divide the exponent by two in the perfect square and non-perfect square cases (for perfect squares, use $(\sqrt{n})^{d(n)}$, otherwise divide a term of the exponent).
 
 ## String Algorithms
 - Finding Periods: **Z-function** is easier to implement, or **Hashing** in $\mathcal{O}(N \log N)$.
