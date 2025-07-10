@@ -52,7 +52,7 @@ void sieve(ll upper) {  // can be shown complexity is O(N log(log N))
         p.push_back(i);
     }
 }
-vll primeFactors(ll N) {
+vll primeFactors(ll N) {    // O(sqrt(n) / ln(n))
     vll factors;
     for (int i = 0; i < (int) p.size() && (p[i] * p[i]) <= N; i++) {
         while (N % p[i] == 0) {
@@ -63,13 +63,13 @@ vll primeFactors(ll N) {
     if (N != 1) factors.push_back(N);
     return factors;
 }
-int vp(int _p, int n) {  // Legendre's formula
-    int res = 0;
-    for (int pi = _p; pi <= n; pi *= _p) { // sum(i=1 -> inf, floor(n/pi))
-        res += n/_p;
-    }
-    return res;
-}
+// int vp(int _p, int n) {  // Legendre's formula
+//     int res = 0;
+//     for (int pi = _p; pi <= n; pi *= _p) { // sum(i=1 -> inf, floor(n/pi))
+//         res += n/_p; // bug: n/pi instead?
+//     }
+//     return res;
+// }
 int extEuclidean(int a, int b, int &x, int &y) {
     int xx = y = 0;
     int yy = x = 1;
