@@ -4,6 +4,11 @@ To find the diameter of a tree, we can just do 2 DFS's. In one, we will get the 
 The most distant node of every node in a tree is one of the endpoints of the diameter.
 Proof by contradiction: since it's a tree, we know that the nodes connect to the diameter path. If it does and we know our node isn't one endpoint of the diameter, then we also know that it can't be larger than the diameter, so its largest distance is to one of its endpoints.
 
+## DP Solving for All Roots
+Usually, in these kinds of problems, we **first compute the result for the subtree only**, using a **bottom-up traversal of the tree** (basically, the answers are propagated from upwards from the leaves). This already obtains the answer for the root of the tree (for the root, the answer for the subtree is simply the answer).
+
+After having the subtree answers, we can **compute the answers also accounting for going up (and not just the subtree)**. We can **propagate the answers downwards from the root**, since already we have the answer for the root. When propagating downwards, $u \rightarrow v$, we likely want to **exclude the answer corresponding to the child $v$ from $u$'s answer $dp[u]$**, so that we can **combine $u$'s answer with $v$'s subtree answer** (to obtain $v$'s answer: $dp[v]$). In some problems, we can may **exclude it manually** (e.g. subtract, divide, modular division...). If that's not possible, we **can also compute the prefix and suffix values for the children of every node**, allowing us to explicitly exclude a specific child's value (aka exclude a child's contribution to $u$'s answer).
+
 
 ## Binary Jumping
 
@@ -23,7 +28,7 @@ The table represents the `2^k`-th ancestor of node `i`.
 | 3   | 2           | 1           | -1          |
 | 4   | 3           | 2           | 0           |
 
-## Build the Table
+### Build the Table
 
 The way to compute is simple:
 - In ascending order of $k$, compute this for every node $i$: $$\texttt{up}[\texttt{i}][\texttt{k}] = \texttt{up}[\texttt{up}[\texttt{i}][\texttt{k}-1]][\texttt{k}-1], \\\textit{if}\ \ \texttt{up}[\texttt{i}][\texttt{k}-1] \neq -1$$

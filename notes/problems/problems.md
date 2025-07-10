@@ -42,6 +42,7 @@
 ## Tree Algorithms
 - Tree matching: **simple greedy algorithm** or **dp on trees**. DP version has some additional considerations: can only choose one out of the children to connect to.
 - Tree Distances 1: Max distance for every node. Either **DP solving for all roots** or a **greedy algorithm**: the most distant node of every node is one of the nodes of the diameter.
+- Tree Distances 2: Sum of distances for every node to every other node. **DP solving for all roots, based on subtree sizes and distance of root**: based on how much the distance changes when moving to a child.
 - Subtree queries: **Euler Tour technique**: PURQ for subtree values
 - Company queries 1: Simplest **Binary Jumping**: who is x's parent k levels above (requires -1)
 - Company queries 2: Simplest **Lowest Common Ancestor**
