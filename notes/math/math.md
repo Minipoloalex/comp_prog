@@ -98,6 +98,16 @@ $$a^{p-1} \equiv 1 \pmod{p}$$
 - $p$ is a prime
 - $gcd(a, p) = 1$
 
+16. The number of distinct $GCD$'s of a number $M$ to other numbers (can be lots of other numbers) is obviously limited by the number of divisors of $M$.
+
+17. Doing "$(a_i + k)\mod{m}$" keeps "$a_i \mod{gcd(k, m)}$" invariant.
+
+$$(a_i + k) \mod{gcd(k, m)} = a_i \mod{gcd(k, m)}$$
+
+This is simple to prove:
+- Given $g = gcd(k, m)$, we have $g \mid k$ and $g \mid m$.
+- This means that $k \mod g = 0$, so adding $k$ has no effect modulo $g$.
+
 ## Factorials and Combinations
 1. Inverse modulo property
 $$(a*x) \mod P \equiv 1$$
