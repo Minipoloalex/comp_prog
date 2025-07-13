@@ -64,6 +64,8 @@
 - Finding Periods: **Z-function** is easier to implement, or **Hashing** in $\mathcal{O}(N \log N)$.
 
 ## Geometry
+- Intersection points: **intersections between horizontal and vertical lines**: use sweep line. Build an events list, and go through $x$ (for example), with horizontal segments being added to a **Fenwick Tree** for querying on vertical segments (query range $[y_1, y_2]$). After an horizontal segment ends, we remove it from the Fenwick Tree.
+
 
 ## Advanced Techniques
 - Meet in the middle: subset sum problem (how many ways to choose a subset of numbers with sum x) with up to $1e9$.
