@@ -35,10 +35,12 @@
 - Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**. Requires handling lots of cases: all cases in a successor graph: trees, loops, different connected components, ...
 
 ## Range Queries
+- Hotel Queries: **walking on a Segment Tree**: segment tree to keep maximums and corresponding ids (for same maximums, keep first id).
 - List Removals: **find the k-th element** in an ordered set at each step
 - Salary Queries: **dynamic range sum queries**, with **coordinate compression** (offline queries): requires using vectors for BIT. Otherwise, can use ordered_set (online queries).
-- Distinct Values Queries: Find the number of unique values in subarrays given by queries. Needs offline processing. **Offline queries + Fenwick Tree**: enable and disable each value, to reduce the problem to finding the range sum over activated values in a subarray.
-- Hotel Queries: **walking on a Segment Tree**: segment tree to keep maximums and corresponding ids (for same maximums, keep first id).
+- Subarray Sum Queries: Find the **subarray with the maximum sum on an interval**. Use a **Segment Tree** that keeps track of **prefix** subarray maximum sum, **suffix** subarray maximum sum, **maximum** sum, and total **sum**. We can use the auxiliar values to compute the maximum subarray sum.
+- Distinct Values Queries: Find the number of unique values in subarrays given by queries. Needs offline processing. **Offline queries + Fenwick Tree**: enable and disable each value, to reduce the problem to finding the range sum over activated values in a subarray. The idea is to "activate" each value the closest to the current index $i$ (the closest to the right, which is the best possible for intervals that end at $i$, and span across to the left).
+
 
 ## Tree Algorithms
 - Tree matching: **simple greedy algorithm** or **dp on trees**. DP version has some additional considerations: can only choose one out of the children to connect to.
