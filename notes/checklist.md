@@ -2,5 +2,10 @@
 - Make sure you **understand the problem statement**, as well as the **test cases**.
 - Try to **find some observations** about the problem.
     - You should **formulate any observations made and annotate them**. Even if they're not the main part of the problem, they might be useful for parts of it.
+    - If it's an **easy problem**, (try to) **make a simple proof** for the observations to **avoid getting WA**.
+    - You should also **experiment with more examples and different test cases**, to try to get a **counter-example for the observation**, depending on how sure you are. It can also be useful to detect other cases (not covered by the observation).
+    - **Never just make an observation and assume it to be true**, always double-check it.
 - **Formulate the solution and the implementation** before trying to implement anything.
     - If a solution is too complicated or elaborate, it's likely that there's some other way to solve the problem, likely with some additional observations.
+- Depending on the number and variety of tests, **make more tests, to cover all the cases**.
+- **Double check the code** through all of the steps after passing all the public test cases.
