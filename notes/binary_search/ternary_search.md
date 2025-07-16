@@ -54,6 +54,9 @@ $$T(n) = T({2n}/{3}) + O(1) = \Theta(\log n)$$
 With a fixed error margin $\epsilon$, the complexity becomes:
 $\mathcal{O}(\log(\frac{n}{\epsilon}))$
 
+To better measure the number of operations, you can also 
+$\mathcal{O}(\log_{3/2}(\frac{n}{\epsilon})) = \mathcal{O}(\log_{1.5}(\frac{n}{\epsilon}))$
+
 ## Binary Search (For Ternary Search)
 ```cpp
 int lo = 0, hi = n - 1;
@@ -71,7 +74,7 @@ while (lo < hi) {
 ## General considerations
 > A function is unimodal if it strictly decreases first, then reaches a minimum, then strictly increases (for the minimum case).
 
-We are very specific about the function having to strictly increase and decrease. This is because we can only allow our function to be flat at the minimum! If we have a flat section anywhere else, it's possible that our ternary search ends up eliminating the wrong section.
+We are very specific about the function having to strictly increase and decrease. This is because **we can only allow our function to be flat at the minimum!** If we have a flat section anywhere else, it's possible that our ternary search ends up eliminating the wrong section.
 
 ## Example problems
 Check [USACO ternary search](https://usaco.guide/gold/ternary-search).

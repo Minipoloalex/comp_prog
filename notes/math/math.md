@@ -179,3 +179,8 @@ $$\mathbb{E}[X \cdot Y] = \mathbb{E}[X] \cdot \mathbb{E}[Y] \quad \text{if } X \
 
 For example:
 $$\mathbb{E}[X^2] \ne (\mathbb{E}[X])^2$$
+
+
+## Simple formulas
+1. **Change logarithm base**
+$$ \log_b(X) = \frac{\log(X)}{\log(b)}$$
