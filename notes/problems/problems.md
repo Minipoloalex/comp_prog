@@ -35,6 +35,7 @@
 - Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**. Requires handling lots of cases: all cases in a successor graph: trees, loops, different connected components, ...
 
 ## Range Queries
+- Range XOR Queries: **static prefix XOR sums**
 - Hotel Queries: **walking on a Segment Tree**: segment tree to keep maximums and corresponding ids (for same maximums, keep first id).
 - List Removals: **find the k-th element** in an ordered set at each step
 - Salary Queries: **dynamic range sum queries**, with **coordinate compression** (offline queries): requires using vectors for BIT. Otherwise, can use ordered_set (online queries).
