@@ -124,7 +124,6 @@ public:
 void solve() {
     int n, c;
     cin >> n >> c;
-    vector<int> a(n, 0);
     RURQ ft(n);
     while (c--) {
         int type;
