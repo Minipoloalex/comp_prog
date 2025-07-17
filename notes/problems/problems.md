@@ -39,6 +39,10 @@
 - Hotel Queries: **walking on a Segment Tree**: segment tree to keep maximums and corresponding ids (for same maximums, keep first id).
 - List Removals: **find the k-th element** in an ordered set at each step
 - Salary Queries: **dynamic range sum queries**, with **coordinate compression** (offline queries): requires using vectors for BIT. Otherwise, can use ordered_set (online queries).
+- Prefix Sum Queries:
+    - Use a **Segment Tree** to keep track of the maximum prefix sum and the total sum: $pref = max(pref_1, sum_1 + pref_2)$ and $sum = sum_1 + sum_2$.
+    - More complicated/elaborate, but good as a thinking exercise: Use a **Lazy Propagation Segment Tree** that **stores the actual prefix sums array and does maximum**. Then, each query to update a single position $k$ should update the range $[k, n-1]$ (add to that range) with $AddValue = a[k]_{new} - a[k]_{old}$. To answer queries, we want the maximum prefix sum in $[a,b]$, so we can get the maximum prefix sum in that range, and then subtract the exact prefix sum $pref[0, a-1] = range\_query(a-1,a-1)$.
+
 - Pizzeria Queries: Answer queries (and do point updates) answering which pizza is cheaper for a building, with each building have a pizzeria costing $p_k$ and the cost of travelling from $a$ to $b$ being $|a - b|$. Use a **Segment Tree** that **keeps track of the best result to the left and the best result to the right**. My implementation kept the indices and computed the costs for the left and right, computing the comparison costs each time. The CSES implementation uses only two values instead.
 - Range Updates and Sums: **range adds**, **range sets** and **range sums**: use a **Lazy Segment Tree**, with multiple `LazyUpdate` types.
 
