@@ -108,6 +108,19 @@ This is simple to prove:
 - Given $g = gcd(k, m)$, we have $g \mid k$ and $g \mid m$.
 - This means that $k \mod g = 0$, so adding $k$ has no effect modulo $g$.
 
+18. If we apply matrix R after matrix L, then the product is: $R * L$.
+
+19. We can modulo matrix elements to do the product of matrices (since matrix multiplication is just repeated additions and multiplications).
+$$
+    (R L)_{ij}
+    \;=\;\sum_{k} R_{ik}\,L_{kj}.
+$$
+So:
+$$
+    (A \bmod M)\,(B \bmod M)\;\bmod M
+    \;=\;(A\,B)\bmod M.
+$$
+
 ## Factorials and Combinations
 1. Inverse modulo property
 $$(a*x) \mod P \equiv 1$$
