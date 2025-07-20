@@ -6,3 +6,11 @@ https://cppreference.com/w/cpp/algorithm/unique.html
 sort(v.begin(), v.end());
 v.erase(unique(v.begin(), v.end()), v.end());
 ```
+
+## GCD
+Note that:
+
+```
+gcd(0, 0) = 0;
+gcd(0, n) = n;
+```
