@@ -44,6 +44,7 @@
     - More complicated/elaborate, but good as a thinking exercise: Use a **Lazy Propagation Segment Tree** that **stores the actual prefix sums array and does maximum**. Then, each query to update a single position $k$ should update the range $[k, n-1]$ (add to that range) with $AddValue = a[k]_{new} - a[k]_{old}$. To answer queries, we want the maximum prefix sum in $[a,b]$, so we can get the maximum prefix sum in that range, and then subtract the exact prefix sum $pref[0, a-1] = range\_query(a-1,a-1)$.
 
 - Pizzeria Queries: Answer queries (and do point updates) answering which pizza is cheaper for a building, with each building have a pizzeria costing $p_k$ and the cost of travelling from $a$ to $b$ being $|a - b|$. Use a **Segment Tree** that **keeps track of the best result to the left and the best result to the right**. My implementation kept the indices and computed the costs for the left and right, computing the comparison costs each time. The CSES implementation uses only two values instead.
+- Forest Queries 2: simplest **2D Fenwick Tree (Online)**
 - Range Updates and Sums: **range adds**, **range sets** and **range sums**: use a **Lazy Segment Tree**, with multiple `LazyUpdate` types.
 
 - Subarray Sum Queries: Find the **subarray with the maximum sum on an interval**. Use a **Segment Tree** that keeps track of **prefix** subarray maximum sum, **suffix** subarray maximum sum, **maximum** sum, and total **sum**. We can use the auxiliar values to compute the maximum subarray sum.
