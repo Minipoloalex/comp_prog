@@ -35,6 +35,10 @@
 - Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**. Requires handling lots of cases: all cases in a successor graph: trees, loops, different connected components, ...
 
 ## Range Queries
+- Static Range Minimum Queries:
+    - Simply use a **Segment Tree** or a **Sparse Table**
+    - Use a **divide and conquer** approach to answer **offline queries** about associative operations.
+    - Use a **divide and conquer** approach to save a 2D array using only $\mathcal{O}(N \cdot \log{N})$ memory, similar to a Sparse Table, then **answer queries online** (not implemented).
 - Range XOR Queries: **static prefix XOR sums**
 - Hotel Queries: **walking on a Segment Tree**: segment tree to keep maximums and corresponding ids (for same maximums, keep first id).
 - List Removals: **find the k-th element** in an ordered set at each step
