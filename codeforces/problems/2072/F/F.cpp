@@ -5,7 +5,7 @@ const int MAX = int(1e6);
 
 int fact[MAX + 1];
 
-void precompute_facts() {
+void precompute_facts() {   // count the number of 2's in the factorial
     fact[0] = 0;
     for (int i = 1; i <= MAX; i++) {
         int cnt = 0;
@@ -23,7 +23,7 @@ void solve() {
     cin >> n >> k;
     n--;
     for (int i = 0; i <= n; i++) {
-        int cnt = fact[n] - fact[n - i] - fact[i];
+        int cnt = fact[n] - fact[n - i] - fact[i];  // is comb(n, i) even?
         if (cnt > 0) {
             cout << "0 ";
         }
