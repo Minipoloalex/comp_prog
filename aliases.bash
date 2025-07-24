@@ -4,7 +4,6 @@ alias comp="cd ~/Documents/comp_prog && code ."
 alias cses="cd ~/Documents/comp_prog && code . && cd cses"
 alias codeforces="cd ~/Documents/comp_prog && code . && cd codeforces"
 alias atcoder="cd ~/Documents/comp_prog && code . && cd atcoder"
-alias tsplib="code ~/Documents/TSP-lib"
 
 alias problem='echo "#include <bits/stdc++.h>
 using namespace std;
