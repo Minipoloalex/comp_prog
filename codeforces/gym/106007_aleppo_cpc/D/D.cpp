@@ -21,8 +21,8 @@ void solve() {
 
         for (int c : g[u]) {
             if (!vis[c]) {
-                ans.emplace_back(u, c);
                 dfs(c);
+                ans.emplace_back(u, c); // post-order
             }
         }
     };
@@ -34,10 +34,6 @@ void solve() {
 
     if (can) {
         cout << "Yes\n";
-        // for (int i = 0; i < n; i++) {
-        //     for (int c : tree[i]) cout << i + 1 << ' ' << c + 1 << '\n';
-        // }
-        reverse(ans.begin(), ans.end());
         for (auto &[a, b]: ans) {
             cout << a + 1 << " " << b + 1 << '\n';
         }
