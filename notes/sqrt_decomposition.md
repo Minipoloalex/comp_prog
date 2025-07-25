@@ -25,10 +25,10 @@ $$
 $$
 
 **Answer all queries in Mo’s order**. To answer the next query $[L, R]$, perform:  
-1. while $\mathtt{mo\_right} < R$, extend to $[\mathtt{mo\_left},\,\mathtt{mo\_right}+1]$;  
-2. while $\mathtt{mo\_right} > R$, shrink to $[\mathtt{mo\_left},\,\mathtt{mo\_right}-1]$;  
-3. while $\mathtt{mo\_left} > L$, extend to $[\mathtt{mo\_left}-1,\,\mathtt{mo\_right}]$;  
-4. while $\mathtt{mo\_left} < L$, shrink to $[\mathtt{mo\_left}+1,\,\mathtt{mo\_right}]$.
+1. while $\mathtt{mo\_right} < R$, extend to $[\mathtt{mo\_left},\mathtt{mo\_right}+1]$
+2. while $\mathtt{mo\_right} > R$, shrink to $[\mathtt{mo\_left},\mathtt{mo\_right}-1]$
+3. while $\mathtt{mo\_left} > L$, extend to $[\mathtt{mo\_left}-1,\mathtt{mo\_right}]$
+4. while $\mathtt{mo\_left} < L$, shrink to $[\mathtt{mo\_left}+1,\mathtt{mo\_right}]$
 
 Each extension or deletion takes $O(F)$ time, so moving from one query’s segment $[\mathtt{mo\_left}, \mathtt{mo\_right}]$ to $[L, R]$ costs:
 $$
