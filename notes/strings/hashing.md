@@ -20,7 +20,7 @@ where $b - a + 1$ just represents the size of the substring.
 Check the table on the CPH link.
 
 
-- We can just do more hashes two hash values with parameter $B \approx 1e9$ correspond to one hash value of $B \approx 1e18$.
+- We can just do more hashes: two hash values with parameter $B \approx 1e9$ correspond to one hash value of $B \approx 1e18$.
 
 Do not use constants $2^{32}$ or $2^{64}$, since specific inputs are known to lead to collisions.
 
