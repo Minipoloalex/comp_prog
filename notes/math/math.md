@@ -12,7 +12,9 @@ The exponent $6$ from the prime factor $2$ is divisible by $[1, 2, 3, 6]$, so it
 
 4. A group of numbers is congruent to the same value w.r.t. a maximum mod $m$ given by $m = \texttt{gcd}(0, \texttt{gcd}(|a1 - a2|, \texttt{gcd}(|a2 - a3|, ...)))$. Basically, $m$ is the GCD of the differences (disregarding the order, because of $(1)$).
 
-5. The approximate number of prime numbers up to $N$ is of the complexity of $\pi(N) \approx \mathcal{O}(\frac{N}{\ln N})$.
+5. The **approximate number of prime numbers up to $N$** is of the complexity of $\pi(N) \approx \mathcal{O}(\frac{N}{\ln N})$.
+
+    5.1 **Prime gaps**: The average gap between two primes is about $\ln{A}$, but there can be pretty big gaps, more than 1000. Check https://en.wikipedia.org/w/index.php?title=Prime_gap&oldid=1295208192 (second table).
 
 6. The number of divisors $d(n)$ of an integer number is of the complexity of $\mathcal{O}\sqrt{N}$. It is easy to understand because of the way divisors pair up: $(d, \frac{N}{d})$.
 
@@ -108,6 +110,9 @@ This is simple to prove:
 - Given $g = gcd(k, m)$, we have $g \mid k$ and $g \mid m$.
 - This means that $k \mod g = 0$, so adding $k$ has no effect modulo $g$.
 
+Simple problem example for this: https://codeforces.com/problemset/problem/2050/F. Doing the GCD of the 
+differences gives the largest MOD that makes numbers equal (see editorial).
+
 18. If we apply matrix R after matrix L, then the product is: $R * L$.
 
 19. We can modulo matrix elements to do the product of matrices (since matrix multiplication is just repeated additions and multiplications).
@@ -120,6 +125,13 @@ $$
     (A \bmod M)\,(B \bmod M)\;\bmod M
     \;=\;(A\,B)\bmod M.
 $$
+
+20. $gcd(a, b) = c \implies gcd(\frac{a}{c}, \frac{b}{c}) = 1$
+
+21. Given a list of integer numbers $a_1,a_2,\dots,a_n$, we can tell if a linear combination of them (with negative and/or positive coefficients) can form a (large) number $K$ by, given $g = gcd(a_1,a_2,\dots,a_n)$:
+
+$$ c_1 a_1 + c_2 a_2 + \cdots + c_n a_n = K \texttt{, integer coefficients }c_i\in [-\infty, \infty], \texttt{ iff}$$
+$$g \mid K \quad\Longleftrightarrow\quad K \bmod g = 0$$
 
 ## Factorials and Combinations
 1. Inverse modulo property
