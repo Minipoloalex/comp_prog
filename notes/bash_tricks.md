@@ -33,3 +33,11 @@ for ((i=1;i<=10;i++)); do echo $i; done
 ```bash
 python3 -c 'print("a" * 500)' > myin.txt
 ```
+
+#### Other Python Tricks
+All equivalent choices to print a number in $e$-notation. E.g. `6.5e+07`.
+```py
+print(format(n, ".1e"))
+print(f"{n:.1e}")
+print("%.1e" % n)
+```

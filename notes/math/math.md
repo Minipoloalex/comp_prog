@@ -106,6 +106,7 @@ $$a^{p-1} \equiv 1 \pmod{p}$$
 
 $$(a_i + k) \mod{gcd(k, m)} = a_i \mod{gcd(k, m)}$$
 
+
 This is simple to prove:
 - Given $g = gcd(k, m)$, we have $g \mid k$ and $g \mid m$.
 - This means that $k \mod g = 0$, so adding $k$ has no effect modulo $g$.
@@ -113,7 +114,7 @@ This is simple to prove:
 Simple problem example for this: https://codeforces.com/problemset/problem/2050/F. Doing the GCD of the 
 differences gives the largest MOD that makes numbers equal (see editorial).
 
-18. If we apply matrix R after matrix L, then the product is: $R * L$.
+18. If we apply matrix $R$ after matrix $L$, then the product is: $R * L$.
 
 19. We can modulo matrix elements to do the product of matrices (since matrix multiplication is just repeated additions and multiplications).
 $$
@@ -132,6 +133,8 @@ $$
 
 $$ c_1 a_1 + c_2 a_2 + \cdots + c_n a_n = K \texttt{, integer coefficients }c_i\in [-\infty, \infty], \texttt{ iff}$$
 $$g \mid K \quad\Longleftrightarrow\quad K \bmod g = 0$$
+
+22. An interesting fact is that the prefix sum of the differences between consecutive perfect squares is almost a perfect square itself. In fact, $S + 1$ is a perfect square. E.g. in the sequence of perfect squares: $1, 4, 9, 16, 25$, we have the difference: $3 + 5 + 7 + 9 = 8 + 7 + 9 = 15 + 9 = 24$.
 
 ## Factorials and Combinations
 1. Inverse modulo property
