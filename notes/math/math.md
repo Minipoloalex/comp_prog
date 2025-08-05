@@ -136,6 +136,34 @@ $$g \mid K \quad\Longleftrightarrow\quad K \bmod g = 0$$
 
 22. An interesting fact is that the prefix sum of the differences between consecutive perfect squares is almost a perfect square itself. In fact, $S + 1$ is a perfect square. E.g. in the sequence of perfect squares: $1, 4, 9, 16, 25$, we have the difference: $3 + 5 + 7 + 9 = 8 + 7 + 9 = 15 + 9 = 24$.
 
+23. **Euclidean Algorithm**
+
+The base for the algorithm is: $$gcd(a, b) = gcd(b, a - b)$$
+```cpp
+int gcd(int a, int b) { // inefficient (just the idea)
+    while (a >= b) a -= b;  // since gcd(a, b) = gcd(a - b, b)
+    ...
+}
+```
+```cpp
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+```
+```cpp
+int64_t euclid(int64_t a, int64_t b) {
+	while (b > 0) { // iterative, euclid-like implementation
+        // a = k * b + r
+        // r = a % b
+		int64_t k = a / b;
+		a -= k * b;
+		swap(a, b);
+	}
+	return a;
+}
+```
+
 ## Factorials and Combinations
 1. Inverse modulo property
 $$(a*x) \mod P \equiv 1$$
