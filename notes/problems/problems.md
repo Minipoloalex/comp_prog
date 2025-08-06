@@ -67,6 +67,7 @@
 - Company queries 2: Simplest **Lowest Common Ancestor**
 - Distance queries: Simplest **distance between two nodes in a tree**
 - Path Queries: **Euler Tour + sum of values on path from root**: use RUPQ on resulting Euler Tour
+- Path Queries 2: Classic **Heavy-Light Decomposition**: find max along a path and update nodes. Lazy segment tree may TLE, so just adapt HLD to the point update version (iterative).
 - Distinct colors: **Euler Tour + Range Sum Queries for distinct values in a subtree**: similar to Range-Queries/Distinct-Values-Queries
 
 ## Mathematics
