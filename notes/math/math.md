@@ -138,7 +138,9 @@ $$g \mid K \quad\Longleftrightarrow\quad K \bmod g = 0$$
 
 23. **Euclidean Algorithm**
 
-The base for the algorithm is: $$gcd(a, b) = gcd(b, a - b)$$
+The base for the algorithm is: $gcd(a, b) = gcd(b, a - b)$. Or more general:
+$$gcd(a, b) = gcd(b, a + k \cdot b)$$
+
 ```cpp
 int gcd(int a, int b) { // inefficient (just the idea)
     while (a >= b) a -= b;  // since gcd(a, b) = gcd(a - b, b)
