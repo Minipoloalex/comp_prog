@@ -1,0 +1,8 @@
+7
+Aqueduc_Medicis 11
+Parc_Montsouris 40
+Place_Denfert 10
+Hopital_Sainte_Anne 4
+Butte_aux_cailles 20
+Cite_florale 12
+Prison_de_la_Sante 0
