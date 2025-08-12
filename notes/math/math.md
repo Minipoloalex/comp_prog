@@ -242,3 +242,7 @@ $$\mathbb{E}[X^2] \ne (\mathbb{E}[X])^2$$
 ## Simple formulas
 1. **Change logarithm base**
 $$ \log_b(X) = \frac{\log(X)}{\log(b)}$$
+
+2. **Max** and **Min**:
+$$\max(a,b)=\frac{a+b+\lvert a-b\rvert}{2}$$
+$$\min(a,b)=\frac{a+b-\lvert a-b\rvert}{2}$$
