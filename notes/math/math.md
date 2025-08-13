@@ -102,9 +102,9 @@ $$a^{p-1} \equiv 1 \pmod{p}$$
 
 16. The number of distinct $GCD$'s of a number $M$ to other numbers (can be lots of other numbers) is obviously limited by the number of divisors of $M$.
 
-17. Doing "$(a_i + k)\mod{m}$" keeps "$a_i \mod{gcd(k, m)}$" invariant.
+17. Doing "$(a_i + k)\bmod{m}$" keeps "$a_i \bmod{gcd(k, m)}$" invariant.
 
-$$(a_i + k) \mod{gcd(k, m)} = a_i \mod{gcd(k, m)}$$
+$$(a_i + k) \bmod{gcd(k, m)} = a_i \bmod{gcd(k, m)}$$
 
 
 This is simple to prove:
@@ -166,11 +166,73 @@ int64_t euclid(int64_t a, int64_t b) {
 }
 ```
 
+### Fibonacci Numbers
+24. **Consecutive Fibonacci Numbers are coprime**:
+$$gcd(F_{n+1}​,F_n​)=1$$
+>---
+>Can be proven using Euclidean Algorithm (since $F_{n+1} - F_n = F_{n-1}$):
+>
+> $\gcd(F_{n+1},F_n)=\gcd(F_n,F_{n-1})=\cdots=\gcd(F_2,F_1)=1$
+>
+>---
+
+25. **Fibonacci Addition Formula**:
+$$F_{a+b} = F_{a-1} F_b + F_a F_{b+1}$$
+>---
+> Proof by Induction on $b$:
+>> Base case:
+>>
+>> $b=0$: $\quad$
+>> $F_{a+0}=F_a=F_{a-1}F_0+F_aF_1=0+F_a$
+>
+>> For $a\ge1,b\ge0$:
+>>
+>> $F_{a+b+1}=F_{a+b}+F_{a+b-1}=F_{a-1}(F_b+F_{b-1})+F_a(F_{b+1}+F_b)=F_{a-1}F_{b+1}+F_aF_{b+2}$
+>>
+>>---
+
+26. **GCD of Fibonacci numbers**:
+$$gcd(F_n, F_m) = F_{gcd(n, m)}$$
+
+A simple takeaway from this formula is that:
+$$m\mid n\iff F_m\mid F_n$$
+
+Also, note that we can perform Euclidean step on the fibonacci indices:
+
+$$gcd(F_n, F_{n+t}) = gcd(F_n, F_t)$$
+
+
+>---
+> Proof based on previous formulas (coprime neighbors, addition formula, euclidean step):
+>
+>>
+>>
+>>Let's prove: $gcd(F_n, F_{n+t}) = gcd(F_n, F_t): \quad$ euclidean step on the indices (note that it's not on the values, but on the indices)
+>>
+>> WLOG:
+>>
+>>$gcd(F_n, F_m) = gcd(F_n, F_{n+t}), \quad t \ge 1$
+>>>Proof:
+>>>
+>>>$gcd(F_n, F_{n+t}) = gcd(F_n, F_{t-1}F_n + F_tF_{n+1}) = gcd(F_n, F_tF_{n+1}): \quad$ based on Euclidean step: $F_{t-1}F_n = k \cdot F_n$
+>>>
+>>> $gcd(F_n, F_tF_{n+1}) = gcd(F_n, F_t): \quad$ coprime neighbors
+>>>
+> We proved we can use Euclidean's step on the indicies, so let's use it:
+> 
+>> With $m = n \cdot q + r$: $gcd(F_n, F_m) = gcd(F_n, F_r)$
+>>
+>> Continuing with that repeatedly, we get $gcd(F_n, F_m) = gcd(F_d, F_0) = F_d$, where $d = gcd(n, m)$.
+>>
+>>Therefore, we just concluded that: $gcd(F_n, F_m) = F_{gcd(n, m)}$
+>>>---
+
+
 ## Factorials and Combinations
 1. Inverse modulo property
-$$(a*x) \mod P \equiv 1$$
-$$((a \mod{P})*x \mod{P}) \equiv 1$$
-This means that: $\texttt{modinv}(A, P) = \texttt{modinv}(A \mod{P}, P)$
+$$(a*x) \bmod P \equiv 1$$
+$$((a \bmod{P})*x \bmod{P}) \equiv 1$$
+This means that: $\texttt{modinv}(A, P) = \texttt{modinv}(A \bmod{P}, P)$
 
 2. Inverse modulo of factorials
 
