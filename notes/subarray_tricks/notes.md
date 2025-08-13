@@ -5,3 +5,6 @@ Problems:
 
 
 Problems where you count the number of subarrays that follow a certain condition are likely to be solved with prefix sums and iterating over them while maintaining a frequency count.
+
+
+It is also common for problems to sometimes ask stuff about medians and subarrays. Usually, we can binary search and replace each value with 1 or -1, depending on whether it's larger or smaller than the median to test.
