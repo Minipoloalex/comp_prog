@@ -72,8 +72,12 @@
 
 ## Mathematics
 - Creating strings 2 and Distributing apples: simple **combination** problems
-- Candy lottery: +/- simple **expected values** problem
 - Divisor analysis: **number theory** to compute the **number of divisors, sum of divisors and product of divisors** modulo M based on the prime factors of a very large number. Basically, go through the formulas and figure out ways to apply MOD. Requires applying **MOD - 1** to the exponent of the product of divisors, and a trick to divide the exponent by two in the perfect square and non-perfect square cases (for perfect squares, use $(\sqrt{n})^{d(n)}$, otherwise divide a term of the exponent).
+- Fibonacci Numbers: simplest **matrix exponentiation** problem (code in [Errichto Gym Problem C](../../codeforces/gym/102644_matrix_exponentiation/C/C.cpp))
+- Graph Paths 1: **matrix exponentiation** problem for counting paths of exactly $k$ edges between two nodes.
+- Graph Paths 2: **matrix exponentation** problem for determining minimum path of exactly $k$ edges. Requires adapting matrix multiplication (here we should call it combining matrices, since it's not multiplication). To do matrix exponentiation, we should be careful when setting the identity matrix.
+    * An interesting way to think about this problem is to try and combine two paths to make a larger one (see matrix exponentiation notes).
+- Candy lottery: +/- simple **expected values** problem
 
 ## String Algorithms
 - Finding Periods: **Z-function** is easier to implement, or **Hashing** in $\mathcal{O}(N \log N)$.
