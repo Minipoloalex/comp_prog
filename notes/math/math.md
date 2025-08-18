@@ -16,7 +16,7 @@ The exponent $6$ from the prime factor $2$ is divisible by $[1, 2, 3, 6]$, so it
 
     5.1 **Prime gaps**: The average gap between two primes is about $\ln{A}$, but there can be pretty big gaps, more than 1000. Check https://en.wikipedia.org/w/index.php?title=Prime_gap&oldid=1295208192 (second table).
 
-6. The number of divisors $d(n)$ of an integer number is of the complexity of $\mathcal{O}\sqrt{N}$. It is easy to understand because of the way divisors pair up: $(d, \frac{N}{d})$.
+6. The number of divisors $d(n)$ of an integer number is of the complexity of $\mathcal{O}\sqrt{N}$. It is easy to understand because of the way divisors pair up: $(d, \frac{N}{d})$. However, in practice, it's much smaller (but computing it is still obviously $\sqrt{N}$).
 
 ```cpp
 // Count divisors of a number
@@ -227,6 +227,11 @@ $$gcd(F_n, F_{n+t}) = gcd(F_n, F_t)$$
 >>Therefore, we just concluded that: $gcd(F_n, F_m) = F_{gcd(n, m)}$
 >>>---
 
+27. **Number of distinct prime divisors**: this number is greatly limited. It is much smaller than $log(n)$. For instance, for $N = 1e9$, we have the first 10 primes:
+$$ 2*3*5*7*11*13*17*19*23*29 = 6469693230 > 1e9$$
+So, for numbers $\le 1e9$, we only need 9 primes, not $log2(1e9) = 30$.
+
+There is a similar thing for the number of divisors of a number: much smaller than $\sqrt{N}$ (see notes above).
 
 ## Factorials and Combinations
 1. Inverse modulo property
