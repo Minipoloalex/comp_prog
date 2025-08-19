@@ -6,4 +6,4 @@ MAX = int(1e9)
 
 print(n)
 for _ in range(n):
-    print(randint(MIN, MAX), G)
+    print(randint(MIN, MAX), randint(MIN, MAX), G)
