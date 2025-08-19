@@ -6,9 +6,11 @@
 ## Sorting and Searching
 - Nearest Smaller Values: for each index, find nearest position to left having a smaller value - **Classic monotonic stack**
 - Playlist: **two pointers** with set
-- Subarray Distinct Values: **sliding window** on distinct values, with a map
-- Maximum subarray sum 2: **sliding window on prefix sums** to find valid minimum for max subarray sum
 - Missing coin sum: simple **greedy with sorting**
+- Collecting Numbers: **simulate efficiently** by making an array with the positions of each permutation value.
+- Dinstinct Values Subarray: count the number of subarrays with distinct values. Can be seen as a **classic subarrays problem**: here, we count how many valid subarrays end at position $i$. We can use **two pointers** to maintain the current valid maximum size subarray. Basically we maintain a **sliding window** on distinct values, with a map.
+- Distinct Values Subsequences: count the number of subsequences with distinct values: from a specific value, we can choose to take any of its indices or none. We just need to remove the empty case.
+- Maximum subarray sum 2: **sliding window on prefix sums** to find valid minimum for max subarray sum
 
 ## Dynamic Programming
 - Minimal grid path: instead of a shortest path in the grid, we want the **lexicographically shortest string of the path**. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
@@ -89,6 +91,7 @@
 
 ## Advanced Techniques
 - Meet in the middle: subset sum problem (how many ways to choose a subset of numbers with sum x) with up to $1e9$.
+- Hamming Distance: use **bitwise optimizations**. Basically, we can make every value an integer (read it using a bitset, for instance) and compare numbers by counting the number of bits (popcount) of the XOR.
 - New Roads Queries: **find maximum along paths from any two pair of nodes** (queries): use **MST** to filter the edges to make a tree since we want to minimize the maximum along any path and use **binary lifting** to get the maximum along the paths.
 
 ## Bitwise
