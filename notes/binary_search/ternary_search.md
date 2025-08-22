@@ -15,6 +15,11 @@ Let's assume that we want to find the local minimum of our function. Then, a fun
 
 Note that this implies that **a convex function is also a unimodal function**.
 
+Basically, we can just show: $$\Delta{f(t)} \ge \Delta{f(t + 1)}$$
+
+With: $\Delta{f(t)} = f(t) - f(t-1)$
+
+
 We can also define a strictly convex function, although it's not as useful: a function where consecutive differences are increasing (derivative is increasing).
 
 #### Properties

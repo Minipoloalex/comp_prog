@@ -112,3 +112,47 @@ https://leetcode.com/problems/maximum-number-of-darts-inside-of-a-circular-dartb
 
 ### Convex Hull
 - https://codeforces.com/contest/1299/problem/C: Not obvious it can be solved with lower convex hull (check editorial).
+
+
+## Centers of Polygons
+
+### Geometric Median: Fermat-Weber Point
+This point is called the **Geometric median**. This is the problem of finding a point minimizing the sum of distances from given points: [https://en.wikipedia.org/wiki/Geometric\_median](https://en.wikipedia.org/wiki/Geometric_median)
+
+**Minimizes the sum of distances:**
+$$\displaystyle \arg\min_{x} \sum_{i=1}^{n} \|x - v_i\|$$
+
+### Center of Mass
+This is also called the **area centroid** of a polygon.
+
+**Minimizes:**
+$$\displaystyle \arg\min_{x} \iint_{P} \|x - r\|^{2}\, dA$$
+
+Useful for:
+- Balance/tipping checks: e.g., does table fall?
+- Expectation of random points
+- Continuous L2 minimizer over area, moment of inertia minimizer
+
+### Center of Minimum Enclosing Circle
+**Minimizes the maximum distance:**
+$$\displaystyle \arg\min_{x} \;\max_{i} \|x - v_i\|$$
+
+### Mean of vertices
+**Minimizes the sum of squared distances to vertices:**
+$$\displaystyle \arg\min_{x} \sum_{i=1}^{n} \|x - v_i\|^{2} \;=\; \frac{1}{n}\sum_{i=1}^{n} v_i$$
+
+>---
+>The proof isn't too complex. It comes from directly plugging the answer in the formula above.
+>
+>---
+
+**Weighted version:**
+$W=\sum w_i$ and $\mu_w=\frac{1}{W}\sum w_i v_i$
+
+Basically:
+For $w_i\ge 0$,
+
+$$
+\arg\min_x \sum_i w_i\|x-v_i\|^2
+= \frac{\sum_i w_i v_i}{\sum_i w_i},
+$$
