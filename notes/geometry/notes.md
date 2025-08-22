@@ -122,6 +122,11 @@ This point is called the **Geometric median**. This is the problem of finding a 
 **Minimizes the sum of distances:**
 $$\displaystyle \arg\min_{x} \sum_{i=1}^{n} \|x - v_i\|$$
 
+Example: In https://codeforces.com/gym/104017/problem/H, inside of a ternary search, we need to find the Fermat point of 3 triangles. We can do it with another 2D ternary search, or by a closed form solution (we don't get the $\arg\min$, only the $\min$).
+
+- **Closed form solution:** Check https://swerc.eu/2021/problemset/solutions_swerc2021_2022.pdf and https://en.wikipedia.org/wiki/Napoleon%27s_theorem.
+- 2D Ternary Search Solution: the value we're looking to minimize is convex over $x$ and $y$.
+
 ### Center of Mass
 This is also called the **area centroid** of a polygon.
 
@@ -137,12 +142,14 @@ Useful for:
 **Minimizes the maximum distance:**
 $$\displaystyle \arg\min_{x} \;\max_{i} \|x - v_i\|$$
 
+Example: A small modification to https://codeforces.com/gym/104017/problem/H, where instead of $sum \le R$, we would have $max \le R$.
+
 ### Mean of vertices
 **Minimizes the sum of squared distances to vertices:**
 $$\displaystyle \arg\min_{x} \sum_{i=1}^{n} \|x - v_i\|^{2} \;=\; \frac{1}{n}\sum_{i=1}^{n} v_i$$
 
 >---
->The proof isn't too complex. It comes from directly plugging the answer in the formula above.
+>The proof isn't too complex. It comes from directly plugging the answer (mean of vertices) in the formula above.
 >
 >---
 
