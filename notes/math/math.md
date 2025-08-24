@@ -14,7 +14,7 @@ The exponent $6$ from the prime factor $2$ is divisible by $[1, 2, 3, 6]$, so it
 
 5. The **approximate number of prime numbers up to $N$** is of the complexity of $\pi(N) \approx \mathcal{O}(\frac{N}{\ln N})$.
 
-    5.1 **Prime gaps**: The average gap between two primes is about $\ln{A}$, but there can be pretty big gaps, more than 1000. Check https://en.wikipedia.org/w/index.php?title=Prime_gap&oldid=1295208192 (second table).
+    5.1 **Prime gaps**: The average gap between two primes is about $\ln{A}$, but there can be pretty big gaps, more than 1000. Check https://en.wikipedia.org/w/index.php?title=Prime_gap&oldid=1295208192 (second table, where $g_n$ represents the size of the gap, and $p_n$ represents the prime before it).
 
 6. The number of divisors $d(n)$ of an integer number is of the complexity of $\mathcal{O}\sqrt{N}$. It is easy to understand because of the way divisors pair up: $(d, \frac{N}{d})$. However, in practice, it's much smaller (but computing it is still obviously $\sqrt{N}$).
 
@@ -44,7 +44,7 @@ Since $\ln \ln n \to \infty$ as $n \to \infty$, the exponent $\frac{\ln 2}{\ln \
 For a value of $10^6$, the exponent is approximately $0.26$.
 
 
-7. With any positive integer $x$, there is at least one square number in $[x,2x]$
+7. With any positive integer $x$, there is at least one square number in $[x,2x]$. Also, there is at least one prime number in $[x, 2x]$, given $x > 1$.
 
 8. Geometric progression: $a_0 + a_0 * q + a_0 * q^2 + ... + a_0 * q^{n - 1} = a_0 * \frac{1 - q^n}{1 - q}$.
 
@@ -231,7 +231,17 @@ $$gcd(F_n, F_{n+t}) = gcd(F_n, F_t)$$
 $$ 2*3*5*7*11*13*17*19*23*29 = 6469693230 > 1e9$$
 So, for numbers $\le 1e9$, we only need 9 primes, not $log2(1e9) = 30$.
 
+This observation can be useful, for instance, to compute the number of relative primes to a given number in an interval $[1, r]$ (see https://cp-algorithms.com/combinatorics/inclusion-exclusion.html#the-number-of-relative-primes-in-a-given-interval).
+
 There is a similar thing for the number of divisors of a number: much smaller than $\sqrt{N}$ (see notes above).
+
+28. **A multiplicative function is a function that satisfies:**
+$$ f(a\cdot b) = f(a) \cdot f(b) \texttt{,\quad if } a \text{ and } b \text{ are coprime}$$
+
+For example, $d(n)$ and $\sigma(n)$ are both multiplicative functions (number and sum of divisors).
+
+From https://cp-algorithms.com/algebra/divisors.html
+
 
 ## Factorials and Combinations
 1. Inverse modulo property
