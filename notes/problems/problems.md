@@ -96,7 +96,8 @@
 ## Geometry
 - Intersection points: **intersections between horizontal and vertical lines**: use sweep line. Build an events list, and go through $x$ (for example), with horizontal segments being added to a **Fenwick Tree** for querying on vertical segments (query range $[y_1, y_2]$). After an horizontal segment ends, we remove it from the Fenwick Tree.
 - Area of the union of rectangles: **sweep line algorithm** with a data structure (e.g. **count minimums in a segment tree**).
-
+- All Manhattan Distances: simple Manhattan distances observation: $X$ and $Y$ coordinates are completely independent here. We can just sort the coordinates and sum based on prefixes. It can help to explicitly write the formula down and simplify/optimize it.
+    * This problem looks like it can overflow from 64 bits, so I solved it in Python, which worked.
 ## Advanced Techniques
 - Meet in the middle: subset sum problem (how many ways to choose a subset of numbers with sum x) with up to $1e9$.
 - Hamming Distance: use **bitwise optimizations**. Basically, we can make every value an integer (read it using a bitset, for instance) and compare numbers by counting the number of bits (popcount) of the XOR.
