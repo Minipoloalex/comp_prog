@@ -26,8 +26,9 @@
 - Monsters: **shortest path with unweighted edges** from start to end in a labyrinth and specify the path. Also, avoid monsters - **BFS** from multiple sources
 - Shortest Routes 1: simplest **Dijkstra**
 - Shortest Routes 2: simplest **Floyd-Warshall**
-- High Score: Bellman-Ford (negative cycle application)
+- High Score: **Bellman-Ford (negative cycle application)**
 - Flight Discount: example of **adapting Dijkstra with flags**: distance array with >1D. Another possible solution is more ad-hoc (solution 1 from https://usaco.guide/problems/cses-1195-flight-discount/solution)
+- Cycle Finding: **Bellman-Ford to detect any negative cycle**: requires adapting Bellman-Ford to detect negative cycles regardless of shortest paths (not just those reachable from node $0$).
 - Round trip 2: find any cycle in a directed graph
 - Course Schedule: simplest **topological sort**
 - Longest Flight Route: simple **DP in a DAG**: find longest path in a DAG
