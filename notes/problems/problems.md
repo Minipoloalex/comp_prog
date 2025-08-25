@@ -37,6 +37,7 @@
 - Planets queries 2: determine minimum number of jumps to get from node $a$ to $b$ in a **successor graph**: **binary lifting**. Requires handling lots of cases: all cases in a successor graph: trees, loops, different connected components, ...
 - Planets and Kindgoms: simplest **Strongly Connected Components**
 - Coin Collector: simplest **DP on SCCs DAG**
+- Giant Pizza: **simplest 2-sat problem**
 
 ## Range Queries
 - Static Range Minimum Queries:
