@@ -67,7 +67,7 @@
 - Forest Queries 2: simplest **2D Fenwick Tree (Online)**
 - Range Updates and Sums: **range adds**, **range sets** and **range sums**: use a **Lazy Segment Tree**, with multiple `LazyUpdate` types.
 
-- Subarray Sum Queries: Find the **subarray with the maximum sum on an interval**. Use a **Segment Tree** that keeps track of **prefix** subarray maximum sum, **suffix** subarray maximum sum, **maximum** sum, and total **sum**. We can use the auxiliar values to compute the maximum subarray sum.
+- Subarray Sum Queries (and Subarray Sum Queries 2): Find the **subarray with the maximum sum on an interval**. Use a **Segment Tree** that keeps track of **prefix** subarray maximum sum, **suffix** subarray maximum sum, **maximum** sum, and total **sum**. We can use these auxiliar values to compute the maximum subarray sum.
 - Distinct Values Queries: Find the number of unique values in subarrays given by queries. Needs offline processing. **Offline queries + Fenwick Tree**: enable and disable each value, to reduce the problem to finding the range sum over activated values in a subarray. The idea is to "activate" each value the closest to the current index $i$ (the closest to the right, which is the best possible for intervals that end at $i$, and span across to the left).
 
 - Range Queries and Copies: simplest **Persistent Segment Tree** problem
