@@ -98,6 +98,7 @@
 - Area of the union of rectangles: **sweep line algorithm** with a data structure (e.g. **count minimums in a segment tree**).
 - All Manhattan Distances: simple Manhattan distances observation: $X$ and $Y$ coordinates are completely independent here. We can just sort the coordinates and sum based on prefixes. It can help to explicitly write the formula down and simplify/optimize it.
     * This problem looks like it can overflow from 64 bits, so I solved it in Python, which worked.
+
 ## Advanced Techniques
 - Meet in the middle: subset sum problem (how many ways to choose a subset of numbers with sum x) with up to $1e9$.
 - Hamming Distance: use **bitwise optimizations**. Basically, we can make every value an integer (read it using a bitset, for instance) and compare numbers by counting the number of bits (popcount) of the XOR.
@@ -119,6 +120,9 @@
 - Advertisement: **find nearest smaller element to left and to right** for each position - **Monotonic stack both ways**
 ### Binary Lifting:
 - Cyclic Array: build an **explicit graph** (successor graph) from each array position, then use **binary lifting similarly to LCA (go until $at < dst$)**
+
+## Additional problems 2
+- School Excursion: basically a coins DP problem, but use bitset to pass with $\mathcal{O}(N^2)$ complexity.
 
 ## Codeforces
 
