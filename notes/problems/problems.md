@@ -59,6 +59,11 @@
 
 - Pizzeria Queries: Answer queries (and do point updates) answering which pizza is cheaper for a building, with each building have a pizzeria costing $p_k$ and the cost of travelling from $a$ to $b$ being $|a - b|$. Use a **Segment Tree** that **keeps track of the best result to the left and the best result to the right**. My implementation kept the indices and computed the costs for the left and right, computing the comparison costs each time. The CSES implementation uses only two values instead.
     * Instead, we can do a more elegant solution. You can start from writing the minimum on paper, then splitting it for the right and left to get rid of the absolute value. Then, we can just maintain two segment trees, one for querying the left and another one for querying the right.
+- Range Interval Queries: several possible solutions
+    - online with 2D Fenwick Tree: TLEs
+    - online with Persistent Segment Tree: barely passes
+    - Merge-sort like (Editorial): keep an array with the segment tree node's values
+    - Offline processing by sweeping based on events, using a segment tree (Editorial): process queries in order of one dimension, keep a segment tree on the normal array indices
 - Forest Queries 2: simplest **2D Fenwick Tree (Online)**
 - Range Updates and Sums: **range adds**, **range sets** and **range sums**: use a **Lazy Segment Tree**, with multiple `LazyUpdate` types.
 
