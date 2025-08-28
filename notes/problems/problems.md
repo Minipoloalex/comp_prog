@@ -10,8 +10,14 @@
 - Collecting Numbers: **simulate efficiently** by making an array with the positions of each permutation value.
 - Dinstinct Values Subarray: count the number of subarrays with distinct values. Can be seen as a **classic subarrays problem**: here, we count how many valid subarrays end at position $i$. We can use **two pointers** to maintain the current valid maximum size subarray. Basically we maintain a **sliding window** on distinct values, with a map.
 - Distinct Values Subsequences: count the number of subsequences with distinct values: from a specific value, we can choose to take any of its indices or none. We just need to remove the empty case.
+- Reading Books: greedy based on a cool construction: sort by non-decreasing (check editorial)
 - Maximum subarray sum 2: **sliding window on prefix sums** to find valid minimum for max subarray sum
-
+- Subarray Sums 1:
+    * We can do the usual prefixes with a map, but we can also use two-pointers (editorial), since all sums are positive
+- Subarray Sums 2:
+    * Here, we'll need to do the prefixes with a map (we can use the exact same code) as in 1.
+- Subarray Divisibility:
+    * Similar idea to above, but here, we will bucket the values directly into a vector to count them (because we're doing MOD).
 ## Dynamic Programming
 - Minimal grid path: instead of a shortest path in the grid, we want the **lexicographically shortest string of the path**. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
 - Mountain range: Next greater to build a graph (monotonic stack), then just $DP$ to find the longest path distance in the graph.
