@@ -18,7 +18,9 @@
     * Here, we'll need to do the prefixes with a map (we can use the exact same code) as in 1.
 - Subarray Divisibility:
     * Similar idea to above, but here, we will bucket the values directly into a vector to count them (because we're doing MOD).
+
 ## Dynamic Programming
+- Longest Common Subsequence: classic LCS, requires reconstruction
 - Minimal grid path: instead of a shortest path in the grid, we want the **lexicographically shortest string of the path**. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
 - Mountain range: Next greater to build a graph (monotonic stack), then just $DP$ to find the longest path distance in the graph.
 - Increasing subsequences 2: DP thought process for subsequences, based on **bucketing previous results**. Requires range queries and coordinate compression.
