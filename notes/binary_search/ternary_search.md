@@ -6,7 +6,7 @@ A function $f(x)$ is considered unimodal on an interval $[l, r]$ if one of the f
 - The function strictly increases first, reaches a maximum (at a single point or over an interval), and then strictly decreases.
 - The function strictly decreases first, reaches a minimum, and then strictly increases.
 
-Both cases can me handled similarly.
+Both cases can be handled similarly.
 
 ### Convex Functions
 We can say convex always instead of sometimes concave, since it's the same but flipped. Convex usually refers to a curve with a minimum, and concave to a maximum.
@@ -15,10 +15,17 @@ Let's assume that we want to find the local minimum of our function. Then, a fun
 
 Note that this implies that **a convex function is also a unimodal function**.
 
-Basically, we can just show: $$\Delta{f(t)} \ge \Delta{f(t + 1)}$$
+Basically, we can just show: $$\Delta{f(t + 1)} \ge \Delta{f(t)}$$
 
-With: $\Delta{f(t)} = f(t) - f(t-1)$
+With: $\Delta{f(t)} = f(t) - f(t-1)$.
 
+
+Or, as explained in https://en.wikipedia.org/wiki/Convex_function, convexity means:
+
+$f$ is called convex iff:
+$$
+\forall \, 0 \leq \lambda \leq 1, \; \forall x_{1}, x_{2} \in X: \quad f(\lambda x_{1} + (1-\lambda)x_{2}) \leq \lambda f(x_{1}) + (1-\lambda) f(x_{2})
+$$
 
 We can also define a strictly convex function, although it's not as useful: a function where consecutive differences are increasing (derivative is increasing).
 
@@ -26,10 +33,10 @@ We can also define a strictly convex function, although it's not as useful: a fu
 - The sum of convex functions is also convex. Examples of usage:
     * https://usaco.org/index.php?page=viewproblem2&cpid=1355, https://usaco.guide/gold/ternary-search#example---haybale-distribution
     * https://codeforces.com/problemset/problem/2063/D
-- A function $C(y)$ is convex if its first derivative, $C'(y)$, is non-decreasing.
-- A function $C(y)$ is concave if its first derivative, $C'(y)$, is non-increasing.
+- A function $C(y)$ is convex if its first derivative, $C'(y)$, is non-decreasing (or its second derivative is always non-negative, $C''(y) \ge 0$).
+- A function $C(y)$ is concave if its first derivative, $C'(y)$, is non-increasing (or its second derivative is always non-positive, $C''(y) \le 0$).
 - Check: [codeforces/problems/427/E/notes.md](../../codeforces/problems/427/E/notes.md) on an example of how to prove that a function is convex. We can show that the **first derivative is non-decreasing**, or that the second derivative is non-negative.
-- The maximum of two convex functions (have a minimum) is also convex. The minimum of two concave functions (have a maximum) is also concave.
+- The **maximum of two convex functions** (have a minimum) is also convex. The **minimum of two concave functions** (have a maximum) is also concave.
 - The sum of two **strictly** convex functions is always **strictly** convex.
 - We can't tell anything from the sum of a convex and a concave function.
 
@@ -77,9 +84,37 @@ while (lo < hi) {
 ```
 
 ## General considerations
+>---
 > A function is unimodal if it strictly decreases first, then reaches a minimum, then strictly increases (for the minimum case).
+>
+>---
 
 We are very specific about the function having to strictly increase and decrease. This is because **we can only allow our function to be flat at the minimum!** If we have a flat section anywhere else, it's possible that our ternary search ends up eliminating the wrong section.
 
+
 ## Example problems
 Check [USACO ternary search](https://usaco.guide/gold/ternary-search).
+
+
+## 2D Ternary Search
+Proving this may be harder. Typically, we can use the direct definition. Also, it's likely that using the triangle inequality can help prove convexity.
+
+$f$ is called convex iff:
+$$
+\forall \, 0 \leq \lambda \leq 1, \; \forall x_{1}, x_{2} \in X: \quad f(\lambda x_{1} + (1-\lambda)x_{2}) \leq \lambda f(x_{1}) + (1-\lambda) f(x_{2})
+$$
+
+To help prove this, check geometry notes, specifically the notes in [../geometry/basic_operations.md](../geometry/basic_operations.md)
+
+For example:
+* If your quantity looks like **$ax+by+c$**, it’s **affine**. Along a segment $tX+(1-t)Y$, it varies **linearly**: equality $f(tX+(1-t)Y)=t f(X)+(1-t)f(Y)$.
+* If your quantity looks like **$|ax+by+c|$** or **$\|A x+b\|$**, it’s **convex**: use the **weighted triangle inequality** to get:
+
+  $$
+  h(tX+(1-t)Y)\ \le\ t\,h(X)+(1-t)\,h(Y).
+  $$
+* Distance to a **fixed line**: numerator $ax+by+c$ is affine $\rightarrow$ area to a fixed base, or signed height, is affine (absolute value gives a convex function).
+
+### Example Problems
+- https://codeforces.com/gym/105973/problem/E (simpler proof, affine function)
+- https://codeforces.com/gym/104017/problem/H (harder proof)
