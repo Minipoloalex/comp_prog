@@ -27,6 +27,8 @@ $$
 \forall \, 0 \leq \lambda \leq 1, \; \forall x_{1}, x_{2} \in X: \quad f(\lambda x_{1} + (1-\lambda)x_{2}) \leq \lambda f(x_{1}) + (1-\lambda) f(x_{2})
 $$
 
+Another way of viewing the convex definition: It is sufficient for the following condition to hold: $g(x-1) - g(x) \ge g(x) - g(x+1)$ (non-decreasing first derivative).
+
 We can also define a strictly convex function, although it's not as useful: a function where consecutive differences are increasing (derivative is increasing).
 
 #### Properties
