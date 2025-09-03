@@ -119,6 +119,7 @@
 - Corner Subgrid Count: use bitsets. Using STL bitset TLEs unless you use pragmas.
 - Reachable Nodes: use bitsets and do simple bitwise-or based on a topological sort. Don't necessarily need pragmas even with STL bitsets (note that constant factor is divided by 32).
 - New Roads Queries: **find maximum along paths from any two pair of nodes** (queries): use **MST** to filter the edges to make a tree since we want to minimize the maximum along any path and use **binary lifting** to get the maximum along the paths.
+- Parcel Delivery: simplest **Minimum Cost Max Flow** problem, with all costs being positive.
 - Task Assignment: simplest **Minimum Cost Bipartite Matching** with **Hungarian Algorithm** (with $n = m$). Requires outputting assignments.
 
 ## Bitwise
