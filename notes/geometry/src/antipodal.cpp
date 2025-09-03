@@ -61,7 +61,6 @@ int sign(ll num) {
 // Returns all pairs of indices of antipodal pairs
 // Only valid for p.size() >= 3;
 // Does not handle points with precision problems (assumes integer coords)
-// Modify other functions and structs (vec, toVec, cross, point) to support integer coords
 vector<ii> all_anti_podal(const vector<point> &p) {
   int n = (int) p.size();
   assert(n >= 3);
