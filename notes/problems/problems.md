@@ -136,6 +136,10 @@
 - Advertisement:
     * **find nearest smaller element to left and to right** for each position - **Monotonic stack both ways**
     * Another solution involves only one pass, by saving pairs: $(\text{start}, \text{height}[i])$ in an increasing monotonic stack. $\text{start}$ corresponds to the leftmost possible start for the $i$'th fence. Check https://usaco.guide/problems/cses-1142-advertisement/solution#solution-2. We account for the right "propagation" of a specific fence $i$ by only taking the answer for that fence after finding a smaller fence $j$ (which is after $i$).
+- Maximum Building 1: stack-based approach, the same as advertisement (e.g. for each column), after a preprocessing step.
+    * The preprocessing is making the grid have in each position the longest consecutive number of trees to its right.
+    * Afterwards, we can just use a maximum area algorithm (CSES/advertisement) for each column independently.
+
 ### Binary Lifting:
 - Cyclic Array: build an **explicit graph** (successor graph) from each array position, then use **binary lifting similarly to LCA (go until $at < dst$)**
 
