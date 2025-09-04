@@ -133,7 +133,9 @@
 
 ## Additional problems 1
 ### Stacks
-- Advertisement: **find nearest smaller element to left and to right** for each position - **Monotonic stack both ways**
+- Advertisement:
+    * **find nearest smaller element to left and to right** for each position - **Monotonic stack both ways**
+    * Another solution involves only one pass, by saving pairs: $(\text{start}, \text{height}[i])$ in an increasing monotonic stack. $\text{start}$ corresponds to the leftmost possible start for the $i$'th fence. Check https://usaco.guide/problems/cses-1142-advertisement/solution#solution-2. We account for the right "propagation" of a specific fence $i$ by only taking the answer for that fence after finding a smaller fence $j$ (which is after $i$).
 ### Binary Lifting:
 - Cyclic Array: build an **explicit graph** (successor graph) from each array position, then use **binary lifting similarly to LCA (go until $at < dst$)**
 
