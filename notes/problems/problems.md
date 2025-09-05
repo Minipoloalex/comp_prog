@@ -98,6 +98,7 @@
 - Counting Coprime Pairs: In an array, count the number of pairs that are coprime.
     * **PIE** approach in $\mathcal{O}(n\cdot (\sqrt{MAX} + 2^K \cdot K)) = 1e8$. Basically, for each number, we want to exclude all other numbers that share a prime. We can get the size of sets like $P_1 \cap P_2 \cap \dots \cap P_k$ by first precomputing, for all divisors, how many numbers in the array are divided by them. Another possible solution would be to update the counts of how many numbers each prime divides as we go through all subsets of primes of a specific number: Check https://cses.fi/problemset/model/2417/.
 - Next Prime: based on the size of **prime gaps**, which are relatively small. Using a prime check in $\mathcal{O}(\frac{\sqrt{N}}{\log_2{\sqrt{N}}})$ easily passes. We can even use something slower (editorial does a simple $\mathcal{O}(\frac{\sqrt{N}}{2})$ prime check). Check math notes and wikipedia about prime gaps.
+- Christmas Party: just asks $!n$, i.e., the derangements.
 - Fibonacci Numbers: simplest **matrix exponentiation** problem (code in [Errichto Gym Problem C](../../codeforces/gym/102644_matrix_exponentiation/C/C.cpp))
 - Graph Paths 1: **matrix exponentiation** problem for counting paths of exactly $k$ edges between two nodes.
 - Graph Paths 2: **matrix exponentation** problem for determining minimum path of exactly $k$ edges. Requires adapting matrix multiplication (here we should call it combining matrices, since it's not multiplication). To do matrix exponentiation, we should be careful when setting the identity matrix.
