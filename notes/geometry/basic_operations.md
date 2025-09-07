@@ -47,6 +47,11 @@ These allows us to directly prove the convexity of a function.
 * **Useful fact**: the composition "norm $\circ$ affine" is convex: if $h(z)=\|z\|$ and $g(x)=A x+b$, then $h(g(x))$ is convex.
 * **Line/half-plane in 2D**: line $ax+by+c=0$ is affine; signed distance to this line is $\dfrac{ax+by+c}{\sqrt{a^2+b^2}}$, i.e. (constant)*(affine).
 
+
+## Vector Notation (helpful for following sections)
+- **Unit direction** (unit vector along $b$):  
+  $\hat b=\dfrac{b}{\lVert b\rVert}$
+
 ## Dot product ($\mathbb{R}^n$)
 
 * **Definition:** $a\cdot b=\sum_i a_i b_i$.
@@ -54,6 +59,23 @@ These allows us to directly prove the convexity of a function.
 * **Norm:** $\|a\|^2=a\cdot a$.
 * **Angle/orthogonality:** $a\cdot b=\|a\|\|b\|\cos\theta$.
   $a\perp b \iff a\cdot b=0$.
+
+#### Projection (onto a nonzero vector $b$)
+$b\neq 0$. "Signed length" is positive if $a$ points with $b$, negative if against.
+
+- **Scalar component** (signed length of $a$ along the axis of $b$):  
+  $\operatorname{comp}_b(a)=a\cdot \hat b=\dfrac{a\cdot b}{\lVert b\rVert}=\lVert a\rVert\cos\theta$
+
+- **Vector projection** (`lineProj`: $a$'s "shadow" on $\mathrm{span}(b)$; closest point on that line to $a$):
+  $\operatorname{proj}_b(a)=\dfrac{a\cdot b}{b\cdot b}\,b=(a\cdot \hat b)\,\hat b$
+
+- **Rejection** (part of $a$ perpendicular to $b$):  
+  $\operatorname{rej}_b(a)=a-\operatorname{proj}_b(a)$, with $\operatorname{rej}_b(a)\perp b$
+
+  Can also be computed using the vector projection with the perpendicular vector.
+
+Check [../../codeforces/gym/105112_nwerc_23_24/J/J.cpp](../../codeforces/gym/105112_nwerc_23_24/J/J.cpp).
+
 <!-- * **Projection scalar:** $t=\dfrac{(p-a)\cdot (b-a)}{\|b-a\|^2}$.
   Foot: $a+t(b-a)$. Use $t\in[0,1]$ for “on segment”.
 * **Distance point-line/segment (uses cross below for 2D):** see cross section. -->
