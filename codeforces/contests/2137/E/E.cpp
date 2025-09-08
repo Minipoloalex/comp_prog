@@ -68,7 +68,7 @@ void solve() {
     else if (issue_type == 2) {
         // in one iteration, they go to val + 1
         // in two they go to val
-        int actual_val = k % 2 == 1 ? val + 1 : val;
+        int64_t actual_val = k % 2 == 1 ? val + 1 : val;
         ans += actual_val * cnt_bad;
     }
     cout << ans << '\n';
