@@ -23,8 +23,7 @@ for (int m = 0; m < (1 << n); ++m)
         doSomething();
 ```
 
-From USACO:
-When we subtract $1$ from $\texttt{submask}$, its rightmost bit flips to a $0$ and all bits to the right of it will become $1$. Applying the bitwise AND with $\texttt{mask}$ removes all extra bits not in $\texttt{mask}$. From this process, we can get all strict subsets in increasing order by calculating $\texttt{mask} \oplus \texttt{submask}$, which does set subtraction.
+From USACO: When we subtract $1$ from $\texttt{submask}$, its rightmost bit flips to a $0$ and all bits to the right of it will become $1$. Applying the bitwise AND with $\texttt{mask}$ removes all extra bits not in $\texttt{mask}$. From this process, we can get all strict subsets in increasing order by calculating $\texttt{mask} \oplus \texttt{submask}$, which does set subtraction.
 ```cpp
 for (int mask = 0; mask < (1 << n); mask++) {
 	for (int submask = mask; submask != 0; submask = (submask - 1) & mask) {
@@ -33,14 +32,3 @@ for (int mask = 0; mask < (1 << n); mask++) {
 	}
 }
 ```
-
-## Range DP
-
-Typically $N = 500$, and solution is $\mathcal{O}(N^3)$. The $DP$ array is based on subarray intervals: $DP[i][j]$, with the transition being commonly $\mathcal{O}(N)$.
-
-A **common pattern** is trying to match the first value/character (possibly) with each value/character inside the interval $[i,j]$ from the $DP$ state. Then, handling the interval in the middle $[i+1,idx-1]$ and the interval after $[idx+1,j]$. See example problems.
-
-### Example problems:
-- https://saco-evaluator.org.za/cms/sapo2015z/tasks/jazz/description
-- https://codeforces.com/problemset/problem/607/B
-

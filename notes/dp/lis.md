@@ -10,4 +10,3 @@ Note that to make it a strict increasing subsequence, we would have to do someth
 - Sort by increasing values in $A$, and for the same values in $A$, we need to sort in descending order. Basically, as a tie break, we use descending $B$ order. 
 
 This ensures that, for a specific value in $A$, only one is chosen when determining the LIS in $B$.
-
