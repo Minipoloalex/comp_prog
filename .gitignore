@@ -1,5 +1,5 @@
 .vscode
-locals/**
+**/locals/**
 TODO.md
 **/TODO/**
 a.out
