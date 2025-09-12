@@ -5,13 +5,16 @@ Similar, but uses a different function in comparison to KMP.
 
 It uses the **Z-function**:
 
-**Given a position, this function gives the length of the longest string that's both the prefix of $S$ and the prefix of the suffix of $S$ starting at the given position**.
+**Given a position, this function gives the length of the longest string that's both the prefix of $S$ and the prefix of the suffix of $S$ starting at the given position**. Check examples below (and maybe a more clear definition as well?).
 
 Check another way to interpret the array: [Library Checker Problem](#library-checker-problem)
 
-Basically, at position $i$, it gives the length of the prefix of the string that's the same as the prefix of the suffix that starts at $i$. For instance, the first value is always the size of the string.
+Basically, at position $i$, it gives the length of the prefix of the string that's the same as the prefix of the suffix that starts at $i$. For instance, the first value is always the size of the string (it can be seen as undefined, actually).
 
-$$ Z[i] = max_k(S[0:k] = S[i:i+k])$$
+$$
+Z_i = \max\{\, k \mid S_{0..k-1} = S_{i..i+k-1} \,\}.
+$$
+
 where:
 - $k$ is the length of that prefix
 - $S[0:k]$ represents the prefix of length $k$ of the string $S$
@@ -36,7 +39,7 @@ Given string $S$ of length $N$: calculate array $a_0,a_1,...,a_{N−1}$ as follo
 $a_i​$ is the **LCP (longest common prefix)** of $S$ and $S.substr(i)$.
 
 where:
-- $S.substr(i)$ represents the suffix of string $S$ that starts at position $i$: $S[i:]$
+- $S.substr(i) \Longleftrightarrow S[i:]$ represents the suffix of string $S$ that starts at position $i$: 
 
 ## Code
 
@@ -78,4 +81,11 @@ To better understand it, you can write the together string for the example at ht
 
 
 ## Problems
-https://cses.fi/problemset/task/1733
+Very similar applications to the prefix function (KMP).
+
+Simple:
+- Finding periods: https://cses.fi/problemset/task/1733
+- Finding borders: https://cses.fi/problemset/task/1732
+
+Basically the same as KMP:
+- https://cp-algorithms.com/string/z-function.html#number-of-distinct-substrings-in-a-string

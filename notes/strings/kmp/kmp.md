@@ -3,6 +3,10 @@ Preprocesses the pattern and not the text, opposite of the suffix array.
 
 Array/function $KMP[i]$ may also be called $\pi$ (pi) or prefix function.
 
+$$
+\pi_S[i] = \max\{\, k \mid S_{0..k-1} = S_{\,i-k+1..i} \,\}.
+$$
+
 ## Code
 Check [kmp.hpp](kmp.hpp).
 

@@ -12,7 +12,7 @@ Definitions:
  Here, the prefix that ends at i takes the role of the whole string in the border definition.
 */
 
-// Preprocesses the pattern to match
+// Preprocesses the pattern
 struct KMP {
     string p;   // pattern
     int m;      // size of pattern
