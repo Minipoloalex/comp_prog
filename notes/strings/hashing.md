@@ -15,6 +15,7 @@ where $b - a + 1$ just represents the size of the substring.
 - **Pattern matching problem**: Given string $s$ and pattern $p$, find positions where $p$ occurs in $s$: $\mathcal{O}(N)$.
 - **$\log(N)$ lexicographic comparison of strings**: we can binary search for the common prefix and compare the next character. (F F ... F T ... T T T: first true binary search for common $h[k]$ hashing value of prefix).
     - Check https://cses.fi/problemset/task/1110/ (Booth's Algorithm)
+    - Cool problem: https://codeforces.com/contest/1051/problem/E. Note how hashing can be used to find the LCP of a string that starts on $i$ and another fixed string. In this use case, this can be replaced by the Z-function (check submitted code).
 
 ### Collisions
 Check the table on the CPH link.

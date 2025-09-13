@@ -89,3 +89,7 @@ Simple:
 
 Basically the same as KMP:
 - https://cp-algorithms.com/string/z-function.html#number-of-distinct-substrings-in-a-string
+
+
+Harder (cool) problems:
+- https://codeforces.com/contest/1051/problem/E: Notice how we want to find the LCP of the suffix starting at $i$ of a string $a$ with another string. Since this other string ($l$ or $r$) is fixed, we can use the Z-function, instead of using hashing.
