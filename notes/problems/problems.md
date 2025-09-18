@@ -23,6 +23,8 @@
 - Longest Common Subsequence: classic LCS, requires reconstruction
 - Rectangle Cutting: simple/obvious Range DP. Required iterative DP to avoid TLE (but still very simple/intuitive to code).
 - Minimal grid path: instead of a shortest path in the grid, we want the **lexicographically shortest string of the path**. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
+- Removal Game: simple interval DP, requires iterative DP to avoid TLE. Can also be formulated with length as one of the parameters.
+    * The editorial presents a cleaner implementation, without requiring the additional boolean. They simply consider the score after, from the other player, as negative (since we want to minimize it), then just max it over the two choices. In addition, they formula the DP using length instead of the interval $[l, r]$, which is simple and makes a lot of sense.
 - Mountain range: Next greater to build a graph (monotonic stack), then just $DP$ to find the longest path distance in the graph.
 - Increasing subsequences 2: DP thought process for subsequences, based on **bucketing previous results**. Requires range queries and coordinate compression.
 
