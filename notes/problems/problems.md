@@ -130,7 +130,9 @@
 - Subarray Squares:
     * **Convex Hull Trick** Solution. Need to be careful to reset hull when going to the next level, and also to ensure start from valid "position".
     * **Divide & Conquer** Solution: TODO (study topic)
-
+- Houses and Schools:
+    * Expected solution is D&C DP
+    * Can use CHT to solve this, with a mountain and valley formulation. The formulation of the $DP$ using CHT is quite complicated/hard. It is error-prone and it also requires using 128 bits cross product for the monotonic dp hull (in my specific implementation).
 - Parcel Delivery: simplest **Minimum Cost Max Flow** problem, with all costs being positive.
 - Task Assignment: simplest **Minimum Cost Bipartite Matching** with **Hungarian Algorithm** (with $n = m$). Requires outputting assignments.
 
