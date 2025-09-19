@@ -30,6 +30,8 @@
 - Mountain range: **Next greater to build a graph** (monotonic stack), then just **$DP$ to find the longest path distance in the graph**.
 - Projects: **Sweep line DP**. I used coordinate compression, but the editorial uses a different approach to avoid it.
     * Editorial solution: when we see the start of the project, we can calculate the maximum value if we take that project. When we see the end, we can just use the maximum between that previously set value (in an auxiliar array) and the overall current maximum (considering we don't take the project).
+- Elevator Rides: $\mathcal{O}(2^n \cdot n)$ DP, with a bitmask as the state. Uses the trick where we can switch the state to the result (here, the weight weight is too large to be a state). Actually, we even avoid the additional $n$ factor by not using in the state the variable $number of rides$ (which without the trick, would be the returned result). That's just an obvious greedy observation.
+    * The editorial implements it iteratively. That's very simple to implement because when we're in a mask $m$, we only use masks that are smaller than us (since we will deactivate one bit).
 - Increasing subsequences 2: DP thought process for subsequences, based on **bucketing previous results**. Requires range queries and coordinate compression.
 
 ## Graph Algorithms
