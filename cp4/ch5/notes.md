@@ -9,9 +9,9 @@ a,  a * r,  a * r^2,  ...
 
 ### Harmonic series
 
-$ H(n) = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + ... = ln(n) $
+$ H(n) = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + ... = log_2(n) $
 
-$n + \frac{n}{2} + \frac{n}{3} + \frac{n}{4} + \frac{n}{5} + \frac{n}{6} + ... = n (1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + ...) = n * ln(n)$
+$n + \frac{n}{2} + \frac{n}{3} + \frac{n}{4} + \frac{n}{5} + \frac{n}{6} + ... = n (1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + ...) = n * log_2(n)$
 
 
 Harmonic series usage example (https://codeforces.com/contest/1996/problem/D) to achieve $O(N logN)$ (jiangly): 
