@@ -20,6 +20,8 @@
     * Similar idea to above, but here, we will bucket the values directly into a vector to count them (because we're doing MOD).
 
 ## Dynamic Programming
+- Counting Towers: a recurrence based only on $i-1$. Can be implemented using Matrix exponentiation (not required since $n \le 1e6$).
+    * A different formulation, but similar to https://codeforces.com/gym/101635/ problem C.
 - Longest Common Subsequence: classic LCS, requires reconstruction
 - Rectangle Cutting: simple/obvious Range DP. Required iterative DP to avoid TLE (but still very simple/intuitive to code).
 - Minimal grid path: instead of a shortest path in the grid, we want the **lexicographically shortest string of the path**. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
