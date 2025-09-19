@@ -20,14 +20,16 @@
     * Similar idea to above, but here, we will bucket the values directly into a vector to count them (because we're doing MOD).
 
 ## Dynamic Programming
-- Counting Towers: a recurrence based only on $i-1$. Can be implemented using Matrix exponentiation (not required since $n \le 1e6$).
+- Counting Towers: **a recurrence based only on $i-1$**. Can be implemented using **Matrix Exponentiation** (not required since $n \le 1e6$).
     * A different formulation, but similar to https://codeforces.com/gym/101635/ problem C.
 - Longest Common Subsequence: classic LCS, requires reconstruction
-- Rectangle Cutting: simple/obvious Range DP. Required iterative DP to avoid TLE (but still very simple/intuitive to code).
+- Rectangle Cutting: simple/obvious **Range DP**. Required iterative DP to avoid TLE (but still very simple/intuitive to code).
 - Minimal grid path: instead of a shortest path in the grid, we want the **lexicographically shortest string of the path**. This requires looking for the next character at each step, based on the possible positions (with best prefix) from the previous step.
 - Removal Game: simple interval DP, requires iterative DP to avoid TLE. Can also be formulated with length as one of the parameters.
     * The editorial presents a cleaner implementation, without requiring the additional boolean. They simply consider the score after, from the other player, as negative (since we want to minimize it), then just max it over the two choices. In addition, they formula the DP using length instead of the interval $[l, r]$, which is simple and makes a lot of sense.
-- Mountain range: Next greater to build a graph (monotonic stack), then just $DP$ to find the longest path distance in the graph.
+- Mountain range: **Next greater to build a graph** (monotonic stack), then just **$DP$ to find the longest path distance in the graph**.
+- Projects: **Sweep line DP**. I used coordinate compression, but the editorial uses a different approach to avoid it.
+    * Editorial solution: when we see the start of the project, we can calculate the maximum value if we take that project. When we see the end, we can just use the maximum between that previously set value (in an auxiliar array) and the overall current maximum (considering we don't take the project).
 - Increasing subsequences 2: DP thought process for subsequences, based on **bucketing previous results**. Requires range queries and coordinate compression.
 
 ## Graph Algorithms
