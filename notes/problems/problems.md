@@ -32,6 +32,8 @@
     * Editorial solution: when we see the start of the project, we can calculate the maximum value if we take that project. When we see the end, we can just use the maximum between that previously set value (in an auxiliar array) and the overall current maximum (considering we don't take the project).
 - Elevator Rides: $\mathcal{O}(2^n \cdot n)$ DP, with a bitmask as the state. Uses the trick where we can switch the state to the result (here, the weight weight is too large to be a state). Actually, we even avoid the additional $n$ factor by not using in the state the variable $number of rides$ (which without the trick, would be the returned result). That's just an obvious greedy observation.
     * The editorial implements it iteratively. That's very simple to implement because when we're in a mask $m$, we only use masks that are smaller than us (since we will deactivate one bit).
+- Counting Tilings
+    * Similar problem to Counting Towers. Can also use matrix exponentiation. Basically the same as https://codeforces.com/gym/101635/ problem C, except we can write the explicit DP here in $\mathcal{O}(2^n * m)$ instead of $\mathcal{O}(2^n * \log{m})$
 - Counting Numbers: simple/obvious **Digit DP** problem, with an additional state corresponding to the previous digit.
 - Increasing subsequences 2: DP thought process for subsequences, based on **bucketing previous results**. Requires range queries and coordinate compression.
 
@@ -85,6 +87,7 @@
 - Forest Queries 2: simplest **2D Fenwick Tree (Online)**
 - Range Updates and Sums: **range adds**, **range sets** and **range sums**: use a **Lazy Segment Tree**, with multiple `LazyUpdate` types.
 
+- Visible Building Queries: build the **explicit graph with next greater** and use binary lifting to count how many jumps can be done before exiting $[a,b]$. Similar idea to CSES/cyclic-array (but much simpler to implement).
 - Subarray Sum Queries (and Subarray Sum Queries 2): Find the **subarray with the maximum sum on an interval**. Use a **Segment Tree** that keeps track of **prefix** subarray maximum sum, **suffix** subarray maximum sum, **maximum** sum, and total **sum**. We can use these auxiliar values to compute the maximum subarray sum.
 - Distinct Values Queries: Find the number of unique values in subarrays given by queries. Needs offline processing. **Offline queries + Fenwick Tree**: enable and disable each value, to reduce the problem to finding the range sum over activated values in a subarray. The idea is to "activate" each value the closest to the current index $i$ (the closest to the right, which is the best possible for intervals that end at $i$, and span across to the left).
 
