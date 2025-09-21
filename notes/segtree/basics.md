@@ -1,6 +1,8 @@
 ## Operations
 Allows doing point update and range queries in $\mathcal{O}(\log N)$ for any **associative operation**.
 
+Any interval can be decomposed into $\mathcal{O}(N\cdot \log{N})$ nodes in the segment tree. Specifically, we can prove it is decomposed in at most $4$ nodes at each level in the segment tree (and there are $\log{N}$ levels).
+
 ### O(N) memory in each node
 We can keep more information in each node, similar to a a merge-sort way. In fact, a **Merge-Sort Tree** is just a Segment Tree that keeps the entire list of elements in each node (can use any kind of data structure).
 
