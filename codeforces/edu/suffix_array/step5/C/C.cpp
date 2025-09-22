@@ -1,11 +1,36 @@
 #include <bits/stdc++.h>
-#include "RMQ.hpp"
 using namespace std;
 
 typedef vector<int> vi;
 
 #define sz(v) int((v).size())
 #define all(v) (v).begin(), (v).end()
+
+/**
+ * Range Minimum Queries on an array. Returns
+ * min(V[a], V[a + 1], ... V[b - 1]) in O(1).
+ * Usage:
+ *  RMQ rmq(values);
+ *  rmq.query(inclusive, exclusive);
+ * Time: O(|V| log |V| + Q)
+ */
+template<class T>
+struct RMQ {
+	vector<vector<T>> jmp;
+    RMQ() {}
+	RMQ(const vector<T> &V) : jmp(1, V) {
+		for (int pw = 1, k = 1; pw * 2 <= sz(V); pw *= 2, ++k) {
+			jmp.emplace_back(sz(V) - pw * 2 + 1);
+			for (int j = 0; j < sz(jmp[k]); j++)
+				jmp[k][j] = min(jmp[k - 1][j], jmp[k - 1][j + pw]);
+		}
+	}
+	T query(int a, int b) {
+		assert(a < b); // or return inf if a == b
+		int dep = 31 - __builtin_clz(b - a);
+		return min(jmp[dep][a], jmp[dep][b - (1 << dep)]);
+	}
+};
 
 // Adapted from KACTL
 /*
@@ -62,3 +87,42 @@ struct SuffixArray {
         return rmq.query(i + 1, j + 1);
     }
 };
+
+void solve() {
+    string s;
+    cin >> s;
+    SuffixArray sa(s);
+    int q;
+    cin >> q;
+    vector<pair<int,int>> substrs(q);
+    for (auto &[l, r]: substrs) {
+        cin >> l >> r;
+        l--;r--;
+    }
+
+    using ii = pair<int,int>;
+    sort(substrs.begin(), substrs.end(), [&](ii const&a, ii const&b) {
+        int lcp = sa.getLCP(a.first, b.first);  // longest common prefix between the suffixes
+        int asz = a.second - a.first + 1, bsz = b.second - b.first + 1;
+        int mnsz = min(asz, bsz);
+        lcp = min(lcp, mnsz);   // find the lcp between the two substrs
+
+        if (lcp == asz && lcp == bsz) return a < b; // means the substrs are equal
+        if (lcp == asz) return true;
+        if (lcp == bsz) return false;
+        return sa.s[a.first + lcp] < sa.s[b.first + lcp];
+    });
+    for (auto &[l, r]: substrs) {
+        cout << l + 1 << " " << r + 1 << '\n';
+    }
+}
+
+int main() {
+    cin.tie(0)->ios::sync_with_stdio(0);
+    int t = 1;
+    // cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
