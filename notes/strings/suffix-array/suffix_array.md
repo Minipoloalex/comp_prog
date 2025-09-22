@@ -28,7 +28,7 @@ Usually we can do proofs like the two previous ones (from LCP and from LCS/LRS),
 
 >---
 >I believe this is wrong:
-"For many of these applications, and to better understand the algorithms, it may be useful to visualize them in a **Suffix Tree** and then convert the algorithm to the Suffix Array and LCP.
+"For many of these applications, and to better understand the algorithms, it may be useful to visualize them in a **Suffix Tree** and then convert the algorithm to the Suffix Array and LCP".
 >
 >---
 
