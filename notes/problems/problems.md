@@ -134,6 +134,8 @@
 - Corner Subgrid Count: use bitsets. Using STL bitset TLEs unless you use pragmas.
 - Reachable Nodes: use bitsets and do simple bitwise-or based on a topological sort. Don't necessarily need pragmas even with STL bitsets (note that constant factor is divided by 32).
 - New Roads Queries: **find maximum along paths from any two pair of nodes** (queries): use **MST** to filter the edges to make a tree since we want to minimize the maximum along any path and use **binary lifting** to get the maximum along the paths.
+- Necessary Roads: **find the bridges**.
+- Necessary Cities: **find the articulation points**.
 - Monster Game: classic convex hull trick
     * Monster Game I: convex hull trick with monotonic slopes and queries (decreasing slopes, increasing queries)
     * Monster Game II: convex hull trick with no special properties: use a LineContainer or a LiChaoTree
