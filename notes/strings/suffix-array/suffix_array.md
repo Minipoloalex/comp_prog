@@ -41,6 +41,15 @@ Library checker problems:
 2. https://judge.yosupo.jp/problem/number_of_substrings
 3. https://judge.yosupo.jp/problem/longest_common_substring
 
+### Common-ish Patterns
+Notice how the **LCP($i$,$j$)** between two suffixes starting at $i$ and $j$ is the minimum of the $LCP$ in the middle of their corresponding indices in the suffix array. This means that we can interpret LCP's in a different way and try to think of contributions. This leads to a common pattern of using **monotonic stack** and **next smaller** to find the range in which an LCP contributes. For instance, this corresponds to the range in which the prefix of a specific suffix occurs. When we reach a smaller value, then the LCP with those suffixes will not correspond to that substring, therefore the "contribution" of the LCP ends there.
+
+In fact, for a given LCP value in an index $i$ (this LCP value corresponds to a specific substring, i.e., the prefix of length $lcp[i]$ of suffix starting at $i$), we know that the substring occurs only in between $[\text{prv\_smaller}(i, lcp[i]), \text{nxt\_smaller}(i, lcp[i])]$.
+
+Example problems:
+- https://codeforces.com/edu/course/2/lesson/2/5/practice/contest/269656/problem/D: haven't solved but I'm pretty sure it's a similar idea
+- https://codeforces.com/edu/course/2/lesson/2/5/practice/contest/269656/problem/E, which just turns into CSES/advertisement: https://cses.fi/problemset/task/1142
+
 ### Unique substrings calculation
 See library checker problem 2.
 
