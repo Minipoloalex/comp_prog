@@ -6,39 +6,10 @@ alias codeforces="cd ~/Documents/comp_prog && code . && cd codeforces"
 alias atcoder="cd ~/Documents/comp_prog && code . && cd atcoder"
 alias notes="cd ~/Documents/comp_prog && code . && cd notes"
 
-alias problem='echo "#include <bits/stdc++.h>
-using namespace std;
+export PROBLEM_TEMPLATE_DIR="$HOME/Documents/comp_prog/notes/other-templates/setup"
 
-void solve() {
-
-}
-
-int main() {
-    cin.tie(0)->ios::sync_with_stdio(0);
-    int t = 1;
-    // cin >> t;
-    while (t--) {
-        solve();
-    }
-    return 0;
-}"'
-
-alias problemcf='echo "#include <bits/stdc++.h>
-using namespace std;
-
-void solve() {
-
-}
-
-int main() {
-    cin.tie(0)->ios::sync_with_stdio(0);
-    int t = 1;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-    return 0;
-}"'
+problem()    { cat "$PROBLEM_TEMPLATE_DIR/problem.cpp"; }
+problemcf()  { cat "$PROBLEM_TEMPLATE_DIR/problemcf.cpp"; }
 
 mkcontest() {
   start=$1
