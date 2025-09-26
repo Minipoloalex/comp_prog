@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Tested on:
-// - CSES/Range-Queries-and-Copies
-
 /**
  * Persistent segment tree (point update, range query)
  * - query on [l, r], 0-indexed
@@ -96,43 +93,69 @@ struct persistent_segtree {
     }
 };
 
+
 void solve() {
-    int n, m;
-    cin >> n >> m;
+    int n, q;
+    cin >> n >> q;
     vector<int> a(n);
     for (auto &ai: a) cin >> ai;
     vector<int> sorteda = a;
+
     sort(sorteda.begin(), sorteda.end());
-    // distinct integer numbers, so we don't need to do unique
+    sorteda.erase(unique(sorteda.begin(), sorteda.end()), sorteda.end());
     auto get_idx = [&](int v) {
         return int(lower_bound(sorteda.begin(), sorteda.end(), v) - sorteda.begin());
     };
-
     auto fsum = [](int v1, int v2) { return v1 + v2; };
     persistent_segtree<int, decltype(fsum)> st(n, fsum, 0, 22*n);
     vector<int> roots = {0};
+
+    vector<int> cur_cnt(n);
     for (int i = 0; i < n; i++) {
         int v = a[i];
         int compressed_idx = get_idx(v);
-        // because distinct, otherwise maintain an additional array (with counts)
-        roots.push_back(st.update(roots.back(), compressed_idx, 1));
+        cur_cnt[compressed_idx]++;
+        roots.push_back(st.update(roots.back(), compressed_idx, cur_cnt[compressed_idx]));
     }
-    while (m--) {
-        int l, r, k;
-        cin >> l >> r >> k;
-        int lo = st.find_first(roots[l - 1], roots[r], [k](int cntleft, int cntright) {
-            return cntright - cntleft >= k;
+    while (q--) {
+        int l, r;
+        cin >> l >> r;
+        int cnt_required = (r - l + 1) / 3 + 1;
+        int fst = st.find_first(roots[l - 1], roots[r], [&](int cntleft, int cntright) {
+            return cntright - cntleft >= cnt_required;
         });
-        assert(lo != -1);
-        int ans = sorteda[lo];
-        cout << ans << '\n';
+        int snd = st.find_first(roots[l - 1], roots[r], [&](int cntleft, int cntright) {
+            return cntright - cntleft >= cnt_required * 2;
+        });
+
+        assert(fst != -1);
+
+        set<int> ans;
+
+        int fst_ans = sorteda[fst];
+        int cnt_fst = st.query(roots[r], fst, fst) - st.query(roots[l-1], fst, fst);
+        if (cnt_fst >= cnt_required) ans.insert(fst_ans);
+
+        if (snd != -1) {
+            int snd_ans = sorteda[snd];
+            int cnt_snd = st.query(roots[r], snd, snd) - st.query(roots[l-1], snd, snd);
+            if (cnt_snd >= cnt_required) ans.insert(snd_ans);
+        }
+        if (ans.empty()) {
+            cout << "-1\n";
+        }
+        else {
+            for (int v: ans) cout << v << " ";
+            cout << '\n';
+        }
     }
 }
 
 int main() {
     cin.tie(0)->ios::sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }
