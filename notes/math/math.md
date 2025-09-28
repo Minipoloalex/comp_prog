@@ -315,6 +315,11 @@ $$\mathbb{E}[X \cdot Y] = \mathbb{E}[X] \cdot \mathbb{E}[Y] \quad \text{if } X \
 For example:
 $$\mathbb{E}[X^2] \ne (\mathbb{E}[X])^2$$
 
+4. The expected value of a randomized process with probability $P$ is given by $\dfrac{1}{P}$.
+
+For example, if there are $N$ different stickers, what's the expected value of the number of packs until we get a specific sticker? The probability is $\dfrac{1}{N}$, so the expected value is $N$ times.
+
+This is also useful for the classic problem of the expected number of packs to get the complete $N$ stickers. It can be calculated like this $\dfrac{N}{N} + \dfrac{N}{N-1} + \dots + \dfrac{N}{2} + \dfrac{N}{2} + \dfrac{N}{1}$.
 
 ## Simple formulas
 1. **Change logarithm base**
