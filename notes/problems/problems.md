@@ -152,6 +152,7 @@
 
 ## Bitwise
 - Maximum xor subarray: greedy with **TRIE** to find best previous prefix sum to use for the current index
+- SOS Bit Problem: basic **SOS** for submasks and supermasks. Also includes another function based on submasks, based on doing the bitwise-not.
 
 ## Advanced Graph Problems
 - Graph Girth: **find shortest cycle length** in undirected unweighted graph - **BFS** for each node
