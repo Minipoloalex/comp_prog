@@ -135,6 +135,9 @@
 - Hamming Distance: use **bitwise optimizations**. Basically, we can make every value an integer (read it using a bitset, for instance) and compare numbers by counting the number of bits (popcount) of the XOR.
 - Corner Subgrid Count: use bitsets. Using STL bitset TLEs unless you use pragmas.
 - Reachable Nodes: use bitsets and do simple bitwise-or based on a topological sort. Don't necessarily need pragmas even with STL bitsets (note that constant factor is divided by 32).
+- Cut and Paste: simple **implicit Treap**
+- Substring Reversals: **implicit Treap** with **reverse Lazy propagation**
+- Reversals and Sums: similar to substring reversals, with an additional info variable (sum).
 - New Roads Queries: **find maximum along paths from any two pair of nodes** (queries): use **MST** to filter the edges to make a tree since we want to minimize the maximum along any path and use **binary lifting** to get the maximum along the paths.
 - Necessary Roads: **find the bridges**.
 - Necessary Cities: **find the articulation points**.
