@@ -34,8 +34,6 @@ void solve() {
             else {
                 ans += go(i+1,a[i],b);
             }
-            // ans += go(i+1,a[i],b);
-            // ans += go(i+1,r,a[i]);
         }
         ans %= MOD;
         return mem = ans;
