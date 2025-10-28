@@ -168,7 +168,7 @@ int64_t euclid(int64_t a, int64_t b) {
 
 ### Fibonacci Numbers
 24. **Consecutive Fibonacci Numbers are coprime**:
-$$gcd(F_{n+1}​,F_n​)=1$$
+$$gcd(F_{n+1},F_n)=1$$
 >---
 >Can be proven using Euclidean Algorithm (since $F_{n+1} - F_n = F_{n-1}$):
 >
