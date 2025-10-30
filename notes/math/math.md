@@ -242,6 +242,11 @@ For example, $d(n)$ and $\sigma(n)$ are both multiplicative functions (number an
 
 From https://cp-algorithms.com/algebra/divisors.html
 
+29. We can precalculate $gcd(x, y), \forall x, y \in [0,N]$ in $\mathcal{O}(N^2)$, since we can just use the fact that $g_{x,y} = g_{y, x\bmod y}$ ($x > y$).
+```cpp
+for(int x = 0; x < N; x++) g[x][0] = g[0][x] = g[x][x] = x;
+for(int x = 1; x < N; x++) for(int y = 1; y < x; y++) g[x][y] = g[y][x] = g[y][x % y];
+```
 
 ## Factorials and Combinations
 1. Inverse modulo property
