@@ -333,3 +333,15 @@ $$ \log_b(X) = \frac{\log(X)}{\log(b)}$$
 2. **Max** and **Min**:
 $$\max(a,b)=\frac{a+b+\lvert a-b\rvert}{2}$$
 $$\min(a,b)=\frac{a+b-\lvert a-b\rvert}{2}$$
+
+3. Harmonic Series and others
+It can be proven that it's $\ln$ and not just $\log_2$.
+$ H(n) = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + ... = \mathcal{O}(log(n)) $
+
+A geometric progression:
+$$\frac{n}{2} + \frac{n}{4} + \frac{n}{8} + \frac{n}{16} + ... = \sum_{i=1}^{N}{\frac{n}{2^i}} < n$$
+
+>---
+> By $ S_n = a_0 * \frac{1 - q^n}{1 - q} = a_0 * \frac{q^n - 1}{q - 1}, q \neq 1$, we can prove that the sum is $$\frac{n}{2}\cdot \frac{1-(\frac{1}{2})^n}{1-\frac{1}{2}} = n \cdot \left(1-\left(\frac{1}{2}\right)^n\right)$$.
+>
+>---
