@@ -345,3 +345,15 @@ $$\frac{n}{2} + \frac{n}{4} + \frac{n}{8} + \frac{n}{16} + ... = \sum_{i=1}^{N}{
 > By $ S_n = a_0 * \frac{1 - q^n}{1 - q} = a_0 * \frac{q^n - 1}{q - 1}, q \neq 1$, we can prove that the sum is $$\frac{n}{2}\cdot \frac{1-(\frac{1}{2})^n}{1-\frac{1}{2}} = n \cdot \left(1-\left(\frac{1}{2}\right)^n\right)$$.
 >
 >---
+
+4. A function defined like this:
+$$c_n = c_1 + c_2 + \dots + c_{n-1} = \sum_{i=1}^{n-1} c_i$$
+
+Is equivalent to this:
+$$c_n = c_1\cdot2^{n-1}, \quad\forall n \ge 1$$
+
+>---
+>This is easy to prove, since:
+>$$c_{n+1} = (c_1 + c_2 + \dots + c_{n-1}) + c_n = c_n + c_n = 2\cdot c_n$$
+>
+>---
