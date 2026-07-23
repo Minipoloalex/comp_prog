@@ -7,6 +7,20 @@ sort(v.begin(), v.end());
 v.erase(unique(v.begin(), v.end()), v.end());
 ```
 
+## Accumulate
+
+It uses the initial accumulator type passed, not the vector's type:
+```cpp
+vector<int> a(n, INT_MAX);
+int64_t sm = accumulate(a.begin(), a.end(), 0);   // overflows
+int64_t sm = accumulate(a.begin(), a.end(), 0LL); // does not overflow
+
+vector<int64_t> a(n, INT_MAX);
+int64_t sm = accumulate(a.begin(), a.end(), 0);   // overflows
+int64_t sm = accumulate(a.begin(), a.end(), 0LL); // does not overflow
+```
+
+
 ## GCD
 Note that:
 
