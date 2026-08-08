@@ -43,6 +43,8 @@ Since $\ln \ln n \to \infty$ as $n \to \infty$, the exponent $\frac{\ln 2}{\ln \
 
 For a value of $10^6$, the exponent is approximately $0.26$.
 
+6.1 On average, a number has $\mathcal{O}(\ln{n})$ divisors.
+
 
 7. With any positive integer $x$, there is at least one square number in $[x,2x]$. Also, there is at least one prime number in $[x, 2x]$, given $x > 1$.
 

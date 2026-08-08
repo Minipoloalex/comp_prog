@@ -25,6 +25,11 @@ void solve() {
     vector<int64_t> dp(m+1);
     vector<int64_t> ndp(m+1);
     bool possible = (a[0] == 0 || a[0] == 1) && (a[1] == 0 || a[1] == 2);
+    
+    // prove that for 1/x = g/xy + 1/y -> x + g = y
+    // also, note that it's not possible to have > 1
+    // because we cannot increase the value: x + g <= y
+    // since g <= y - x from the definition of gcd
     if (possible) {
         dp[2] = 1;
         for (int i = 2; i < n; i++) {
