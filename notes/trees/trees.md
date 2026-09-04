@@ -4,6 +4,20 @@ To find the diameter of a tree, we can just do 2 DFS's. In one, we will get the 
 The most distant node of every node in a tree is one of the endpoints of the diameter.
 Proof by contradiction: since it's a tree, we know that the nodes connect to the diameter path. If it does and we know our node isn't one endpoint of the diameter, then we also know that it can't be larger than the diameter, so its largest distance is to one of its endpoints.
 
+### All diameters of a tree share a node
+> Proof also in https://codeforces.com/blog/entry/155813 E
+
+This can be proven by contradiction.
+Let's say there are two diameters $a \rightarrow b$ and $x \rightarrow y$ that share no node. But they're "connected", because it's a tree, and here we assume there is at least a node in between them.
+
+So, if we go from $x$ or $a$, go through the point of connection, then go through the largest size, we will end up with a larger diameter, so a contradiction.
+
+### All diameters of a tree with odd diameter share the central edge
+> Proof also in https://codeforces.com/blog/entry/155813 E
+
+Let's call this edge $(x, y)$. This edge splits the diameter length $2\cdot d + 1$ into two $d$-sized pieces. If we remove this edge, we have two connected components, one on the side of $x$ and one on the side of $y$. Since there is no single node at a distance larger than $d$ from $x$ or $y$, then the maximum diameter we can get is $2\cdot d$ only. This would happen if there were two nodes at a distance of $d$ from $x$/$y$.
+
+
 ## DP Solving for All Roots
 Usually, in these kinds of problems, we **first compute the result for the subtree only**, using a **bottom-up traversal of the tree** (basically, the answers are propagated upwards from the leaves). This already obtains the answer for the root of the tree (for the root, the answer for the subtree is simply the answer).
 
